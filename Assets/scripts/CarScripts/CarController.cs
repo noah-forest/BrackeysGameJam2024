@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+
     [SerializeField] Rigidbody carBody;
     [SerializeField] WheelCollider[] wheels = new WheelCollider[4];
     [SerializeField] Transform[] wheelVisuals = new Transform[4];
@@ -12,12 +13,15 @@ public class CarController : MonoBehaviour
     [SerializeField] float motorPower;
     [SerializeField] float breakForce;
     [SerializeField] float maxSteeringAngle;
+    [SerializeField] float turboPower;
+
     float steeringAngle;
 
-    float verticalInput;
-    float horizontalInput;
+    public float VerticalInput { get; private set; }
+    public float HorizontalInput { get; private set; }
 
-    bool footOnBreak;
+    public bool FootOnBreak { get; private set; }
+    public bool FootOnTurbo { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +31,10 @@ public class CarController : MonoBehaviour
     private void FixedUpdate()
     {
         Gas();
+        Turbo();
         Steer();
         Break();
-
+        
     }
 
     // Update is called once per frame
@@ -41,26 +46,45 @@ public class CarController : MonoBehaviour
 
     void GetInput()
     {
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
-        footOnBreak = Input.GetKey(KeyCode.Space);
+        VerticalInput = Input.GetAxis("Vertical");
+        HorizontalInput = Input.GetAxis("Horizontal");
+        FootOnBreak = Input.GetKey(KeyCode.Space);
+        FootOnTurbo = Input.GetKey(KeyCode.LeftShift);
     }
     void Steer()
     {
-        steeringAngle = horizontalInput * maxSteeringAngle;
+        steeringAngle = HorizontalInput * maxSteeringAngle;
         wheels[FWL].steerAngle = steeringAngle;
         wheels[FWR].steerAngle = steeringAngle;
     }
     void Gas()
     {
-        wheels[RWL].motorTorque = motorPower * verticalInput;
-        wheels[RWR].motorTorque = motorPower * verticalInput;
+        //wheels[RWL].motorTorque = motorPower * verticalInput;
+        //wheels[RWR].motorTorque = motorPower * verticalInput;
+        foreach (var wheel in wheels)
+        {
+            wheel.motorTorque = motorPower * VerticalInput;
+        }
+    }
+
+    void Turbo()
+    {
+        if (!FootOnTurbo) return;
+        Vector3 turboTarget = transform.position;
+        turboTarget += transform.forward * VerticalInput * 5;
+        Vector3 turboForce = transform.forward * turboPower * VerticalInput;
+        carBody.AddForceAtPosition(turboForce, turboTarget);
     }
 
     void Break()
     {
-        wheels[RWL].brakeTorque = footOnBreak ? breakForce : 0;
-        wheels[RWR].brakeTorque = footOnBreak ? breakForce : 0;
+        foreach (var wheel in wheels)
+        {
+            wheel.brakeTorque = FootOnBreak ? breakForce : 0;
+        }
+        //wheels[RWL].brakeTorque = footOnBreak ? breakForce : 0;
+        //wheels[RWR].brakeTorque = footOnBreak ? breakForce : 0;
+
     }
 
     void UpdateAllWheelVisuals()
