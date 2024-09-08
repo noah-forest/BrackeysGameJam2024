@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Interact;
+using UnityEngine.Events;
 
 namespace Interact
 {
-    public abstract class RangeInteractable : MonoBehaviour, IInteractable
+    public class RangeInteractable : MonoBehaviour, IInteractable
     {
+        public UnityEvent<GameObject> onInteract;
         public float range = 2f;
 
         // Start is called before the first frame update
@@ -21,7 +23,10 @@ namespace Interact
             return false;
         }
 
-        public abstract void Interact(GameObject gameObject);
+        public virtual void Interact(GameObject gameObject)
+        {
+            this.onInteract.Invoke(gameObject);
+        }
 
         void OnDrawGizmos()
         {
