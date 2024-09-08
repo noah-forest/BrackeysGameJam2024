@@ -1,6 +1,5 @@
 using UnityEngine;
 using Interact;
-using GameObject = Interact.GameObject;
 
 public interface IInteractable
 {

@@ -13,6 +13,8 @@ namespace Grabbing
                 currentlyGrabbed.Release();
             }
             currentlyGrabbed = grabbable;
+            currentlyGrabbed.transform.SetParent(this.transform);
+            currentlyGrabbed.transform.localPosition = grabbableOffset + currentlyGrabbed.offset;
             currentlyGrabbed.Grab();
         }
         

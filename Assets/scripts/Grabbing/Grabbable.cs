@@ -26,6 +26,8 @@ namespace Grabbing
             {
                 rb.isKinematic = true;
             }
+
+            this.transform.rotation = Quaternion.identity;
         }
 
         public void Release()
