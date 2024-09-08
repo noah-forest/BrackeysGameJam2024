@@ -5,7 +5,17 @@ namespace Grabbing
     {
         private Grabbable currentlyGrabbed;
         public Vector3 grabbableOffset;
-
+    
+        public void Grab(Grabbable grabbable)
+        {
+            if (currentlyGrabbed != null)
+            {
+                currentlyGrabbed.Release();
+            }
+            currentlyGrabbed = grabbable;
+            currentlyGrabbed.Grab();
+        }
+        
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.green;

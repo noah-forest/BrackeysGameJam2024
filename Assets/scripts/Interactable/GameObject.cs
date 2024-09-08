@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 namespace Interact
 {
 
-    public class Interactor : MonoBehaviour
+    public class GameObject : MonoBehaviour
     {
         void Update()
         {

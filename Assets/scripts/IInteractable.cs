@@ -1,8 +1,9 @@
 using UnityEngine;
 using Interact;
+using GameObject = Interact.GameObject;
 
 public interface IInteractable
 {
-    public void Interact(Interactor interactor);
-    public bool CanInteract(Interactor interactor);
+    public void Interact(GameObject gameObject);
+    public bool CanInteract(GameObject gameObject);
 }
