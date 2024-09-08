@@ -17,9 +17,9 @@ namespace Interact
                 if (Physics.Raycast(ray, out hit))
                 {
                     RangeInteractable grabbableHitbox = hit.collider.gameObject.GetComponent<RangeInteractable>();
-                    if (grabbableHitbox != null && grabbableHitbox.CanInteract(this))
+                    if (grabbableHitbox != null && grabbableHitbox.CanInteract(this.gameObject))
                     {
-                        grabbableHitbox.Interact(this);
+                        grabbableHitbox.Interact(this.gameObject);
                     }
                 }
             }

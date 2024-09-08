@@ -3,6 +3,6 @@ using Interact;
 
 public interface IInteractable
 {
-    public void Interact(Interactor interactor);
-    public bool CanInteract(Interactor interactor);
+    public void Interact(GameObject interactor);
+    public bool CanInteract(GameObject interactor);
 }

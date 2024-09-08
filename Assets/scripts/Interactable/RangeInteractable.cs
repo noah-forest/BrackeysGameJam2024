@@ -11,7 +11,7 @@ namespace Interact
         public float range = 2f;
 
         // Start is called before the first frame update
-        public bool CanInteract(Interactor interactor)
+        public bool CanInteract(GameObject interactor)
         {
             if (Vector3.Distance(interactor.transform.position, transform.position) < range)
             {
@@ -21,7 +21,7 @@ namespace Interact
             return false;
         }
 
-        public abstract void Interact(Interactor interactor);
+        public abstract void Interact(GameObject interactor);
 
         void OnDrawGizmos()
         {
