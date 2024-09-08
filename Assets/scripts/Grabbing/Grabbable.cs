@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Grabbing
@@ -7,38 +5,43 @@ namespace Grabbing
     public class Grabbable : MonoBehaviour
     {
         public Vector3 offset;
-        private Rigidbody rb;
-        private Collider collider;
+        public string tag = "";
 
-        private void Start()
+        public void Grab(GameObject grabber)
         {
-            collider = GetComponent<Collider>();
-            rb = GetComponent<Rigidbody>();
+            Grabber grabberComp = grabber.GetComponent<Grabber>();
+            
+            if (grabberComp != null)
+            {
+                grabberComp.Grab(this);
+            }
         }
-
+        
         public void Grab()
         {
+            Collider collider = GetComponent<Collider>();
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
             if (collider != null)
             {
                 collider.enabled = false;
             }
-            if (rb != null)
+            if (rigidbody != null)
             {
-                rb.isKinematic = true;
+                rigidbody.isKinematic = true;
             }
-
-            this.transform.rotation = Quaternion.identity;
         }
 
         public void Release()
         {
+            Collider collider = GetComponent<Collider>();
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
             if (collider != null)
             {
                 collider.enabled = true;
             }
-            if (rb != null)
+            if (rigidbody != null)
             {
-                rb.isKinematic = false;
+                rigidbody.isKinematic = false;
             }
         }
     }
