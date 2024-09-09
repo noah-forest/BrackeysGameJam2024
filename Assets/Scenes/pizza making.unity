@@ -345,7 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20610eabaeeb5a646bd1ebbc11d55ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pizza: {fileID: 1772929913}
+  pizzaPrefab: {fileID: 0}
+  currentPizza: {fileID: 0}
   pizzaSauceMaterial: {fileID: 2100000, guid: b9f4d157c2db3f748951c82aba62c516, type: 2}
   pizzaSauceCheeseMaterial: {fileID: 2100000, guid: bd0d64a3a244d084baaf7606074bf2c1,
     type: 2}
@@ -1215,6 +1216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b70314bba68b346bc2869a9b799dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
   enabled: 1
   offset: {x: 0, y: 0, z: 0}
   tag: pizza
@@ -1650,79 +1657,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1001 &1605271650732791897
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 324933567914916526, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.3902223
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.147
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.6811588
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393620436701415911, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9108721344439059430, guid: f072b2724a3562e49b124d7559b32811,
-        type: 3}
-      propertyPath: m_Name
-      value: Dough
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f072b2724a3562e49b124d7559b32811, type: 3}
 --- !u!1001 &4165224852169207312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1851,4 +1785,3 @@ SceneRoots:
   - {fileID: 5099798579660228790}
   - {fileID: 545849526}
   - {fileID: 507304412}
-  - {fileID: 1605271650732791897}
