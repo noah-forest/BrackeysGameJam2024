@@ -32,12 +32,19 @@ public abstract class ObsitcalGenerator : MonoBehaviour
             toGenerate.transform.Rotate(Vector3.up, Random.Range(0, 180));
             toGenerate.transform.up = hit.normal;
             toGenerate.transform.RotateAround(toGenerate.transform.position, toGenerate.transform.up, toGenerate.transform.localEulerAngles.y);
+            obsticalesGenerated.Add(toGenerate); ; // incremented regardless of success to prevent infnite loop when placed in invalid locations
         }
-        obsticalesGenerated.Add(toGenerate); ; // incremented regardless of success to prevent infnite loop when placed in invalid locations
+        else
+        {
+            Debug.Log($" {gameObject.name}: Spawn did not collide. No object Created");
+        }
+        
     }
 
     protected bool RollChanceToSpawnNothing()
     {
-        return obsticalesGenerated.Count > minObsticales && Random.value <= chanceToSpawnNothing;
+        float roll = Random.value;
+        Debug.Log($" {gameObject.name}: Obsticale Count: {obsticalesGenerated.Count} ==> {roll}/{chanceToSpawnNothing}");
+        return obsticalesGenerated.Count > minObsticales && roll <= chanceToSpawnNothing;
     }
 }
