@@ -14,21 +14,14 @@ public class PizzaGrabbable : Grabbable
         pizza = GetComponent<Pizza>();
     }
 
-    public override void Interact(GameObject gameObject)
-    {
-        base.Interact(gameObject);
-
-        var grabber = gameObject.GetComponent<Grabber>();
-
-        if (!grabber)
-        {
-            return;
-        }
-    }
-
     public override bool CanGrab(Grabber grabber)
     {
         var canGrab = base.CanGrab(grabber);
+
+        if (pizza.IsCooked())
+        {
+            return canGrab;
+        }
 
         var grabberTag = grabber.GetCurrentlyGrabbed()?.tag;
 
