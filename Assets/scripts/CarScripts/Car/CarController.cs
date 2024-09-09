@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody carBody;
+    [SerializeField] BoxCollider mainCollider;
     [SerializeField] WheelCollider[] wheels = new WheelCollider[4];
     [SerializeField] Transform[] wheelVisuals = new Transform[4];
     const int FWL = 0, FWR = 1, RWL = 2, RWR = 3, ROOF = 4;
@@ -15,6 +17,8 @@ public class CarController : MonoBehaviour
     [SerializeField] float breakForce;
     [SerializeField] float maxSteeringAngle;
     [SerializeField] float turboPower;
+    [SerializeField] float unstickForce;
+    [SerializeField] GameObject superUnstickPrefab;
 
     float steeringAngle;
 
@@ -51,19 +55,31 @@ public class CarController : MonoBehaviour
         HorizontalInput = Input.GetAxis("Horizontal");
         FootOnBreak = Input.GetKey(KeyCode.Space);
         FootOnTurbo = Input.GetKey(KeyCode.LeftShift);
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    foreach(WheelCollider wheel in wheels)
-        //    {
-        //        WheelHit tireTouch;
-        //        wheel.GetGroundHit(out tireTouch);
-        //        if (tireTouch.collider)
-        //        {
-        //            return;
-        //        }
-        //    }
-        //}
-        //carBody
+        if (Input.GetMouseButton(0))
+        {
+            float xPos = Random.Range(mainCollider.bounds.min.x, mainCollider.bounds.max.x);
+            float yPos = Random.Range(mainCollider.bounds.min.y, mainCollider.bounds.max.y);
+            float zPos = Random.Range(mainCollider.bounds.min.z, mainCollider.bounds.max.z);
+            Vector3 forceAxis = Vector3.zero;
+            switch (Random.Range(0, 2))
+            {
+                case 0:
+                    forceAxis = Vector3.forward;
+                    break; 
+                case 1:
+                    forceAxis = Vector3.right;
+                    break;
+                case 2:
+                    forceAxis = Vector3.up;
+                    break;
+            }
+            forceAxis *= (Random.value > 0.5 ? 1 : -1);
+            carBody.AddForceAtPosition(unstickForce * forceAxis,new Vector3(xPos, yPos, zPos));
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Instantiate(superUnstickPrefab, transform.position,Quaternion.identity);
+        }
 
     }
     void Steer()
