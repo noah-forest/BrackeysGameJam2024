@@ -11,7 +11,7 @@ namespace Interact
 
             Grabber grabber = gameObject.GetComponent<Grabber>();
 
-            if (grabber != null && grabbablePrefab.tag != grabber.GetGrabbed()?.tag)
+            if (grabber != null && grabbablePrefab.tag != grabber.GetCurrentlyGrabbed()?.tag)
             {
                 var newObj = Instantiate(grabbablePrefab);
                 grabber.Grab(newObj);

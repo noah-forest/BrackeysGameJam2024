@@ -1,10 +1,12 @@
 ﻿using System;
+using Interact;
 using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Grabbing
 {
+    [RequireComponent(typeof(RaycastInteractor))]
     public class Grabber : MonoBehaviour
     {
         [CanBeNull]
@@ -18,42 +20,78 @@ namespace Grabbing
         {
             if (Input.GetMouseButtonDown(1))
             {
-                Throw();
+                ThrowCurrentlyGrabbed();
             }
+        }
+
+        public void Start()
+        {
+            GetComponent<RaycastInteractor>()?.onInteract.AddListener((gameObject) =>
+            {
+                Grabbable grabbable = gameObject.GetComponent<Grabbable>();
+                if (grabbable != null)
+                {
+                    Grab(grabbable);
+                }
+            });
         }
 
         public void Grab(Grabbable grabbable)
         {
+            if (grabbable.CanGrab(this))
+            {
+                ReleaseCurrentlyGrabbed();
+
+                currentlyGrabbed = grabbable;
+                currentlyGrabbed.transform.SetParent(this.transform);
+                currentlyGrabbed.transform.localPosition = grabbableOffset + currentlyGrabbed.offset;
+                currentlyGrabbed.transform.localRotation = Quaternion.identity;
+
+                // Disable collider and rigidbody
+                Collider collider = currentlyGrabbed.GetComponent<Collider>();
+                Rigidbody rigidbody = currentlyGrabbed.GetComponent<Rigidbody>();
+                if (collider != null)
+                {
+                    collider.enabled = false;
+                }
+                if (rigidbody != null)
+                {
+                    rigidbody.isKinematic = true;
+                }
+
+                currentlyGrabbed.onGrab.Invoke();
+            }
+        }
+
+        public void ReleaseCurrentlyGrabbed()
+        {
             if (currentlyGrabbed != null)
             {
                 currentlyGrabbed.transform.SetParent(null);
-                currentlyGrabbed.Release();
-            }
-            currentlyGrabbed = grabbable;
-            currentlyGrabbed.transform.SetParent(this.transform);
-            currentlyGrabbed.transform.localPosition = grabbableOffset + currentlyGrabbed.offset;
-            currentlyGrabbed.transform.localRotation = Quaternion.identity;
-            currentlyGrabbed.Grab();
-        }
 
-        public void Release()
-        {
-            if (GetGrabbed())
-            {
-                var grabbed = GetGrabbed();
-                grabbed.transform.SetParent(null);
-                grabbed.Release();
+                // Enable collider and rigidbody
+                Collider collider = currentlyGrabbed.GetComponent<Collider>();
+                Rigidbody rigidbody = currentlyGrabbed.GetComponent<Rigidbody>();
+                if (collider != null)
+                {
+                    collider.enabled = true;
+                }
+                if (rigidbody != null)
+                {
+                    rigidbody.isKinematic = false;
+                }
+
+                currentlyGrabbed.onRelease.Invoke();
                 currentlyGrabbed = null;
             }
         }
 
-        public void Throw()
+        public void ThrowCurrentlyGrabbed()
         {
-            if (GetGrabbed())
+            if (GetCurrentlyGrabbed())
             {
-                var grabbed = GetGrabbed();
-                grabbed.transform.SetParent(null);
-                grabbed.Release();
+                var grabbed = GetCurrentlyGrabbed();
+                ReleaseCurrentlyGrabbed();
                 var rigidbody = grabbed.GetComponent<Rigidbody>();
                 if (rigidbody)
                 {
@@ -75,9 +113,14 @@ namespace Grabbing
         }
 
         [CanBeNull]
-        public Grabbable GetGrabbed()
+        public Grabbable GetCurrentlyGrabbed()
         {
             return currentlyGrabbed;
+        }
+
+        public bool IsGrabbing()
+        {
+            return currentlyGrabbed != null;
         }
 
         void OnDrawGizmosSelected()

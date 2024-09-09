@@ -1,11 +1,12 @@
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
 namespace Interact
 {
 
     public class RaycastInteractor : MonoBehaviour
     {
+        public UnityEvent<GameObject> onInteract;
         public LayerMask layerMask;
         void Update()
         {
@@ -21,6 +22,7 @@ namespace Interact
                     if (interactable != null && interactable.CanInteract(this.gameObject))
                     {
                         interactable.Interact(this.gameObject);
+                        onInteract.Invoke(hit.collider.gameObject);
                     }
                 }
             }
