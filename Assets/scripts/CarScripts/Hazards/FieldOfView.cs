@@ -117,7 +117,7 @@ public class FieldOfView : MonoBehaviour
     {
         Vector3 dir = DirectionFromAngle(globalAngle, true);
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, dir, out hit, viewRadius,obsticalMask))
+        if(Physics.Raycast(transform.position, dir, out hit, viewRadius,obsticalMask, QueryTriggerInteraction.Ignore))
         {
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
@@ -144,7 +144,7 @@ public class FieldOfView : MonoBehaviour
             Vector3 dirToTarg = distToTarg.normalized;
             if(Vector3.Angle(transform.forward,dirToTarg) < viewAngle * 0.5f)
             {
-                if (!Physics.Raycast(transform.position, dirToTarg, distToTarg.magnitude, obsticalMask))
+                if (!Physics.Raycast(transform.position, dirToTarg, distToTarg.magnitude, obsticalMask,QueryTriggerInteraction.Ignore))
                 {
                     visibleTargets.Add(target);
                 }

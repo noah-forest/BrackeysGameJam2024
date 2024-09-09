@@ -11,7 +11,11 @@ public class HazardSpawner : ObsitcalGenerator
     {
         for(int i = 0; i < maxObsticales;  i++)
         {
-            if (RollChanceToSpawnNothing()) return;
+            if (RollChanceToSpawnNothing())
+            {
+                //Debug.Log($"{gameObject.name} spawning nothing");
+                continue;
+            }
             Spawn();
         }
     }
