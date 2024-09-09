@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5734010151567850938}
   - component: {fileID: 4857555376923239564}
   - component: {fileID: 9075645069050556250}
+  - component: {fileID: 2869147758313911401}
   - component: {fileID: -3010857203712588150}
   - component: {fileID: 2574839411476998019}
-  - component: {fileID: 2869147758313911401}
   - component: {fileID: 324933567914916526}
   m_Layer: 0
   m_Name: Dough
@@ -100,8 +100,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b70314bba68b346bc2869a9b799dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled: 1
   offset: {x: 0, y: 0, z: 0}
   tag: PizzaDough
+--- !u!114 &2869147758313911401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108721344439059430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd85d5a3f84d4523bf71696cf2373755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9075645069050556250}
+        m_TargetAssemblyTypeName: Grabbing.Grabbable, Assembly-CSharp
+        m_MethodName: Grab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &-3010857203712588150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,33 +178,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2869147758313911401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108721344439059430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd85d5a3f84d4523bf71696cf2373755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9075645069050556250}
-        m_TargetAssemblyTypeName: Grabbing.Grabbable, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!135 &324933567914916526
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -2,30 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using Grabbing;
 using Interact;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlacePizzaDough : MonoBehaviour
 {
     RangeInteractable rangeInteractable;
-    public GameObject pizza;
+    public Pizza pizza;
 
     private bool pizzaPlaced = false;
-    void Start()
+
+    public Material pizzaSauceMaterial;
+    public Material pizzaSauceCheeseMaterial;
+
+    public void PlacePizza(GameObject interactor)
     {
-        rangeInteractable = GetComponent<RangeInteractable>();
-        
-        rangeInteractable.onInteract.AddListener((interactor =>
+        Grabber grabber = interactor.GetComponent<Grabber>();
+        if (grabber)
         {
-            if (!pizzaPlaced)
+            if (!pizza.gameObject.activeSelf && grabber.GetGrabbed()?.tag == "PizzaDough")
             {
-                Grabber grabber = interactor.GetComponent<Grabber>();
-                if (grabber && grabber.GetGrabbed()?.tag == "PizzaDough")
-                {
-                    pizzaPlaced = true;
-                    pizza.SetActive(true);
-                    grabber.DestroyGrabbed();
-                }
+                pizza.gameObject.SetActive(true);
+                grabber.DestroyGrabbed();
             }
-        }));
+            if (pizza.gameObject.activeSelf && !pizza.HasSauce() && grabber.GetGrabbed()?.tag == "PizzaSauce")
+            {
+                pizza.AddSauce();
+                grabber.DestroyGrabbed();
+            }
+            if (pizza.gameObject.activeSelf && !pizza.HasCheese() && grabber.GetGrabbed()?.tag == "Cheese")
+            {
+                pizza.AddCheese();
+                grabber.DestroyGrabbed();
+            }
+        }
     }
 }

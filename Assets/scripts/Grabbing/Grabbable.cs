@@ -4,19 +4,20 @@ namespace Grabbing
 {
     public class Grabbable : MonoBehaviour
     {
+        public bool enabled = true;
         public Vector3 offset;
         public string tag = "";
 
         public void Grab(GameObject grabber)
         {
             Grabber grabberComp = grabber.GetComponent<Grabber>();
-            
+
             if (grabberComp != null)
             {
                 grabberComp.Grab(this);
             }
         }
-        
+
         public void Grab()
         {
             Collider collider = GetComponent<Collider>();
