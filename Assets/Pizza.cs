@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class PizzaMaterial
@@ -11,90 +9,40 @@ public class PizzaMaterial
     public Material cookedMaterial;
 }
 
+[RequireComponent(typeof(PizzaMaterialRenderer))]
 public class Pizza : MonoBehaviour
 {
+    public UnityEvent toppingAdded;
+    public UnityEvent onCooked;
     private bool isCooked = false;
-    public PizzaMaterial doughMaterial;
-    public PizzaMaterial sauceMaterial;
-    public PizzaMaterial cheeseMaterial;
 
-    private Renderer renderer;
-
-    private bool hasCheese = false;
-    private bool hasSauce = false;
-
-    private List<Material> materials = new List<Material>();
-
-    public void Start()
+    public enum Toppings
     {
-        renderer = GetComponent<Renderer>();
-        materials.Add(doughMaterial.rawMaterial);
+        Pepperoni,
+        Cheese,
+        Sauce
     }
 
-    public void AddCheese()
+    List<Toppings> toppings = new List<Toppings>();
+
+    public bool HasTopping(Toppings topping)
     {
-        if (!hasCheese)
-        {
-            materials.Add(cheeseMaterial.rawMaterial);
-            renderer.materials = materials.ToArray();
-            hasCheese = true;
-            OrganizeMaterials();
-        }
+        return toppings.Contains(topping);
     }
 
-    public void AddSauce()
+    public void AddTopping(Toppings topping)
     {
-        if (!hasSauce)
-        {
-            materials.Add(sauceMaterial.rawMaterial);
-            renderer.materials = materials.ToArray();
-            hasSauce = true;
-            OrganizeMaterials();
-        }
-    }
-
-    public void OrganizeMaterials()
-    {
-        // ensure cheese is before sauce
-        if (hasCheese && hasSauce)
-        {
-            materials[1] = sauceMaterial.rawMaterial;
-            materials[2] = cheeseMaterial.rawMaterial;
-            renderer.materials = materials.ToArray();
-        }
+        toppings.Add(topping);
+        toppingAdded.Invoke();
     }
 
     public void Cook()
     {
-        isCooked = true;
-        materials[0] = doughMaterial.cookedMaterial;
-
-        if (hasSauce)
+        if (!isCooked)
         {
-            materials[1] = sauceMaterial.cookedMaterial;
-            if (hasCheese)
-            {
-                materials[2] = cheeseMaterial.cookedMaterial;
-            }
+            isCooked = true;
+            onCooked.Invoke();
         }
-        else
-        {
-            if (hasCheese)
-            {
-                materials[1] = cheeseMaterial.cookedMaterial;
-            }
-        }
-        renderer.materials = materials.ToArray();
-    }
-
-    public bool HasSauce()
-    {
-        return hasSauce;
-    }
-
-    public bool HasCheese()
-    {
-        return hasCheese;
     }
 
     public bool IsCooked()

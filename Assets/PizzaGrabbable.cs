@@ -23,29 +23,17 @@ public class PizzaGrabbable : Grabbable
             return canGrab;
         }
 
-        var grabberTag = grabber.GetCurrentlyGrabbed()?.tag;
+        var currentlyGrabbed = grabber.GetCurrentlyGrabbed();
 
-        if (grabberTag == "PizzaSauce" || grabberTag == "Cheese")
+        if (currentlyGrabbed is PizzaToppingGrabbable)
         {
-            if (grabberTag == "PizzaSauce")
+            var topping = currentlyGrabbed.GetComponent<PizzaToppingGrabbable>().topping;
+            if (!pizza.HasTopping(topping))
             {
-                if (!pizza.HasSauce())
-                {
-                    pizza.AddSauce();
-                    grabber.DestroyGrabbed();
-                }
+                pizza.AddTopping(topping);
+                grabber.DestroyGrabbed();
             }
-            else if (grabberTag == "Cheese")
-            {
-                if (!pizza.HasCheese())
-                {
-                    pizza.AddCheese();
-                    grabber.DestroyGrabbed();
-                }
-            }
-        }
-        if (grabberTag == "PizzaSauce" || grabberTag == "Cheese")
-        {
+
             return false;
         }
 

@@ -74,15 +74,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5803674658608589995}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2850250173434395896}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3254269834669671267}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1761893298857588491}
   m_SourcePrefab: {fileID: 100100000, guid: 0c3e88d10a25d2f4f8fea2c713dd5010, type: 3}
 --- !u!1 &8100376729680406779 stripped
 GameObject:
@@ -117,30 +117,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5803674658608589995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100376729680406779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b70314bba68b346bc2869a9b799dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  onRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  onGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  canGrab: 1
-  offset: {x: 0, y: 0, z: 0}
-  tag: PizzaSauce
 --- !u!135 &2850250173434395896
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -183,3 +159,29 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.18
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &1761893298857588491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8100376729680406779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86b7c7098b6c164f87059a1a9f916de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  canGrab: 1
+  handMustBeEmpty: 0
+  offset: {x: 0, y: 0, z: 0}
+  tag: 
+  topping: 2

@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 2093083910080015709}
   - component: {fileID: 5261432282050084166}
   - component: {fileID: 7166139387402324650}
-  - component: {fileID: 2134493074370985589}
   - component: {fileID: 5335405859274864330}
   - component: {fileID: 8173842463873000340}
   - component: {fileID: 1834795230889149194}
   - component: {fileID: 8840960495962491728}
+  - component: {fileID: 2016285144451490650}
+  - component: {fileID: 5449348668273214616}
   m_Layer: 0
   m_Name: Pizza
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: 1.366, z: 2.404}
-  m_LocalScale: {x: 0.9719167, y: -0.011534566, z: 0.9719167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,7 +46,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8012898734578058093}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2304508562620316840, guid: 9e101b91ec2bfd647ab9629c9e0242e9, type: 3}
 --- !u!23 &7166139387402324650
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,6 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 81b5effafd0c1c34eb2a271f0cd03c0f, type: 2}
   - {fileID: 2100000, guid: 81b5effafd0c1c34eb2a271f0cd03c0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -88,28 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2134493074370985589
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8012898734578058093}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &5335405859274864330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,15 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce8e31dcccb2344aba29123bf979401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doughMaterial:
-    rawMaterial: {fileID: 2100000, guid: 81b5effafd0c1c34eb2a271f0cd03c0f, type: 2}
-    cookedMaterial: {fileID: 2100000, guid: 5396eac2d89ab3247a3451bad8aea6fc, type: 2}
-  sauceMaterial:
-    rawMaterial: {fileID: 2100000, guid: cbe3991bf68b7224abe7da8ed7c602a0, type: 2}
-    cookedMaterial: {fileID: 2100000, guid: ddffac316937bda4fac806919b70fe72, type: 2}
-  cheeseMaterial:
-    rawMaterial: {fileID: 2100000, guid: 45de896be1a277b43b018983e77458a3, type: 2}
-    cookedMaterial: {fileID: 2100000, guid: 972cfdb0bab979e42b49932b61fde14a, type: 2}
+  toppingAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  onCooked:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &8173842463873000340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -150,8 +127,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Radius: 1.31
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1834795230889149194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -204,3 +181,49 @@ MonoBehaviour:
   handMustBeEmpty: 0
   offset: {x: 0, y: 0, z: 0}
   tag: pizza
+--- !u!64 &2016285144451490650
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012898734578058093}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2304508562620316840, guid: 9e101b91ec2bfd647ab9629c9e0242e9, type: 3}
+--- !u!114 &5449348668273214616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012898734578058093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcc96d1fca7ed64b845116e91d27073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doughMaterial:
+    rawMaterial: {fileID: 2100000, guid: 81b5effafd0c1c34eb2a271f0cd03c0f, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: 5396eac2d89ab3247a3451bad8aea6fc, type: 2}
+  sauceMaterial:
+    rawMaterial: {fileID: 2100000, guid: cbe3991bf68b7224abe7da8ed7c602a0, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: ddffac316937bda4fac806919b70fe72, type: 2}
+  cheeseMaterial:
+    rawMaterial: {fileID: 2100000, guid: 45de896be1a277b43b018983e77458a3, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: 972cfdb0bab979e42b49932b61fde14a, type: 2}
+  pepperoniMaterial:
+    rawMaterial: {fileID: 2100000, guid: f72f52fddf8749f478c469c4c54a4d99, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: aa3de75b4910e604d88715468f08932f, type: 2}
