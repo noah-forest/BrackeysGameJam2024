@@ -13,7 +13,7 @@ public class HazardSpawner : ObsitcalGenerator
         {
             if (RollChanceToSpawnNothing())
             {
-                Debug.Log($"{gameObject.name} spawning nothing");
+                //Debug.Log($"{gameObject.name} spawning nothing");
                 continue;
             }
             Spawn();

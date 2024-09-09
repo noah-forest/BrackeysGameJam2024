@@ -36,7 +36,7 @@ public abstract class ObsitcalGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log($" {gameObject.name}: Spawn did not collide. No object Created");
+            //Debug.Log($" {gameObject.name}: Spawn did not collide. No object Created");
         }
         
     }
@@ -44,7 +44,7 @@ public abstract class ObsitcalGenerator : MonoBehaviour
     protected bool RollChanceToSpawnNothing()
     {
         float roll = Random.value;
-        Debug.Log($" {gameObject.name}: Obsticale Count: {obsticalesGenerated.Count} ==> {roll}/{chanceToSpawnNothing}");
+       // Debug.Log($" {gameObject.name}: Obsticale Count: {obsticalesGenerated.Count} ==> {roll}/{chanceToSpawnNothing}");
         return obsticalesGenerated.Count > minObsticales && roll <= chanceToSpawnNothing;
     }
 }
