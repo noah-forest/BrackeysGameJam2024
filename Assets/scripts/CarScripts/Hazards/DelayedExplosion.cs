@@ -38,10 +38,5 @@ public class DelayedExplosion : ExplodeOnImpact
     {
         telegraphEffectPrefab.transform.localScale = Vector3.Lerp(telegraphEffectPrefab.transform.localScale, endScale, Time.deltaTime);
     }
-    IEnumerator DestroySelf()
-    {
-        yield return new WaitForFixedUpdate();
-        SpawnInteractEffect();
-        Destroy(gameObject);
-    }
+
 }

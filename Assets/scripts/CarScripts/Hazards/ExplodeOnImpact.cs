@@ -20,4 +20,10 @@ public class ExplodeOnImpact : CarHazard
         SpawnInteractEffect();
         Destroy(gameObject);
     }
+    protected IEnumerator DestroySelf()
+    {
+        yield return new WaitForFixedUpdate();
+        SpawnInteractEffect();
+        Destroy(gameObject);
+    }
 }

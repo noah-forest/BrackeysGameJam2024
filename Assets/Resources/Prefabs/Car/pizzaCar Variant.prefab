@@ -48845,6 +48845,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pizzaCar Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c3324ea4d45cbd4eb54ec3f8132485b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3634035316922534604, guid: 7c3324ea4d45cbd4eb54ec3f8132485b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -49017,7 +49022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b212ef365dd965844ba2d44d14c13c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedMat: {fileID: 2100000, guid: ddccbd5edc85ddb488b7658982d4a133, type: 2}
+  damagedMat: {fileID: 2100000, guid: 4f36f6fc7c015e04dab5b07e91dab0ab, type: 2}
   damagedMat1: {fileID: 2100000, guid: ce806b134015fe749a83b93da60b6913, type: 2}
   starndardMat: {fileID: 2100000, guid: b050fe47f713bc7409571fce517b0ed3, type: 2}
   immuneDuration: 0.6
