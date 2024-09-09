@@ -104,8 +104,8 @@ MonoBehaviour:
   explosionCollider: {fileID: 4472194086761795609}
   fuseTime: 5
   telegraphEffectPrefab: {fileID: 3745383753255404287}
-  startScale: {x: 0, y: 1, z: 0}
-  endScale: {x: 20, y: 1, z: 20}
+  startScale: {x: 0, y: 0.2, z: 0}
+  endScale: {x: 10, y: 0.2, z: 10}
 --- !u!1 &5967048592489670305
 GameObject:
   m_ObjectHideFlags: 0
