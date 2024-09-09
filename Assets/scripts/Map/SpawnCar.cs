@@ -8,6 +8,7 @@ public class SpawnCar : MonoBehaviour
     private List<GameObject> _cars;
 
     public bool canSpawnNothing;
+    public bool spawnWithCollider;
 
     private void Start()
     {
@@ -38,6 +39,13 @@ public class SpawnCar : MonoBehaviour
         
         var car = Instantiate(_cars[index], transform.parent);
         car.transform.SetPositionAndRotation(transform.position, transform.rotation);
+
+        if (!spawnWithCollider)
+        {
+            var collider = car.GetComponent<BoxCollider>();
+            collider.enabled = false;
+        }
+        
         Destroy(gameObject);
     }
 }
