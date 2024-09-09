@@ -7,12 +7,14 @@ public class DelayedExplosion : ExplodeOnImpact
     [SerializeField] SphereCollider explosionCollider;
     [SerializeField] float fuseTime = 1;
     [SerializeField] GameObject telegraphEffectPrefab;
+    [SerializeField] Vector3 startScale;
+    [SerializeField] Vector3 endScale;
     float timeStamp;
     // Start is called before the first frame update
     void Start()
     {
         timeStamp = Time.time + fuseTime;
-        telegraphEffectPrefab.transform.localScale = Vector3.zero;
+        telegraphEffectPrefab.transform.localScale = startScale;
     }
 
     private void Update()
@@ -34,7 +36,7 @@ public class DelayedExplosion : ExplodeOnImpact
     }
     protected virtual void UpdateVisuals()
     {
-        telegraphEffectPrefab.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, Time.time / timeStamp);
+        telegraphEffectPrefab.transform.localScale = Vector3.Lerp(startScale, endScale, (Time.time / timeStamp) * 0.5f);
     }
     IEnumerator DestroySelf()
     {
