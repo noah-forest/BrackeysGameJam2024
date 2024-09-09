@@ -11,4 +11,20 @@ public class CarMaster : MonoBehaviour
     public CarParticleManager particleManager;
     public Camera sceneCamera;
 
+    #region singleton
+
+    public static CarMaster singleton;
+
+    private void Awake()
+    {
+        if (singleton)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        singleton = this;
+    }
+    #endregion
+
 }
