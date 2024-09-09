@@ -14,6 +14,6 @@ public abstract class CarHazard : MonoBehaviour, IInteractable
     [SerializeField] protected GameObject InteractParticleEffect;
     protected void SpawnInteractEffect()
     {
-        Instantiate(InteractParticleEffect, transform.position, transform.rotation);
+        if(InteractParticleEffect) Instantiate(InteractParticleEffect, transform.position, transform.rotation);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 361495855468521959}
   - component: {fileID: 4472194086761795609}
   - component: {fileID: 4090940558639766149}
+  - component: {fileID: 8333315161823944781}
   m_Layer: 0
   m_Name: UnstickBomb
   m_TagString: Untagged
@@ -99,13 +100,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractParticleEffect: {fileID: 2838796121813620981, guid: 6a5f9f3dd97e67e4eb9ae89193377391,
     type: 3}
-  explosiveForce: 1500000
+  explosiveForce: 1000000
   explosionRadius: 10
   explosionCollider: {fileID: 4472194086761795609}
   fuseTime: 5
   telegraphEffectPrefab: {fileID: 3745383753255404287}
   startScale: {x: 0, y: 0.2, z: 0}
   endScale: {x: 10, y: 0.2, z: 10}
+--- !u!114 &8333315161823944781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745383753255404287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a200e1ce80f84438e87b7d2313aaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5967048592489670305
 GameObject:
   m_ObjectHideFlags: 0
