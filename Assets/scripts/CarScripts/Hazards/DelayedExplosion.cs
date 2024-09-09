@@ -36,7 +36,7 @@ public class DelayedExplosion : ExplodeOnImpact
     }
     protected virtual void UpdateVisuals()
     {
-        telegraphEffectPrefab.transform.localScale = Vector3.Lerp(startScale, endScale, (Time.time / timeStamp) * 0.5f);
+        telegraphEffectPrefab.transform.localScale = Vector3.Lerp(telegraphEffectPrefab.transform.localScale, endScale, Time.deltaTime);
     }
     IEnumerator DestroySelf()
     {

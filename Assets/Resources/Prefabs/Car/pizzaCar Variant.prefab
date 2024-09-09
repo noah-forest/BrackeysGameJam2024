@@ -48987,6 +48987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carBody: {fileID: 8313083721636004941}
+  mainCollider: {fileID: 8870287393158437648}
   wheels:
   - {fileID: 3405117350642273481}
   - {fileID: 5906523699703632413}
@@ -49001,6 +49002,9 @@ MonoBehaviour:
   breakForce: 6000
   maxSteeringAngle: 30
   turboPower: 20000
+  unstickForce: 90000
+  superUnstickPrefab: {fileID: 3745383753255404287, guid: 3cc546203176dac438b0c890ce5986ba,
+    type: 3}
 --- !u!114 &8968360810782407845
 MonoBehaviour:
   m_ObjectHideFlags: 0
