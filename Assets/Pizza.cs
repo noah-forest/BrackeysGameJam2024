@@ -13,6 +13,7 @@ public class PizzaMaterial
 
 public class Pizza : MonoBehaviour
 {
+    private bool isCooked = false;
     public PizzaMaterial doughMaterial;
     public PizzaMaterial sauceMaterial;
     public PizzaMaterial cheeseMaterial;
@@ -57,24 +58,31 @@ public class Pizza : MonoBehaviour
         // ensure cheese is before sauce
         if (hasCheese && hasSauce)
         {
-            materials[2] = cheeseMaterial.rawMaterial;
             materials[1] = sauceMaterial.rawMaterial;
+            materials[2] = cheeseMaterial.rawMaterial;
             renderer.materials = materials.ToArray();
         }
     }
 
     public void Cook()
     {
+        isCooked = true;
         materials[0] = doughMaterial.cookedMaterial;
-
-        if (hasCheese)
-        {
-            materials[1] = cheeseMaterial.cookedMaterial;
-        }
 
         if (hasSauce)
         {
-            materials[2] = sauceMaterial.cookedMaterial;
+            materials[1] = sauceMaterial.cookedMaterial;
+            if (hasCheese)
+            {
+                materials[2] = cheeseMaterial.cookedMaterial;
+            }
+        }
+        else
+        {
+            if (hasCheese)
+            {
+                materials[1] = cheeseMaterial.cookedMaterial;
+            }
         }
         renderer.materials = materials.ToArray();
     }
@@ -87,5 +95,10 @@ public class Pizza : MonoBehaviour
     public bool HasCheese()
     {
         return hasCheese;
+    }
+
+    public bool IsCooked()
+    {
+        return isCooked;
     }
 }

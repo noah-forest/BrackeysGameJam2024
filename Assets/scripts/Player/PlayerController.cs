@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField] private float speed = 12f;
 
-    Vector3 move;
+	Vector3 move;
 
-    private CharacterController characterController;
+	private CharacterController characterController;
 	private void Start()
 	{
 		characterController = GetComponent<CharacterController>();
@@ -21,9 +21,6 @@ public class PlayerController : MonoBehaviour
 		float z = Input.GetAxis("Vertical");
 
 		move = transform.right * x + transform.forward * z;
+		characterController.Move(move * (speed * Time.deltaTime) + Physics.gravity * Time.deltaTime);
 	}
-    private void FixedUpdate()
-    {
-        characterController.Move(move * (speed * Time.deltaTime) + Physics.gravity * Time.deltaTime);
-    }
 }

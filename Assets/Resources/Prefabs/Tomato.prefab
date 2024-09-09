@@ -78,10 +78,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1670309572359003135}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2850250173434395896}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c3e88d10a25d2f4f8fea2c713dd5010,
         type: 3}
@@ -133,36 +129,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b70314bba68b346bc2869a9b799dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabled: 1
-  offset: {x: 0, y: 0, z: 0}
-  tag: PizzaSauce
---- !u!114 &1670309572359003135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100376729680406779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd85d5a3f84d4523bf71696cf2373755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   onInteract:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5803674658608589995}
-        m_TargetAssemblyTypeName: Grabbing.Grabbable, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  canGrab: 1
+  offset: {x: 0, y: 0, z: 0}
+  tag: PizzaSauce
 --- !u!135 &2850250173434395896
 SphereCollider:
   m_ObjectHideFlags: 0

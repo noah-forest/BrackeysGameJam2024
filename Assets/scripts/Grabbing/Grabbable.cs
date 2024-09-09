@@ -1,54 +1,30 @@
+using Interact;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Grabbing
 {
-    public class Grabbable : MonoBehaviour
+    public class Grabbable : TriggerInteractor
     {
         public UnityEvent onRelease;
         public UnityEvent onGrab;
-        public bool enabled = true;
+        public bool canGrab = true;
+        public bool handMustBeEmpty = false;
         public Vector3 offset;
         public string tag = "";
 
-        public void Grab(GameObject grabber)
+        public override void Interact(GameObject gameObject)
         {
-            Grabber grabberComp = grabber.GetComponent<Grabber>();
-
-            if (grabberComp != null)
-            {
-                grabberComp.Grab(this);
-            }
+            base.Interact(gameObject);
         }
 
-        public void Grab()
+        public virtual bool CanGrab(Grabber grabber)
         {
-            onGrab.Invoke();
-            Collider collider = GetComponent<Collider>();
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            if (collider != null)
+            if (handMustBeEmpty && grabber.GetCurrentlyGrabbed() != null)
             {
-                collider.enabled = false;
+                return false;
             }
-            if (rigidbody != null)
-            {
-                rigidbody.isKinematic = true;
-            }
-        }
-
-        public void Release()
-        {
-            onRelease.Invoke();
-            Collider collider = GetComponent<Collider>();
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            if (collider != null)
-            {
-                collider.enabled = true;
-            }
-            if (rigidbody != null)
-            {
-                rigidbody.isKinematic = false;
-            }
+            return canGrab;
         }
     }
 
