@@ -48,12 +48,12 @@ namespace Grabbing
                 currentlyGrabbed.transform.localRotation = Quaternion.identity;
 
                 // Disable collider and rigidbody
-                Collider collider = currentlyGrabbed.GetComponent<Collider>();
-                Rigidbody rigidbody = currentlyGrabbed.GetComponent<Rigidbody>();
-                if (collider != null)
+                foreach (Collider c in currentlyGrabbed.GetComponents<Collider>())
                 {
-                    collider.enabled = false;
+                    c.enabled = false;
                 }
+                
+                Rigidbody rigidbody = currentlyGrabbed.GetComponent<Rigidbody>();
                 if (rigidbody != null)
                 {
                     rigidbody.isKinematic = true;
@@ -70,11 +70,10 @@ namespace Grabbing
                 currentlyGrabbed.transform.SetParent(null);
 
                 // Enable collider and rigidbody
-                Collider collider = currentlyGrabbed.GetComponent<Collider>();
                 Rigidbody rigidbody = currentlyGrabbed.GetComponent<Rigidbody>();
-                if (collider != null)
+                foreach (Collider c in currentlyGrabbed.GetComponents<Collider>())
                 {
-                    collider.enabled = true;
+                    c.enabled = true;
                 }
                 if (rigidbody != null)
                 {

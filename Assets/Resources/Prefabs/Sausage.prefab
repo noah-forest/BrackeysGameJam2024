@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -3010857203712588150}
   - component: {fileID: 324933567914916526}
   - component: {fileID: 3565088834398689190}
-  - component: {fileID: 623226133861601981}
+  - component: {fileID: 7675709137485365989}
   m_Layer: 0
-  m_Name: Cheese
+  m_Name: Sausage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9108721344439059430}
-  m_Mesh: {fileID: -2544318000483907571, guid: 639c74068f1fded409bdf7746d60ec28, type: 3}
+  m_Mesh: {fileID: -8930983086252291749, guid: 526b0e491f8e6a049b570799e285399d, type: 3}
 --- !u!23 &4857555376923239564
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 171f3a953d20514449bf79ebab4f7757, type: 2}
+  - {fileID: 2100000, guid: 96e4195c81b348e478cc8a5e3a917554, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,7 +133,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.6
+  m_Radius: 1.28
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3565088834398689190
 MonoBehaviour:
@@ -159,10 +159,10 @@ MonoBehaviour:
   canGrab: 1
   handMustBeEmpty: 0
   offset: {x: 0, y: 0, z: 0}
-  tag: cheese
-  topping: 1
---- !u!64 &623226133861601981
-MeshCollider:
+  tag: sausage
+  topping: 3
+--- !u!65 &7675709137485365989
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -179,7 +179,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2544318000483907571, guid: 639c74068f1fded409bdf7746d60ec28, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.18351799, y: 0.18798815, z: 0.17947146}
+  m_Center: {x: -0.0034779944, y: -0.002183199, z: -0.0004270114}

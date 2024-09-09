@@ -20,7 +20,8 @@ public class Pizza : MonoBehaviour
     {
         Pepperoni,
         Cheese,
-        Sauce
+        Sauce,
+        Sausage
     }
 
     List<Toppings> toppings = new List<Toppings>();

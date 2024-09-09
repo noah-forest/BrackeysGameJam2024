@@ -9,6 +9,7 @@ public class PizzaMaterialRenderer : MonoBehaviour
     public PizzaMaterial sauceMaterial;
     public PizzaMaterial cheeseMaterial;
     public PizzaMaterial pepperoniMaterial;
+    public PizzaMaterial sausageMaterial;
     private Renderer renderer;
 
     private Pizza pizza;
@@ -53,6 +54,11 @@ public class PizzaMaterialRenderer : MonoBehaviour
         if (pizza.HasTopping(Pizza.Toppings.Pepperoni))
         {
             materials.Add(GetMaterial(pepperoniMaterial));
+        }
+
+        if (pizza.HasTopping(Pizza.Toppings.Sausage))
+        {
+            materials.Add(GetMaterial(sausageMaterial));
         }
 
         Debug.Log(materials);
