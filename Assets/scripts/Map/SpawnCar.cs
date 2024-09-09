@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class SpawnCar : MonoBehaviour
@@ -34,7 +31,6 @@ public class SpawnCar : MonoBehaviour
             var newIndex = Random.Range(0, 3);
             if (newIndex == 0)
             {
-                Debug.Log("Spawned nothing");
                 Destroy(gameObject);
                 return;
             }
@@ -42,7 +38,6 @@ public class SpawnCar : MonoBehaviour
         
         var car = Instantiate(_cars[index], transform.parent);
         car.transform.SetPositionAndRotation(transform.position, transform.rotation);
-        Debug.Log("Spawned car");
         Destroy(gameObject);
     }
 }

@@ -345,7 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20610eabaeeb5a646bd1ebbc11d55ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pizza: {fileID: 1772929913}
+  pizzaPrefab: {fileID: 0}
+  currentPizza: {fileID: 0}
   pizzaSauceMaterial: {fileID: 2100000, guid: b9f4d157c2db3f748951c82aba62c516, type: 2}
   pizzaSauceCheeseMaterial: {fileID: 2100000, guid: bd0d64a3a244d084baaf7606074bf2c1,
     type: 2}
@@ -1215,6 +1216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b70314bba68b346bc2869a9b799dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
   enabled: 1
   offset: {x: 0, y: 0, z: 0}
   tag: pizza

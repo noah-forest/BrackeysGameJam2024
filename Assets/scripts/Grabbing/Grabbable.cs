@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Grabbing
 {
     public class Grabbable : MonoBehaviour
     {
+        public UnityEvent onRelease;
+        public UnityEvent onGrab;
         public bool enabled = true;
         public Vector3 offset;
         public string tag = "";
@@ -20,6 +23,7 @@ namespace Grabbing
 
         public void Grab()
         {
+            onGrab.Invoke();
             Collider collider = GetComponent<Collider>();
             Rigidbody rigidbody = GetComponent<Rigidbody>();
             if (collider != null)
@@ -34,6 +38,7 @@ namespace Grabbing
 
         public void Release()
         {
+            onRelease.Invoke();
             Collider collider = GetComponent<Collider>();
             Rigidbody rigidbody = GetComponent<Rigidbody>();
             if (collider != null)

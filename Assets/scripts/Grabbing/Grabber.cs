@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Grabbing
 {
-    public class Grabber: MonoBehaviour
+    public class Grabber : MonoBehaviour
     {
         [CanBeNull]
         private Grabbable currentlyGrabbed;
@@ -36,6 +36,17 @@ namespace Grabbing
             currentlyGrabbed.Grab();
         }
 
+        public void Release()
+        {
+            if (GetGrabbed())
+            {
+                var grabbed = GetGrabbed();
+                grabbed.transform.SetParent(null);
+                grabbed.Release();
+                currentlyGrabbed = null;
+            }
+        }
+
         public void Throw()
         {
             if (GetGrabbed())
@@ -62,13 +73,13 @@ namespace Grabbing
                 currentlyGrabbed = null;
             }
         }
-        
+
         [CanBeNull]
         public Grabbable GetGrabbed()
         {
             return currentlyGrabbed;
         }
-        
+
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.green;
