@@ -28,6 +28,7 @@ public class BombardmentZone : ObsitcalGenerator
         timeStamp = Time.time + spawnInterval;
         for(int i = 0; i < spawnBurst; i++)
         {
+            if (RollChanceToSpawnNothing()) return;
             Spawn();
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -8,7 +9,7 @@ public class CarController : MonoBehaviour
     [SerializeField] Rigidbody carBody;
     [SerializeField] WheelCollider[] wheels = new WheelCollider[4];
     [SerializeField] Transform[] wheelVisuals = new Transform[4];
-    const int FWL = 0, FWR = 1, RWL = 2, RWR = 3;
+    const int FWL = 0, FWR = 1, RWL = 2, RWR = 3, ROOF = 4;
 
     [SerializeField] float motorPower;
     [SerializeField] float breakForce;
@@ -50,6 +51,20 @@ public class CarController : MonoBehaviour
         HorizontalInput = Input.GetAxis("Horizontal");
         FootOnBreak = Input.GetKey(KeyCode.Space);
         FootOnTurbo = Input.GetKey(KeyCode.LeftShift);
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    foreach(WheelCollider wheel in wheels)
+        //    {
+        //        WheelHit tireTouch;
+        //        wheel.GetGroundHit(out tireTouch);
+        //        if (tireTouch.collider)
+        //        {
+        //            return;
+        //        }
+        //    }
+        //}
+        //carBody
+
     }
     void Steer()
     {
@@ -89,7 +104,7 @@ public class CarController : MonoBehaviour
 
     void UpdateAllWheelVisuals()
     {
-        for (int i = 0; i < wheels.Length; i++)
+        for (int i = 0; i < wheelVisuals.Length; i++)
         {
             UpdateWheelVisual(wheels[i], wheelVisuals[i]);
         }

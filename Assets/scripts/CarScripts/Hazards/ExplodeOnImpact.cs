@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplodingBarrel : CarHazard
+public class ExplodeOnImpact : CarHazard
 {
-    [SerializeField] float explosiveForce;
-    [SerializeField] float explosionRadius;
+    [SerializeField] protected float explosiveForce;
+    [SerializeField] protected float explosionRadius;
     public override bool CanInteract(GameObject interactor)
     {
         return true;
