@@ -6,7 +6,7 @@ namespace Interact
 
     public class RaycastInteractor : MonoBehaviour
     {
-        public UnityEvent<GameObject> onInteract;
+        public UnityEvent<GameObject> onInteract = new();
         public LayerMask layerMask;
         [SerializeField] Transform head;
         [SerializeField] float distance;
@@ -23,7 +23,7 @@ namespace Interact
                     IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
                     if (interactable != null && interactable.CanInteract(this.gameObject))
                     {
-                        interactable.Interact(this.gameObject);
+                        interactable?.Interact(this.gameObject);
                         onInteract.Invoke(hit.collider.gameObject);
                     }
                 }
