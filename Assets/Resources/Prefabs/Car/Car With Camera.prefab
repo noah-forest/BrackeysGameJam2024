@@ -76,7 +76,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: c20734eb164f33f4799601761edd39a9, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -184,6 +184,7 @@ Transform:
   - {fileID: 1055395878389604321}
   - {fileID: 7109288960179560590}
   - {fileID: 1576243351678166805}
+  - {fileID: 8563297163520936837}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9134447685477584533
@@ -231,7 +232,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 0}
+  goalSpawners: []
+  buildingDetectionRadius: 50
+  buildingMask:
+    serializedVersion: 2
+    m_Bits: 0
+  goalPrefab: {fileID: 0}
+  sideWalkSize: 0
+  deliveryReward: 0
   pizzasToDeliver: 0
+  money: 0
+--- !u!1001 &4022945307759923566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4491386441524955074}
+    m_Modifications:
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 145.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365198303100686040, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+        type: 3}
+      propertyPath: m_Name
+      value: PSX Renderer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ccc1c99e13941f49af2340e3dc065d3, type: 3}
+--- !u!4 &8563297163520936837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4684497976261630699, guid: 9ccc1c99e13941f49af2340e3dc065d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4022945307759923566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5577733830990169591
 PrefabInstance:
   m_ObjectHideFlags: 0
