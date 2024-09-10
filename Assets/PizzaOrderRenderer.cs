@@ -45,6 +45,10 @@ public class PizzaOrderRenderer : MonoBehaviour
 
     public void Initialize()
     {
+        foreach(var child in transform)
+        {
+            Destroy(((Transform)child).gameObject);
+        }
         foreach (Order order in orderManager.orders)
         {
             AddOrder(order);
