@@ -10,6 +10,8 @@ public class PizzaMaterialRenderer : MonoBehaviour
     public PizzaMaterial cheeseMaterial;
     public PizzaMaterial pepperoniMaterial;
     public PizzaMaterial sausageMaterial;
+
+    public Material burntDoughMaterial;
     private Renderer renderer;
 
     private Pizza pizza;
@@ -20,6 +22,7 @@ public class PizzaMaterialRenderer : MonoBehaviour
         renderer = GetComponent<Renderer>();
         pizza.toppingAdded.AddListener(UpdateMaterial);
         pizza.onCooked.AddListener(UpdateMaterial);
+        pizza.onBurned.AddListener(() => renderer.materials = new Material[] { burntDoughMaterial, burntDoughMaterial });
         UpdateMaterial();
     }
 
