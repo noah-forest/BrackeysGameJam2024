@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class CarModeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region singleton
 
-    // Update is called once per frame
-    void Update()
+    public static CarModeManager singleton;
+
+    private void Awake()
     {
-        
+        if (singleton)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        singleton = this;
     }
+    #endregion
+
+
+    public int pizzasToDeliver;
+
 }
