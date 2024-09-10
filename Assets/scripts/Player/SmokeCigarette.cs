@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SmokeCigarette : MonoBehaviour
 {
+
+    [SerializeField] float cigSmokeDelayAfterPuff;
+
     public GameObject leftArm;
     public Animator armsAnim;
 
@@ -44,6 +47,14 @@ public class SmokeCigarette : MonoBehaviour
                 lastButtonTime = Time.time + animCooldown;
 
                 StartCoroutine(Inhale());
+
+                //var main = cig.smoke.main;
+                //main.simulationSpace = ParticleSystemSimulationSpace.World;
+                var emit = cig.smokeParticles.emission;
+                emit.rateOverTime = 0;
+                ParticleSystem.TrailModule trail = cig.smokeParticles.trails;
+                trail.attachRibbonsToTransform = false;
+                cig.emberParticles.Play();
             }
         }
 
@@ -56,6 +67,7 @@ public class SmokeCigarette : MonoBehaviour
         if (canPlay || canPlay && Input.GetKeyUp(KeyCode.Space))
         {
             armsAnim.Play("Exhale");
+            StartCoroutine(StartCigParticles());
             canPlay = false;
         }
     }
@@ -74,5 +86,17 @@ public class SmokeCigarette : MonoBehaviour
         armsAnim.Play("bringUp");
         yield return new WaitForSeconds(animTime);
         active = true;
+    }
+
+    IEnumerator StartCigParticles()
+    {
+        yield return new WaitForSeconds(cigSmokeDelayAfterPuff);
+        //var main = cig.smoke.main;
+        //main.simulationSpace = ParticleSystemSimulationSpace.Local;
+        var emit = cig.smokeParticles.emission;
+        emit.rateOverTime = 2;
+        ParticleSystem.TrailModule trail = cig.smokeParticles.trails;
+        trail.attachRibbonsToTransform = true;
+        cig.emberParticles.Stop();
     }
 }

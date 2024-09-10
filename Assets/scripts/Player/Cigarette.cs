@@ -7,6 +7,11 @@ public class Cigarette : MonoBehaviour
 {
     public Mesh[] cigStages;
 
+    public ParticleSystem smokeParticles;
+    public ParticleSystem emberParticles;
+    public Transform emberPositioner;
+    public MeshCollider[] cigColliders = new MeshCollider[3];
+
     public bool smokeable;
     
     public GameObject leftArm;
@@ -33,8 +38,28 @@ public class Cigarette : MonoBehaviour
             smokeable = false;
             leftArm.SetActive(false);
         }
-        
+
         filter.mesh = cigStages[meshInterp];
+        for(int i = 0; i < cigColliders.Length; i++)
+        {
+            if (i == meshInterp)
+            {
+                cigColliders[i].enabled = true;
+            }
+            else
+            {
+                cigColliders[i].enabled = false;
+            }
+        }
+
+        RaycastHit hit;
+        if (Physics.Raycast(emberPositioner.position, emberPositioner.forward * -1, out hit, 1000, LayerMask.GetMask("Cig")))
+        {
+            if (hit.collider)
+            {
+                emberParticles.gameObject.transform.position = hit.point;
+            }
+        }
     }
 
     public void InitializeCig()
