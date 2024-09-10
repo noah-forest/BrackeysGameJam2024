@@ -8,15 +8,17 @@ namespace Interact
     {
         public UnityEvent<GameObject> onInteract;
         public LayerMask layerMask;
+        [SerializeField] Transform head;
+        [SerializeField] float distance;
         void Update()
         {
             // on mouse down
             if (Input.GetMouseButtonDown(0))
             {
                 // raycast from camera
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 100, layerMask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(head.position, head.forward, out hit, distance, layerMask, QueryTriggerInteraction.Ignore))
                 {
                     IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
                     if (interactable != null && interactable.CanInteract(this.gameObject))

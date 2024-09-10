@@ -10,6 +10,7 @@ public class CarMaster : MonoBehaviour
     public CarInteractor interactor;
     public CarParticleManager particleManager;
     public Camera sceneCamera;
+    public CarModeManager modeManager;
 
     #region singleton
 
