@@ -14,7 +14,9 @@ public class Pizza : MonoBehaviour
 {
     public UnityEvent toppingAdded;
     public UnityEvent onCooked;
+    public UnityEvent onBurned;
     private bool isCooked = false;
+    private bool isBurned = false;
 
     public enum Toppings
     {
@@ -49,5 +51,16 @@ public class Pizza : MonoBehaviour
     public bool IsCooked()
     {
         return isCooked;
+    }
+
+    public bool IsBurned()
+    {
+        return isBurned;
+    }
+
+    public void Burn()
+    {
+        isBurned = true;
+        onBurned.Invoke();
     }
 }

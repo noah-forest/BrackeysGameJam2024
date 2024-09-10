@@ -9,6 +9,11 @@ public class PizzaFurnace : TriggerInteractor
 {
     public Vector3 pizzaPosition;
     private Pizza currentPizza;
+
+    public int timeToCook = 15;
+    public int timeToBurn = 30;
+    private float timeInOven = 0;
+
     public override void Interact(GameObject gameObject)
     {
         base.Interact(gameObject);
@@ -17,32 +22,54 @@ public class PizzaFurnace : TriggerInteractor
 
         if (grabber.IsGrabbing())
         {
-
             Pizza pizza = grabber.GetCurrentlyGrabbed().gameObject.GetComponent<Pizza>();
-
             if (pizza != null)
             {
                 grabber.ReleaseCurrentlyGrabbed();
-                pizza.gameObject.transform.position = transform.position + pizzaPosition;
-                pizza.gameObject.transform.rotation = Quaternion.identity;
-                pizza.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                pizza.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                if (currentPizza)
-                {
-                    currentPizza.GetComponent<Rigidbody>().isKinematic = false;
-                    grabber.Grab(currentPizza.GetComponent<Grabbable>());
-                    currentPizza = pizza;
-                }
+                PlacePizza(pizza.gameObject);
+                GrabCurrentPizza(grabber);
             }
+            currentPizza = pizza;
         }
         else
         {
-            if (currentPizza)
+            GrabCurrentPizza(grabber);
+        }
+    }
+
+    void Update()
+    {
+        if (currentPizza)
+        {
+            timeInOven += 1 * Time.deltaTime;
+            if (timeInOven >= timeToBurn)
             {
-                currentPizza.GetComponent<Rigidbody>().isKinematic = false;
-                grabber.Grab(currentPizza.GetComponent<Grabbable>());
-                currentPizza = null;
+                currentPizza.Burn();
             }
+            else if (timeInOven >= timeToCook && !currentPizza.IsCooked())
+            {
+                currentPizza.Cook();
+            }
+        }
+    }
+
+    void PlacePizza(GameObject pizza)
+    {
+        timeInOven = 0;
+        pizza.transform.position = transform.position + pizzaPosition;
+        pizza.transform.rotation = Quaternion.identity;
+        pizza.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        pizza.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    void GrabCurrentPizza(Grabber grabber)
+    {
+
+        if (currentPizza)
+        {
+            currentPizza.GetComponent<Rigidbody>().isKinematic = false;
+            grabber.Grab(currentPizza.GetComponent<Grabbable>());
+            currentPizza = null;
         }
     }
 

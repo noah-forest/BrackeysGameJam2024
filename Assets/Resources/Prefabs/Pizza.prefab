@@ -108,6 +108,9 @@ MonoBehaviour:
   onCooked:
     m_PersistentCalls:
       m_Calls: []
+  onBurned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &8173842463873000340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -230,3 +233,4 @@ MonoBehaviour:
   sausageMaterial:
     rawMaterial: {fileID: 2100000, guid: 39df174a05ea7ce468d49f07beb5030c, type: 2}
     cookedMaterial: {fileID: 2100000, guid: f8c171a1dd725c6469646a96fdcddb74, type: 2}
+  burntDoughMaterial: {fileID: 2100000, guid: e975044b9439e0d498c0b088c0bec072, type: 2}
