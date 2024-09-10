@@ -593,7 +593,7 @@ MonoBehaviour:
       m_Calls: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
   head: {fileID: 564153655}
   distance: 150
 --- !u!114 &564153654
