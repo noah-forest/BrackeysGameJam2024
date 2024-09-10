@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CarModeManager : MonoBehaviour
 {
@@ -35,36 +36,58 @@ public class CarModeManager : MonoBehaviour
 
     [SerializeField] float deliveryReward;
 
-    /*[HideInInspector]*/ public uint pizzasToDeliver = 10;
+    /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
+    UnityEvent<uint> pizzasChanged = new();
+    public uint PizzasToDeliver
+    {
+        get 
+        { 
+            return _pizzasToDeliver; 
+        }
+        set
+        {
+            _pizzasToDeliver = value;
+            pizzasChanged.Invoke(_pizzasToDeliver);
+        }
+    }
     [HideInInspector] public float moneyEarned;
 
     [SerializeField] CarGoal goalInstance;
     GameObject currentBuilding;
     float timeRemaining;
 
+    CarModeMusic musicPlayer;
+
     public void DeliverPizza()
     {
-        if (pizzasToDeliver != 0)
+        if (PizzasToDeliver != 0)
         {
-            pizzasToDeliver--;
+            PizzasToDeliver--;
             moneyEarned = (float)System.Math.Round((double)(moneyEarned + deliveryReward), 2);
         }
         UpdateGoal();
     }
     public void LosePizza()
     {
-        if (pizzasToDeliver != 0)
+        if (PizzasToDeliver != 0)
         {
-            pizzasToDeliver--;
+            PizzasToDeliver--;
+            if(PizzasToDeliver == 0) UpdateGoal();
         }
     }
 
     private void Start()
     {
         possibleRoads.AddRange(goalSpawners);
-        Debug.Log($"[CAR MODE MANAGER][Start] Pizzas to Deliver : {pizzasToDeliver}");
+        Debug.Log($"[CAR MODE MANAGER][Start] Pizzas to Deliver : {PizzasToDeliver}");
         UpdateGoal();
         car.health.carDamaged.AddListener(LosePizza);
+        pizzasChanged.AddListener(LogPizzaCount);
+    }
+
+    void LogPizzaCount(uint count)
+    {
+        Debug.Log("Pizzas Remaining = " + count);
     }
 
     public bool TryGenerateNextGoal()
@@ -115,7 +138,7 @@ public class CarModeManager : MonoBehaviour
             Debug.Log("[CAR MODE MANAGER][UPDATE GOAL] No Goal Assigned");
             return;
         }
-        if (pizzasToDeliver > 0)
+        if (PizzasToDeliver > 0)
         {
             if(possibleRoads.Count == 0)
             {
