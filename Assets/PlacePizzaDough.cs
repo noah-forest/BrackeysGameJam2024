@@ -7,9 +7,6 @@ public class PlacePizzaDough : MonoBehaviour
     public Pizza pizzaPrefab;
     public Pizza currentlyPlacedPizza;
 
-    public Material pizzaSauceMaterial;
-    public Material pizzaSauceCheeseMaterial;
-
     public void DisableColliders()
     {
         foreach (Collider collider in GetComponents<Collider>())
