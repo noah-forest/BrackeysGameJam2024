@@ -13,7 +13,7 @@ public class ExplodeOnImpact : CarHazard
 
     public override void Interact(GameObject interactor)
     {
-        Debug.Log("Barrel Interact");
+        // Debug.Log("Barrel Interact");
         CarMaster car = interactor.GetComponent<CarMaster>();
         car?.body?.AddExplosionForce(explosiveForce, transform.position, explosionRadius);
         car?.health.TakeDamage();

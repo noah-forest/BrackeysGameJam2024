@@ -151,7 +151,7 @@ public class FieldOfView : MonoBehaviour
             }
 
         }
-        Debug.Log("Searching for target");
+        //Debug.Log("Searching for target");
     }
 
     void StartTargetSearch()
