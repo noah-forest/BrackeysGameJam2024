@@ -12,6 +12,8 @@ public class PizzaModeManager : MonoBehaviour
     public static PizzaModeManager singleton;
 
     public Recipe[] defaultRecipeBook;
+    
+    public PizzaBoxSpawner[] pizzaBoxSpawners;
 
     private void Awake()
     {
@@ -38,23 +40,10 @@ public class PizzaModeManager : MonoBehaviour
                 return;
             }
             var pizza = pizzaBox.GetPizzaInBox();
-            float highestScore = -1;
-            Order highestOrder = null;
-            foreach (var order in OrderManager.orders)
-            {
-                float score = order.CalculatePizzaScore(pizza);
-                if (score > highestScore)
-                {
-                    highestScore = score;
-                    highestOrder = order;
-                }
-            }
-            
-            if (highestOrder != null)
-            {
-                highestOrder.CompleteOrder(pizza);
-                OrderManager.RemoveOrder(highestOrder);
-            }
+            Order order = pizzaBox.GetOrder();
+            var score = order.CalculatePizzaScore(pizza);
+            order.CompleteOrder(pizza);
+            OrderManager.RemoveOrder(order);
             
             if (OrderManager.orders.Count == 0)
             {
@@ -66,9 +55,10 @@ public class PizzaModeManager : MonoBehaviour
     private void GenerateRandomOrders()
     {
         OrderManager.ClearOrders();
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < pizzaBoxSpawners.Length; i++)
         {
-            OrderManager.CreateRandomOrder();
+            var order = OrderManager.CreateRandomOrder();
+            pizzaBoxSpawners[i].SetCurrentOrder(order);
         }
     }
     

@@ -12,22 +12,10 @@ public class PizzaOrderRenderer : MonoBehaviour
     public void AddOrder(Order order)
     {
         GameObject orderChitInstance = Instantiate(orderChit, transform);
-        var excludedStr = "";
-        foreach (var excluded in order.excludedToppings)
-        {
-            excludedStr += excluded.ToString() + ", ";
-        }
-        excludedStr = excludedStr.TrimEnd(',', ' ');
-        var orderText = order.name;
         
-        if (excludedStr.Length > 0)
-        {
-            orderText += "\n(no " + excludedStr + ")";
-        }
+        var orderText = order.GetOrderString();
         
         orderChitInstance.GetComponentInChildren<TextMeshProUGUI>().text = orderText;
-        
-        
         
         orderChits.Add(order, orderChitInstance);
     }

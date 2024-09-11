@@ -24,6 +24,24 @@ namespace PizzaOrder
             toppings.AddRange(recipe.toppings);
         }
 
+        public string GetOrderString()
+        {
+            var excludedStr = "";
+            foreach (var excluded in this.excludedToppings)
+            {
+                excludedStr += excluded.ToString() + ", ";
+            }
+            excludedStr = excludedStr.TrimEnd(',', ' ');
+            var orderText = this.name;
+        
+            if (excludedStr.Length > 0)
+            {
+                orderText += "\n(no " + excludedStr + ")";
+            }
+
+            return orderText;
+        }
+
         public float CalculatePizzaScore(Pizza pizza)
         {
             // plus 1 for being cooked

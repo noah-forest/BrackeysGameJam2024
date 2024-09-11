@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Grabbing;
 using Interact;
+using PizzaOrder;
+using TMPro;
 using UnityEngine;
 
 public class PizzaBox : TriggerInteractor
@@ -10,6 +12,7 @@ public class PizzaBox : TriggerInteractor
     private Pizza pizzaInBox = null;
     private Animator animator;
     private Grabbable thisGrabbable;
+    private Order order;
     
     public Pizza GetPizzaInBox()
     {
@@ -56,6 +59,21 @@ public class PizzaBox : TriggerInteractor
                 Invoke("EnableGrabbable", 0.1f);
             }
         }
+    }
+
+    public void SetOrderText(string order)
+    {
+        GetComponentInChildren<TextMeshProUGUI>().text = order;
+    }
+
+    public void SetOrder(Order order)
+    {
+        this.order = order;
+        SetOrderText(order.GetOrderString());
+    }
+    public Order GetOrder()
+    {
+        return order;
     }
 
     void EnableGrabbable()
