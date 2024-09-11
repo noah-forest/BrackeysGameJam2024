@@ -18,13 +18,17 @@ namespace Interact
                 // raycast from camera
                 
                 RaycastHit hit;
-                if (Physics.Raycast(head.position, head.forward, out hit, distance, layerMask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(head.position, head.forward, out hit, distance, layerMask))
                 {
-                    IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
-                    if (interactable != null && interactable.CanInteract(this.gameObject))
+                    IInteractable[] interactables = hit.collider.gameObject.GetComponents<IInteractable>();
+
+                    foreach (var interactable in interactables)
                     {
-                        interactable?.Interact(this.gameObject);
-                        onInteract.Invoke(hit.collider.gameObject);
+                        if (interactable != null && interactable.CanInteract(this.gameObject))
+                        {
+                            interactable?.Interact(this.gameObject);
+                            onInteract.Invoke(hit.collider.gameObject);
+                        }
                     }
                 }
             }

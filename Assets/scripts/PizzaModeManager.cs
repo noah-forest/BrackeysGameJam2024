@@ -23,23 +23,43 @@ public class PizzaModeManager : MonoBehaviour
             
         OrderManager.SetRecipeBook(defaultRecipeBook);
         
+        GenerateRandomOrders();
         singleton = this;
     }
 
     public void PizzaSubmission(GameObject obj)
     {
-        Pizza pizza;
+        PizzaBox pizzaBox;
 
-        if (obj.TryGetComponent<Pizza>(out pizza))
+        if (obj.TryGetComponent<PizzaBox>(out pizzaBox))
         {
-        }
-    }
-
-    private void Update()
-    {
-        if (Mathf.FloorToInt(Time.time) % 40 == 0)
-        {
-            GenerateRandomOrders();
+            if (pizzaBox.GetPizzaInBox() == null)
+            {
+                return;
+            }
+            var pizza = pizzaBox.GetPizzaInBox();
+            float highestScore = -1;
+            Order highestOrder = null;
+            foreach (var order in OrderManager.orders)
+            {
+                float score = order.CalculatePizzaScore(pizza);
+                if (score > highestScore)
+                {
+                    highestScore = score;
+                    highestOrder = order;
+                }
+            }
+            
+            if (highestOrder != null)
+            {
+                highestOrder.CompleteOrder(pizza);
+                OrderManager.RemoveOrder(highestOrder);
+            }
+            
+            if (OrderManager.orders.Count == 0)
+            {
+                GenerateRandomOrders();
+            }
         }
     }
     

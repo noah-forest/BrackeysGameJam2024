@@ -9,10 +9,16 @@ public class Wind : MonoBehaviour
     public UnityEvent onSucked;
     public Vector3 forceDirection;
     public float force;
+    public bool shrink = false;
+    public float shrinkSpeed = 1f;
 
+    public void ShrinkObject(Transform obj, float shrinkSpeed)
+    {
+        obj.localScale = Vector3.Lerp(obj.localScale, Vector3.zero, Time.deltaTime * shrinkSpeed);
+    }
+    
     public void OnTriggerStay(Collider other)
     {
-        
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -24,6 +30,11 @@ public class Wind : MonoBehaviour
         {
             if (hit.collider.gameObject == rb.gameObject) {
                 rb.AddForce((forceDirection).normalized * force, ForceMode.Acceleration);
+                
+                if (shrink)
+                {
+                    ShrinkObject(other.transform, shrinkSpeed);
+                }
             }
         }
     }
