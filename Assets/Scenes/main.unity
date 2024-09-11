@@ -763,8 +763,8 @@ MonoBehaviour:
     "Man
     Down" Kevin MacLeod (incompetech.com)
 
-    Licensed under Creative Commons:
-    By Attribution 4.0 License
+    Licensed under Creative Commons: By
+    Attribution 4.0 License
 
     http://creativecommons.org/licenses/by/4.0/
 
@@ -826,8 +826,8 @@ MonoBehaviour:
     "Summon the
     Rawk" Kevin MacLeod (incompetech.com)
 
-    Licensed under Creative Commons:
-    By Attribution 4.0 License
+    Licensed under Creative Commons: By
+    Attribution 4.0 License
 
     http://creativecommons.org/licenses/by/4.0/
 
@@ -2750,6 +2750,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815555299}
   m_CullTransparentMesh: 1
+--- !u!1001 &821685305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 249.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254050435935668322, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 286787571722333591, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b6413c184eb7e6408c74ca9c88834f8, type: 3}
+--- !u!114 &821685306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5014946920848954076, guid: 1b6413c184eb7e6408c74ca9c88834f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 821685305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04ac75ad98e5db41a5b0cd5b5b37f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,7 +4647,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 90363904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 821685306}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadPizzaScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &1660866185
 Animator:
   serializedVersion: 5
@@ -5416,3 +5508,4 @@ SceneRoots:
   - {fileID: 1562279542}
   - {fileID: 2057049977}
   - {fileID: 1636614071}
+  - {fileID: 821685305}
