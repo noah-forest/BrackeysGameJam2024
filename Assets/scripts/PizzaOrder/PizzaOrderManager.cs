@@ -4,42 +4,37 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace PizzaOrder {
-    public class OrderManager : MonoBehaviour
+    public static class OrderManager
     {
-        public static bool ready = false;
-        public static UnityEvent onReady = new UnityEvent();
-        public static OrderManager instance;
+        public static UnityEvent<Order> onOrderCreated = new UnityEvent<Order>();
+        public static UnityEvent recipeBookChanged = new UnityEvent();
+        public static UnityEvent<Order> onOrderRemoved = new UnityEvent<Order>();
+        public static List<Recipe> recipeBook = new List<Recipe>();
+        public static List<Order> orders = new List<Order>();
         
-        public UnityEvent<Order> onOrderCreated;
-        public UnityEvent<Order> onOrderRemoved;
-        public List<Recipe> recipeBook = new List<Recipe>();
-        public List<Order> orders = new List<Order>();
         
-        void Awake()
-        {
-            instance = this;
-            ready = true;
-            onReady.Invoke();
-            
-            CreateRandomOrder();
-            CreateRandomOrder();
-            CreateRandomOrder();
-            CreateRandomOrder();
-        }
-        
-        public void AddOrder(Order order)
+        public static void AddOrder(Order order)
         {
             orders.Add(order);
             onOrderCreated.Invoke(order);
         }
         
-        public void RemoveOrder(Order order)
+        public static void RemoveOrder(Order order)
         {
             orders.Remove(order);
             onOrderRemoved.Invoke(order);
         }
         
-        public void CreateRandomOrder()
+        public static void ClearOrders()
+        {
+            foreach (Order order in orders)
+            {
+                onOrderRemoved.Invoke(order);
+            }
+            orders.Clear();
+        }
+        
+        public static void CreateRandomOrder()
         {
             Recipe randomRecipe = recipeBook[Random.Range(0, recipeBook.Count)];
             List<Pizza.Toppings> excludedToppings = new List<Pizza.Toppings>();
@@ -52,6 +47,12 @@ namespace PizzaOrder {
             }
             Order order = new Order(randomRecipe.name, randomRecipe, excludedToppings);
             AddOrder(order);
+        }
+        
+        public static void SetRecipeBook(Recipe[] recipes)
+        {
+            recipeBook = new List<Recipe>(recipes);
+            recipeBookChanged.Invoke();
         }
     }
 
