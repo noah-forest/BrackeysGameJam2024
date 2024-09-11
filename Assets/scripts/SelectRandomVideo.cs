@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 public class SelectRandomVideo : MonoBehaviour
 {
-    public List<VideoClip> videoClips;
+    public VideoClip[] videoClips;
+    List<VideoClip> AllowedClips = new List<VideoClip>();
     
     private VideoPlayer videoPlayer;
 
@@ -16,7 +17,6 @@ public class SelectRandomVideo : MonoBehaviour
     private void Awake()
     {
         videoPlayer = GetComponent<VideoPlayer>();
-        
         ChangeVideo();
     }
 
@@ -32,13 +32,19 @@ public class SelectRandomVideo : MonoBehaviour
     {
         videoPlayer.Stop();
         active = false;
+
+        if (AllowedClips.Count <= 0) AllowedClips.AddRange(videoClips);
+        var videoIndex = Random.Range(0, AllowedClips.Count);
         
-        var videoIndex = Random.Range(0, videoClips.Count);
         
-        Debug.Log(videoClips[videoIndex].name);
+        Debug.Log(AllowedClips[videoIndex].name);
         
-        videoPlayer.clip = videoClips[videoIndex];
+        videoPlayer.clip = AllowedClips[videoIndex];
         videoPlayer.Play();
+        AllowedClips.RemoveAt(videoIndex);
+
+
+
         StartCoroutine(WaitForVideo());
     }
 
@@ -46,5 +52,20 @@ public class SelectRandomVideo : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         active = true;
+    }
+
+    public void TogglePower()
+    {
+        if(videoPlayer.isPlaying) 
+        {
+            videoPlayer.Stop();
+            active = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            ChangeVideo();
+        }
     }
 }
