@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pizzaCount: 0
   mainSceneName: main
+  UIManager: {fileID: 4062793749591267549}
   pizzaSceneName: pizzeria making
   carSceneName: map making
   ambiancePlayer: {fileID: 2031884659368154491}
