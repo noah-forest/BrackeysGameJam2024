@@ -48,6 +48,11 @@ public class Pizza : MonoBehaviour
         }
     }
 
+    public Toppings[] GetToppings()
+    {
+        return toppings.ToArray();
+    }
+
     public bool IsCooked()
     {
         return isCooked;

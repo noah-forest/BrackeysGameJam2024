@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using PizzaOrder;
 using UnityEngine;
 
 public class PizzaModeManager : MonoBehaviour
@@ -8,6 +11,8 @@ public class PizzaModeManager : MonoBehaviour
 
     public static PizzaModeManager singleton;
 
+    public Recipe[] defaultRecipeBook;
+
     private void Awake()
     {
         if (singleton)
@@ -15,9 +20,38 @@ public class PizzaModeManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-
+            
+        OrderManager.SetRecipeBook(defaultRecipeBook);
+        
         singleton = this;
     }
+
+    public void PizzaSubmission(GameObject obj)
+    {
+        Pizza pizza;
+
+        if (obj.TryGetComponent<Pizza>(out pizza))
+        {
+        }
+    }
+
+    private void Update()
+    {
+        if (Mathf.FloorToInt(Time.time) % 40 == 0)
+        {
+            GenerateRandomOrders();
+        }
+    }
+    
+    private void GenerateRandomOrders()
+    {
+        OrderManager.ClearOrders();
+        for (int i = 0; i < 4; i++)
+        {
+            OrderManager.CreateRandomOrder();
+        }
+    }
+    
     #endregion
     public PlayerController player;
     public GameManager gameManager;
