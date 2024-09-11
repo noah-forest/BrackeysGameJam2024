@@ -27,7 +27,7 @@ public class SmokeCigarette : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)) && !active)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl)) && !active)
         { 
             if (Time.time >= lastButtonTime)
             {
@@ -39,7 +39,7 @@ public class SmokeCigarette : MonoBehaviour
             }
         }
         
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)) && active && cig.smokeable)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl)) && active && cig.smokeable)
         {
             if (Time.time >= lastButtonTime)
             {
@@ -58,13 +58,13 @@ public class SmokeCigarette : MonoBehaviour
             }
         }
 
-        if (!cig.smokeable && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)))
+        if (!cig.smokeable && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl)))
         {
             active = false;
             cig.InitializeCig();
         }
         
-        if (canPlay || canPlay && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift)))
+        if (canPlay || canPlay && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl)))
         {
             armsAnim.Play("Exhale");
             StartCoroutine(StartCigParticles());
