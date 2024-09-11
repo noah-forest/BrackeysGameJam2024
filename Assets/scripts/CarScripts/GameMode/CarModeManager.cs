@@ -151,5 +151,6 @@ public class CarModeManager : MonoBehaviour
             goalInstance.transform.position = homeBase.position;
             goalInstance.transform.rotation = homeBase.rotation;
         }
+        car.compass.currentGoal = goalInstance.transform;
     }
 }

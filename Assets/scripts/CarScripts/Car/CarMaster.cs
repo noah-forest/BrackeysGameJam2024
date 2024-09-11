@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CarMaster : MonoBehaviour
 {
+    public CarModeManager modeManager;
+    public Camera sceneCamera;
     public Rigidbody body;
     public CarHealth health;
     public CarController controller;
     public CarInteractor interactor;
     public CarParticleManager particleManager;
-    public Camera sceneCamera;
-    public CarModeManager modeManager;
+    public GoalCompass compass;
 
     #region singleton
 
