@@ -6,7 +6,6 @@ using TMPro;
 public class PizzaOrderRenderer : MonoBehaviour
 {
     public GameObject orderChit;
-    private OrderManager orderManager;
 
     private Dictionary<Order, GameObject> orderChits = new Dictionary<Order, GameObject>();
 
@@ -49,23 +48,16 @@ public class PizzaOrderRenderer : MonoBehaviour
         {
             Destroy(((Transform)child).gameObject);
         }
-        foreach (Order order in orderManager.orders)
+        foreach (Order order in OrderManager.orders)
         {
             AddOrder(order);
         }
-        orderManager.onOrderCreated.AddListener(AddOrder);
-        orderManager.onOrderRemoved.AddListener(RemoveOrder);
+        OrderManager.onOrderCreated.AddListener(AddOrder);
+        OrderManager.onOrderRemoved.AddListener(RemoveOrder);
     }
 
-    public void Update()
+    public void Start()
     {
-        if (orderManager == null)
-        {
-            orderManager = OrderManager.instance;
-            if (orderManager != null)
-            {
-                Initialize();
-            }
-        }
+        Initialize();
     }
 }

@@ -7,18 +7,11 @@ using Unity.VisualScripting;
 
 public class RecipeBookRenderer : MonoBehaviour
 {
-    private OrderManager orderManager;
     public GameObject recipePage;
     void Start()
     {
-        if (OrderManager.ready == false)
-        {
-            OrderManager.onReady.AddListener(Render);
-        }
-        else
-        {
-            Render();
-        }
+        OrderManager.recipeBookChanged.AddListener(Render);
+        Render();
     }
 
     void Render()
@@ -28,8 +21,7 @@ public class RecipeBookRenderer : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        orderManager = OrderManager.instance;
-        foreach (var recipe in orderManager.recipeBook)
+        foreach (var recipe in OrderManager.recipeBook)
         {
             var page = Instantiate(recipePage, transform);
             page.GetComponentInChildren<TextMeshProUGUI>().text = recipe.name;
