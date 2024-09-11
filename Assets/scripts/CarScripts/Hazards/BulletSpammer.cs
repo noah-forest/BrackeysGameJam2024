@@ -46,7 +46,7 @@ public class BulletSpammer : MonoBehaviour
     {
         if (!car) car = CarMaster.singleton;
         float dist = Vector3.Distance(car.transform.position, transform.position);
-        return Time.time > timeStamp; //&& Vector3.Distance(car.transform.position, transform.position) > requiredProximity;
+        return Time.time > timeStamp && Vector3.Distance(car.transform.position, transform.position) < requiredProximity;
     }
 
     protected void Spawn()

@@ -142,4 +142,4 @@ MonoBehaviour:
   building: {fileID: 0}
   spawnInterval: 0.5
   spawnBurst: 5
-  requiredProximity: 0
+  requiredProximity: 100
