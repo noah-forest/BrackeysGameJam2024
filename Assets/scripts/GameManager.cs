@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public uint pizzaCount;
 
     public string mainSceneName;
+    [SerializeField] UIManager UIManager;
     [SerializeField] string pizzaSceneName;
     [SerializeField] string carSceneName;
     [SerializeField] AudioSource ambiancePlayer;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         set 
         { 
             _day = value;
+            Debug.Log(_day);
             dayChanged.Invoke(_day);
         }
     }
