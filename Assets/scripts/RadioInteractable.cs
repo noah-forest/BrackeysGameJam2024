@@ -13,8 +13,22 @@ public class RadioInteractable : TriggerInteractor
     public override void Interact(GameObject gameObject)
     {
         base.Interact(gameObject);
+        ChangeChannel();
+
+    }
+
+    private void Update()
+    {
+        if (!player.isPlaying)
+        {
+            ChangeChannel();
+        }
+    }
+
+    void ChangeChannel()
+    {
         player.Stop();
-        if(currentTrack == trackList.Count-1)
+        if (currentTrack == trackList.Count - 1)
         {
             currentTrack = 0;
         }
