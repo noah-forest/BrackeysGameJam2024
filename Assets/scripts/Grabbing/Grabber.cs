@@ -10,11 +10,12 @@ namespace Grabbing
     public class Grabber : MonoBehaviour
     {
         [CanBeNull]
-        private Grabbable currentlyGrabbed;
+        public Grabbable currentlyGrabbed;
         public Vector3 grabbableOffset;
         public float throwForce = 5;
         public float throwUpForce = 5;
         public float throwRotationForce = 0.5f;
+        public Transform targetTransform;
 
         public void Update()
         {
@@ -43,9 +44,12 @@ namespace Grabbing
                 ReleaseCurrentlyGrabbed();
 
                 currentlyGrabbed = grabbable;
-                currentlyGrabbed.transform.SetParent(this.transform);
-                currentlyGrabbed.transform.localPosition = grabbableOffset + currentlyGrabbed.offset;
-                currentlyGrabbed.transform.localRotation = Quaternion.identity;
+                currentlyGrabbed.transform.SetParent(targetTransform);
+                currentlyGrabbed.transform.rotation = targetTransform.rotation;
+                currentlyGrabbed.transform.position = targetTransform.position;
+                currentlyGrabbed.transform.localPosition = grabbable.offset;
+                currentlyGrabbed.transform.localRotation = Quaternion.Euler(grabbable.rotationOffset);
+
 
                 // Disable collider and rigidbody
                 foreach (Collider c in currentlyGrabbed.GetComponents<Collider>())

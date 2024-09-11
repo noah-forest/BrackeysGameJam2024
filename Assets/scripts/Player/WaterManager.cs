@@ -25,6 +25,7 @@ public class WaterManager : MonoBehaviour
         {
             var emmission = emmiter.emission;
             emmission.rateOverTime = 0;
+            emmiter.Play();
             joinking = false;
         }
     }
