@@ -27,6 +27,15 @@ public class GameManager : MonoBehaviour
     PizzaModeManager pizzaManager;
     CarModeManager carManager;
 
+    /// <summary>
+    /// used to transfer the pizzas between the pizza and car modes
+    /// </summary>
+    public uint pizzaCount;
+
+    [SerializeField] string mainSceneName;
+    [SerializeField] string pizzaSceneName;
+    [SerializeField] string carSceneName;
+    [SerializeField] AudioSource ambiancePlayer;
     public UnityEvent<int> dayChanged;
     int _day;
     public int Day
@@ -42,14 +51,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        LocateModeManager(SceneManager.GetActiveScene());
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (LocateModeManager(scene) && pizzaManager)
+        if (LocateModeManager(scene))
         {
-            Day++;
+            InitializePizzaMode();
+            InitializeCarMode();
         }
     }
 
@@ -64,12 +74,46 @@ public class GameManager : MonoBehaviour
             if (pizzaManager || carManager)
             {
                 Debug.Log($"Found manager: {pizzaManager}{carManager}");
-                if(carManager) carManager.gameManager = this;
-                if(pizzaManager) pizzaManager.gameManager = this;
                 return true;
             }
         }
         return false;
     }
 
+    void InitializeCarMode()
+    {
+        if (carManager)
+        {
+            carManager.gameManager = this;
+            carManager.PizzasToDeliver = pizzaCount;
+            if(!ambiancePlayer.isPlaying) ambiancePlayer.Play();
+            ambiancePlayer.spatialBlend = 0f;
+
+        }
+    }
+
+    void InitializePizzaMode()
+    {
+        if (pizzaManager)
+        {
+            ++Day;
+            pizzaManager.gameManager = this;
+            ambiancePlayer.spatialBlend = 0.9f;
+        }
+    }
+
+    #region SceneLoading
+    public void LoadPizzaScene()
+    {
+        SceneManager.LoadScene(pizzaSceneName);
+    }
+    public void LoadMenuScene()
+    {
+        SceneManager.LoadScene(mainSceneName);
+    }
+    public void LoadCarScene()
+    {
+        SceneManager.LoadScene(carSceneName);
+    }
+    #endregion SceneLoading
 }

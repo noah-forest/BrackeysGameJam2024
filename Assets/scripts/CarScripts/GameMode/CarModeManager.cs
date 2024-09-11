@@ -39,6 +39,7 @@ public class CarModeManager : MonoBehaviour
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
     UnityEvent<uint> pizzasChanged = new();
+    bool atHomeBase;
     public uint PizzasToDeliver
     {
         get 
@@ -139,6 +140,14 @@ public class CarModeManager : MonoBehaviour
             Debug.Log("[CAR MODE MANAGER][UPDATE GOAL] No Goal Assigned");
             return;
         }
+
+        if (atHomeBase)
+        {
+            Destroy(goalInstance.gameObject);
+            StartCoroutine(StartPizza());
+            return;
+        }
+
         if (PizzasToDeliver > 0)
         {
             if(possibleRoads.Count == 0)
@@ -151,7 +160,15 @@ public class CarModeManager : MonoBehaviour
         {
             goalInstance.transform.position = homeBase.position;
             goalInstance.transform.rotation = homeBase.rotation;
+            atHomeBase = true;
         }
         car.compass.currentGoal = goalInstance.transform;
+    }
+    
+    IEnumerator StartPizza()
+    {
+        yield return new WaitForSeconds(2);
+        gameManager.LoadPizzaScene();
+
     }
 }

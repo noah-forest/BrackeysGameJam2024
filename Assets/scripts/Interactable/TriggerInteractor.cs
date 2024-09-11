@@ -9,7 +9,7 @@ namespace Interact
         public UnityEvent<GameObject> onInteract;
         public float interactionRange = 2f;
 
-        public bool CanInteract(GameObject gameObject)
+        public virtual bool CanInteract(GameObject gameObject)
         {
             if (Vector3.Distance(transform.position, gameObject.transform.position) < interactionRange)
             {
