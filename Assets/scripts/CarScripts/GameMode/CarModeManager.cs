@@ -8,7 +8,7 @@ public class CarModeManager : MonoBehaviour
     #region singleton
 
     public static CarModeManager singleton;
-    public CarMaster car;
+
 
     private void Awake()
     {
@@ -22,7 +22,8 @@ public class CarModeManager : MonoBehaviour
     }
     #endregion
 
-
+    public CarMaster car;
+    public GameManager gameManager;
     [SerializeField] BoxCollider[] goalSpawners;
     [SerializeField] float buildingDetectionRadius = 50;
     [SerializeField] LayerMask buildingMask;
