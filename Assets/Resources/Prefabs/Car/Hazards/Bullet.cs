@@ -14,10 +14,17 @@ public class Bullet : ExplodeOnImpact
     void Start()
     {
         body.AddForce(startForce * transform.forward);
+        Destroy(gameObject, duration);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        StartCoroutine(DestroySelf());
+    }
+
+    IEnumerator DestroyDuration()
+    {
+        yield return new WaitForSeconds(duration);
         StartCoroutine(DestroySelf());
     }
      
