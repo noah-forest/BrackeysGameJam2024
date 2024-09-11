@@ -29,6 +29,7 @@ public class CarModeManager : MonoBehaviour
     [SerializeField] LayerMask buildingMask;
     [SerializeField] LayerMask goundMask;
 
+    public Transform ambianceSoundLocation;
     [SerializeField] float horizontalOffset;
     [SerializeField] float verticalOffset;
     [SerializeField] Transform homeBase;

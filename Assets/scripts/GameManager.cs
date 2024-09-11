@@ -87,7 +87,9 @@ public class GameManager : MonoBehaviour
             carManager.gameManager = this;
             carManager.PizzasToDeliver = pizzaCount;
             if(!ambiancePlayer.isPlaying) ambiancePlayer.Play();
-            ambiancePlayer.spatialBlend = 0f;
+            ambiancePlayer.spatialBlend = 0.9f;
+            ambiancePlayer.minDistance = 50;
+            transform.position = carManager.ambianceSoundLocation.position;
 
         }
     }
@@ -99,6 +101,8 @@ public class GameManager : MonoBehaviour
             ++Day;
             pizzaManager.gameManager = this;
             ambiancePlayer.spatialBlend = 0.9f;
+            ambiancePlayer.minDistance = 1;
+            transform.position = pizzaManager.ambianceSoundLocation.position;
         }
     }
 

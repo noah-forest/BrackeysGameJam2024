@@ -29,7 +29,8 @@ public class PizzaModeManager : MonoBehaviour
     /// This would be the total number of orders for the day the player needs to complete before they can leave the Pizzaria
     /// </summary>
     public uint ordersRequired;
-    
+
+    public Transform ambianceSoundLocation;
     public bool ReadyToLeave()
     {
         return ordersReadyToDeliver >= ordersRequired;
