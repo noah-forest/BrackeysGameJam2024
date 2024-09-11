@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		float x = Input.GetAxis("Horizontal");
-		float z = Input.GetAxis("Vertical");
+		float x = Input.GetAxisRaw("Horizontal");
+		float z = Input.GetAxisRaw("Vertical");
 
 		move = transform.right * x + transform.forward * z;
-		characterController.Move(move * (speed * Time.deltaTime) + Physics.gravity * Time.deltaTime);
+		characterController.Move(move.normalized * (speed * Time.deltaTime) + Physics.gravity * Time.deltaTime);
 	}
 }
