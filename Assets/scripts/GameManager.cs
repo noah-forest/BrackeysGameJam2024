@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    PizzaModeManager pizzaManager;
-    CarModeManager carManager;
+    public PizzaModeManager pizzaManager;
+    public CarModeManager carManager;
 
     /// <summary>
     /// used to transfer the pizzas between the pizza and car modes
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public uint pizzaCount;
 
     public string mainSceneName;
-    [SerializeField] UIManager UIManager;
+    public UIManager UIManager;
     [SerializeField] string pizzaSceneName;
     [SerializeField] string carSceneName;
     [SerializeField] AudioSource ambiancePlayer;
@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public UnityEvent pauseGame;
     [HideInInspector] public UnityEvent resumeGame;
+
+    [HideInInspector] public UnityEvent carModeInit;
+    [HideInInspector] public UnityEvent pizzaModeInit;
     
     public int Day
     {
@@ -90,6 +93,7 @@ public class GameManager : MonoBehaviour
     {
         if (carManager)
         {
+            carModeInit.Invoke();
             carManager.gameManager = this;
             carManager.PizzasToDeliver = pizzaCount;
             if(!ambiancePlayer.isPlaying) ambiancePlayer.Play();
@@ -104,6 +108,7 @@ public class GameManager : MonoBehaviour
     {
         if (pizzaManager)
         {
+            pizzaModeInit.Invoke();
             ++Day;
             pizzaManager.gameManager = this;
             ambiancePlayer.spatialBlend = 0.9f;
