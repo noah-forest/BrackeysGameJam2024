@@ -1612,6 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 3514188952766095242}
+  startingMat: 1
   materials:
   - {fileID: 2100000, guid: 840eac1c141e3d54984c4f8f785ec1f1, type: 2}
   - {fileID: 2100000, guid: ab9434dcf23da1343ae1280a13180f9d, type: 2}

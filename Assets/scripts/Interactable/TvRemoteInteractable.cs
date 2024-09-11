@@ -17,6 +17,7 @@ public class TvRemoteInteractable : RangeInteractable
     [SerializeField] AudioSource videoSoundPlayer;
     [SerializeField] RemoteType remoteType;
     [SerializeField] MaterialCycler buttonDisplay;
+    static bool tvOn = true;
     // Start is called before the first frame update
 
     public override void Interact(GameObject gameObject)
@@ -35,14 +36,27 @@ public class TvRemoteInteractable : RangeInteractable
     }
     public void ChangeAudio()
     {
-        videoSoundPlayer.mute = !videoSoundPlayer.mute;
-        int matIdx = videoSoundPlayer.mute ? 2 : 1;
-        buttonDisplay.ChangeMaterial(matIdx);
+        Debug.Log("[changeAud]Tv video: " + tvOn);
+        if (tvOn && !videoSoundPlayer.mute)
+        {
+            videoSoundPlayer.mute = !videoSoundPlayer.mute;
+            int matIdx = videoSoundPlayer.mute ? 2 : 1;
+            buttonDisplay.ChangeMaterial(matIdx);
+        }
+        else
+        {
+            videoSoundPlayer.mute = false;
+            ChangePower();
+        }
+
     }
     public void ChangePower()
     {
-        int matIdx  = (bool)tv?.TogglePower() ? 1 : 0;
+
+        tvOn = tv.TogglePower();
+        int matIdx  = tvOn ? 1 : 0;
+        Debug.Log("[changePow]Tv video: " + tvOn);
         buttonDisplay.ChangeMaterial(matIdx);
-        videoScreen?.SetActive(!(bool)videoScreen?.activeSelf);
+        videoScreen.SetActive(!(bool)videoScreen.activeSelf);
     }
 }
