@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class PizzaFurnace : TriggerInteractor
 {
+    [SerializeField] ParticleSystem cookingParticles;
+    [SerializeField] ParticleSystem burningParticles;
+
     public Vector3 pizzaPosition;
     private Pizza currentPizza;
 
@@ -45,6 +48,10 @@ public class PizzaFurnace : TriggerInteractor
             if (timeInOven >= timeToBurn)
             {
                 currentPizza.Burn();
+                if (!burningParticles.isPlaying)
+                {
+                    burningParticles.Play();
+                }
             }
             else if (timeInOven >= timeToCook && !currentPizza.IsCooked())
             {
@@ -60,6 +67,7 @@ public class PizzaFurnace : TriggerInteractor
         pizza.transform.rotation = Quaternion.identity;
         pizza.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pizza.GetComponent<Rigidbody>().isKinematic = true;
+        cookingParticles.Play();
     }
 
     void GrabCurrentPizza(Grabber grabber)
@@ -70,6 +78,8 @@ public class PizzaFurnace : TriggerInteractor
             currentPizza.GetComponent<Rigidbody>().isKinematic = false;
             grabber.Grab(currentPizza.GetComponent<Grabbable>());
             currentPizza = null;
+            cookingParticles.Stop();
+            burningParticles.Stop();
         }
     }
 
