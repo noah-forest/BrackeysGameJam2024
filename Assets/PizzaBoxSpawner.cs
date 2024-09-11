@@ -5,6 +5,7 @@ using UnityEngine;
 public class PizzaBoxSpawner : MonoBehaviour
 {
     public PizzaBox pizzaBoxPrefab;
+    private bool expectingPizzaBox = false;
     PizzaBox currentPizzaBox;
     Grabbable grabbable;
 
@@ -21,11 +22,21 @@ public class PizzaBoxSpawner : MonoBehaviour
     public void SetCurrentOrder(Order order)
     {
         currentOrder = order;
-        SpawnPizzaBox();
+        // SpawnPizzaBox();
+    }
+
+    public void ClearOrder()
+    {
+        currentOrder = null;
+        expectingPizzaBox = false;
     }
     
     private void FixedUpdate()
     {
+        if (currentPizzaBox == null && currentOrder != null && !currentOrder.IsCompleted())
+        {
+            SpawnPizzaBox();
+        }
         if (currentPizzaBox != null && grabbable != null && grabbable.isGrabbed == false)
         {
             var currentPosition = currentPizzaBox.transform.position;
@@ -63,8 +74,13 @@ public class PizzaBoxSpawner : MonoBehaviour
     void SpawnPizzaBox()
     {
         DestroyCurrentBox();
+        expectingPizzaBox = true;
         currentPizzaBox = Instantiate(pizzaBoxPrefab, transform.position, transform.rotation);
         currentPizzaBox.SetOrder(currentOrder);
         grabbable = currentPizzaBox.GetComponent<Grabbable>();
+        grabbable.onGrab.AddListener(() =>
+        {
+            timeSpentStill = 0;
+        });
     }
 }
