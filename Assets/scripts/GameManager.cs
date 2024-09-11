@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,12 +33,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public uint pizzaCount;
 
-    [SerializeField] string mainSceneName;
+    public string mainSceneName;
     [SerializeField] string pizzaSceneName;
     [SerializeField] string carSceneName;
     [SerializeField] AudioSource ambiancePlayer;
     public UnityEvent<int> dayChanged;
     int _day;
+
+    [HideInInspector] public UnityEvent pauseGame;
+    [HideInInspector] public UnityEvent resumeGame;
+    
     public int Day
     {
         get { return _day; }
@@ -73,7 +78,6 @@ public class GameManager : MonoBehaviour
             pizzaManager = root.GetComponentInChildren<PizzaModeManager>();
             if (pizzaManager || carManager)
             {
-                Debug.Log($"Found manager: {pizzaManager}{carManager}");
                 return true;
             }
         }
