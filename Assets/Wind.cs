@@ -28,8 +28,10 @@ public class Wind : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, rb.position - transform.position, out hit))
         {
-            if (hit.collider.gameObject == rb.gameObject) {
-                rb.AddForce((forceDirection).normalized * force, ForceMode.Acceleration);
+            if (hit.collider.gameObject == rb.gameObject)
+            {
+                var t = this.transform.position + forceDirection - rb.transform.position;
+                rb.AddForce((forceDirection + t).normalized * force, ForceMode.Acceleration);
                 
                 if (shrink)
                 {

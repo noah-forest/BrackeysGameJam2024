@@ -53,7 +53,7 @@ public class PizzaBox : TriggerInteractor
                 pizza.GetComponent<Collider>().enabled = false;
                 
                 animator.SetBool("Open", false);
-                Invoke("EnableGrabbable", 1);
+                Invoke("EnableGrabbable", 0.1f);
             }
         }
     }

@@ -105119,8 +105119,8 @@ Transform:
   m_GameObject: {fileID: 2015250885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.020831, y: -0, z: 0.00008}
-  m_LocalScale: {x: 0.022596857, y: 0.021288311, z: 0.01838666}
+  m_LocalPosition: {x: -0.01164, y: 0, z: 0.00008}
+  m_LocalScale: {x: 0.023934647, y: 0.015078723, z: 0.013023456}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1342942822}
@@ -105141,8 +105141,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   forceDirection: {x: -1, y: 0, z: 0}
-  force: 40
-  shrink: 0
+  force: 200
+  shrink: 1
   shrinkSpeed: 0.5
 --- !u!65 &2015250888
 BoxCollider:
