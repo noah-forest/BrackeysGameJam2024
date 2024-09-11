@@ -36,6 +36,6 @@ public class BombardmentZone : ObsitcalGenerator
     bool CanSpawn()
     {
         if(!car) car = CarMaster.singleton;
-        return Time.time > timeStamp && Vector3.Distance(car.transform.position, transform.position) > requiredProximity;
+        return Time.time > timeStamp && Vector3.Distance(car.transform.position, transform.position) < requiredProximity;
     }
 }
