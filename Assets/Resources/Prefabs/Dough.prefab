@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4857555376923239564}
   - component: {fileID: 9075645069050556250}
   - component: {fileID: -3010857203712588150}
-  - component: {fileID: 324933567914916526}
   - component: {fileID: 7954147037117781637}
   m_Layer: 0
   m_Name: Dough
@@ -102,6 +101,7 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+  interactionRange: 3
   onRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -109,6 +109,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canGrab: 1
+  handMustBeEmpty: 0
   offset: {x: 0, y: 0, z: 0}
   tag: PizzaDough
 --- !u!54 &-3010857203712588150
@@ -137,28 +138,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!135 &324933567914916526
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108721344439059430}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_CollisionDetection: 1
 --- !u!135 &7954147037117781637
 SphereCollider:
   m_ObjectHideFlags: 0

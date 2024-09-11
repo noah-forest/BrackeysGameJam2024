@@ -13,10 +13,6 @@ namespace Grabbing
         public Vector3 offset;
         public string tag = "";
 
-        public override void Interact(GameObject gameObject)
-        {
-            base.Interact(gameObject);
-        }
 
         public virtual bool CanGrab(Grabber grabber)
         {

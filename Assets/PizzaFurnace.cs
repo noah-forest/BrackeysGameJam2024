@@ -75,7 +75,8 @@ public class PizzaFurnace : TriggerInteractor
 
     public void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        base.OnDrawGizmosSelected();
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position + pizzaPosition, 0.1f);
     }
 }

@@ -1,17 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Interact
 {
-    [RequireComponent(typeof(Collider))]
     public class TriggerInteractor : MonoBehaviour, IInteractable
     {
         public UnityEvent<GameObject> onInteract;
-        private bool playerInCollider = false;
+        public float interactionRange = 2f;
 
         public bool CanInteract(GameObject gameObject)
         {
-            return playerInCollider;
+            if (Vector3.Distance(transform.position, gameObject.transform.position) < interactionRange)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public virtual void Interact(GameObject gameObject)
@@ -19,20 +24,10 @@ namespace Interact
             this.onInteract.Invoke(gameObject);
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void OnDrawGizmosSelected()
         {
-            if (other.CompareTag("Player"))
-            {
-                playerInCollider = true;
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                playerInCollider = false;
-            }
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, interactionRange);
         }
     }
 }
