@@ -161,7 +161,7 @@ public class CarModeManager : MonoBehaviour
         {
             goalInstance.transform.position = homeBase.position;
             goalInstance.transform.rotation = homeBase.rotation;
-            atHomeBase = true;
+            StartCoroutine(SetHomeBase());
         }
         car.compass.currentGoal = goalInstance.transform;
     }
@@ -170,6 +170,10 @@ public class CarModeManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         gameManager.LoadPizzaScene();
-
+    }
+    IEnumerator SetHomeBase() // this exists to prevent frame issue/ occasioan instant scene change on last delivery
+    {
+        yield return new WaitForSeconds(0.1f);
+        atHomeBase = true;
     }
 }

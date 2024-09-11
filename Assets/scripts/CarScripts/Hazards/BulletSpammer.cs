@@ -44,14 +44,18 @@ public class BulletSpammer : MonoBehaviour
 
     bool CanSpawn()
     {
-        if (!car) car = CarMaster.singleton;
-        float dist = Vector3.Distance(car.transform.position, transform.position);
-        return Time.time > timeStamp && Vector3.Distance(car.transform.position, transform.position) < requiredProximity;
+        float dist = 0;
+        if (car)
+        {
+            dist = Vector3.Distance(car.transform.position, transform.position);
+        }
+
+        return Time.time > timeStamp && dist < requiredProximity;
     }
 
     protected void Spawn()
     {
-        Debug.Log("BulletSpammer spawn");
+        //Debug.Log("BulletSpammer spawn");
         if (RollChanceToSpawnNothing()) return;
         obsticalesGenerated.RemoveAll((x) => x == null); // clean out list of null values
         if (obsticalesGenerated.Count >= maxObsticales) return;
