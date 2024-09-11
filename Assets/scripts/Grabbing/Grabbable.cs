@@ -1,4 +1,5 @@
 using Interact;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ namespace Grabbing
         public bool canGrab = true;
         public bool handMustBeEmpty = false;
         public Vector3 offset;
+        public Vector3 rotationOffset;
         public string tag = "";
 
         public void Start()
