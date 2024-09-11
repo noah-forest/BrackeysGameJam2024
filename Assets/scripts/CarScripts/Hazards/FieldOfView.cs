@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
@@ -21,6 +22,7 @@ public class FieldOfView : MonoBehaviour
     [HideInInspector] public bool searchingForTargets = false;
     public float searchInterval = 0.2f;
     Coroutine searchCoroutine;
+    public UnityEvent targetSearchStarted;
 
     public MeshFilter viewVisualFilter;
     Mesh viewVisualMesh;
@@ -62,7 +64,7 @@ public class FieldOfView : MonoBehaviour
     {
         if (searchingForTargets)
         {
-            DrawFoW();
+           // DrawFoW();
         }
     }
 
@@ -159,6 +161,7 @@ public class FieldOfView : MonoBehaviour
         meshRenderer.enabled = true;
         searchingForTargets = true;
         searchCoroutine = StartCoroutine(FindTargetsWithDelay(searchInterval));
+        targetSearchStarted.Invoke();
     }
 
     void StopTargetSearch()
