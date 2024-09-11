@@ -9,9 +9,11 @@ public class RadioInteractable : TriggerInteractor
     [SerializeField] AudioSource player;
     [SerializeField] List<AudioClip> trackList;
     int currentTrack = 0;
+    bool powerOff;
 
     public override void Interact(GameObject gameObject)
     {
+        if (powerOff) return;
         base.Interact(gameObject);
         ChangeChannel();
 
@@ -19,6 +21,7 @@ public class RadioInteractable : TriggerInteractor
 
     private void Update()
     {
+        if (powerOff) return;
         if (!player.isPlaying)
         {
             ChangeChannel();
@@ -27,6 +30,7 @@ public class RadioInteractable : TriggerInteractor
 
     void ChangeChannel()
     {
+        if (powerOff) return;
         player.Stop();
         if (currentTrack == trackList.Count - 1)
         {
@@ -38,5 +42,19 @@ public class RadioInteractable : TriggerInteractor
         }
         player.clip = trackList[currentTrack];
         player.Play();
+    }
+
+    public void TogglePower()
+    {
+        if (!powerOff)
+        {
+            powerOff = true;
+            player.Pause();
+        }
+        else
+        {
+            powerOff = false;
+            player.UnPause();
+        }
     }
 }
