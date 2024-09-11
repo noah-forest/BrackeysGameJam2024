@@ -54,18 +54,20 @@ public class SelectRandomVideo : MonoBehaviour
         active = true;
     }
 
-    public void TogglePower()
+    public bool TogglePower()
     {
         if(videoPlayer.isPlaying) 
         {
             videoPlayer.Stop();
             active = false;
             gameObject.SetActive(false);
+            return false;
         }
         else
         {
             gameObject.SetActive(true);
             ChangeVideo();
+            return true;
         }
     }
 }
