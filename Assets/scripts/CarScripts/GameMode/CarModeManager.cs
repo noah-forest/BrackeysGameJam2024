@@ -39,7 +39,7 @@ public class CarModeManager : MonoBehaviour
     [SerializeField] float deliveryReward;
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
-    UnityEvent<uint> pizzasChanged = new();
+    [HideInInspector] public UnityEvent<uint> pizzasChanged = new();
     bool atHomeBase;
     public uint PizzasToDeliver
     {
