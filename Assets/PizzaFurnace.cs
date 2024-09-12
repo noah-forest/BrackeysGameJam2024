@@ -12,6 +12,7 @@ public class PizzaFurnace : PizzaModeInteractable
     [SerializeField] ParticleSystem burningParticles;
 
     public TextMeshProUGUI timerText;
+    public AudioSource audioPlayer;
     
     public Vector3 pizzaPosition;
     private Pizza currentPizza;
@@ -19,6 +20,13 @@ public class PizzaFurnace : PizzaModeInteractable
     public int timeToCook = 15;
     public int timeToBurn = 30;
     private float timeInOven = 0;
+
+    private Color originalColor;
+
+    private void Start()
+    {
+        originalColor = timerText.color;
+    }
 
     public override void Interact(GameObject gameObject)
     {
@@ -62,6 +70,7 @@ public class PizzaFurnace : PizzaModeInteractable
             else if (timeInOven >= timeToCook && !currentPizza.IsCooked())
             {
                 currentPizza.Cook();
+                audioPlayer.PlayOneShot(audioPlayer.clip);
             }
         }
     }
@@ -78,8 +87,9 @@ public class PizzaFurnace : PizzaModeInteractable
             timerText.text = $"00:0{timer}";
         }
 
-        if (!(timer < 0)) return;
-        timerText.text = $"00:00";
+        if (!(timer < 0.1)) return;
+        timerText.text = $"Done!";
+        timerText.color = Color.green;
         anim.SetFloat("timer", timer);
     }
 
@@ -104,6 +114,9 @@ public class PizzaFurnace : PizzaModeInteractable
             
             var anim = timerText.GetComponent<Animator>();
             anim.SetFloat("timer", 0.02f);
+
+            timerText.text = $"00:00";
+            timerText.color = originalColor;
             
             cookingParticles.Stop();
             burningParticles.Stop();
