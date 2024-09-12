@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Grabbing;
 using Interact;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -39,7 +40,10 @@ public class PizzaFurnace : PizzaModeInteractable
             Pizza pizza = grabber.GetCurrentlyGrabbed().gameObject.GetComponent<Pizza>();
             return pizza;
         }
-        return false;
+        else
+        {
+            return currentPizza;
+        }
     }
     public override void Interact(GameObject interactor)
     {
