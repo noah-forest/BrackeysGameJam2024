@@ -11,7 +11,17 @@ public class DoorInteractable : PizzaModeInteractable
     private void Start()
     {
         modeManager = PizzaModeManager.singleton;
+        modeManager.ordersFinished.AddListener(StartGlow);
     }
+
+    [SerializeField] GameObject glowEffect;
+
+    public void StartGlow()
+    {
+        glowEffect.SetActive(true);
+    }
+
+
     public override bool CanInteract()
     {
         //Debug.Log(base.CanInteract(gameObject) && modeManager.ReadyToLeave());

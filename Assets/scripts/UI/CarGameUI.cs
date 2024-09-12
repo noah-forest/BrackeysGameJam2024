@@ -10,13 +10,15 @@ public class CarGameUI : MonoBehaviour
     public GameObject pizzaIcon;
     
     private GameManager gameManager;
+    private CarModeManager modeManager;
 
     private void Start()
     {
         gameManager = GameManager.singleton;
-        if (gameManager.carManager)
+        modeManager = CarModeManager.singleton;
+        if (modeManager)
         {
-            gameManager.carManager.pizzasChanged.AddListener(UpdatePizzaCount);
+            modeManager.pizzasChanged.AddListener(UpdatePizzaCount);
             UpdatePizzaCount(gameManager.carManager.PizzasToDeliver);
         }
     }

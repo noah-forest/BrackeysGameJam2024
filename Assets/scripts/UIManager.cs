@@ -22,8 +22,8 @@ public class UIManager : MonoBehaviour
         gameManager.pauseGame.AddListener(PauseGame);
         gameManager.resumeGame.AddListener(UnPauseGame);
         
-        gameManager.carModeInit.AddListener(InitializeCarGameUI);
-        gameManager.pizzaModeInit.AddListener(InitializePizzaGameUI);
+        //gameManager.carModeInit.AddListener(InitializeCarGameUI);
+        //gameManager.pizzaModeInit.AddListener(InitializePizzaGameUI);
     }
 
     private void InitializeCarGameUI()

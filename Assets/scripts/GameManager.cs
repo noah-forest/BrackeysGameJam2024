@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         set 
         { 
             _day = value;
-            Debug.Log(_day);
+            Debug.Log("[GAME MANAGER]: Current Day: " + _day);
             dayChanged.Invoke(_day);
         }
     }

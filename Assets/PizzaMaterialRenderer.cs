@@ -64,7 +64,7 @@ public class PizzaMaterialRenderer : MonoBehaviour
             materials.Add(GetMaterial(sausageMaterial));
         }
 
-        Debug.Log(materials);
+        //Debug.Log(materials);
 
         renderer.materials = materials.ToArray();
     }
