@@ -49,7 +49,7 @@ public class PizzaFurnace : PizzaModeInteractable
         {
             timeInOven += 1 * Time.deltaTime;
             
-            SetUpTimerText(Mathf.Floor(timeToCook - timeInOven));
+            SetUpTimerText(Mathf.Ceil(timeToCook - timeInOven));
             
             if (timeInOven >= timeToBurn)
             {
