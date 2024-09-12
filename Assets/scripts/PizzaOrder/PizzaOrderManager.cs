@@ -55,14 +55,19 @@ namespace PizzaOrder
         {
             Recipe randomRecipe = recipeBook[Random.Range(0, recipeBook.Count)];
             List<Pizza.Toppings> excludedToppings = new List<Pizza.Toppings>();
+            var toppingsToPut = new List<Pizza.Toppings>(randomRecipe.toppings);
             foreach (Pizza.Toppings topping in randomRecipe.toppings)
             {
                 if (Random.Range(0, 100) < 15)
                 {
                     excludedToppings.Add(topping);
                 }
+                else
+                {
+                    toppingsToPut.Add(topping);
+                }
             }
-
+            
             Order order = new Order(randomRecipe.name, randomRecipe, excludedToppings);
             AddOrder(order);
             return order;

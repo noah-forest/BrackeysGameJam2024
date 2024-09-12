@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Grabbing;
 using Interact;
+using TMPro;
 using UnityEngine;
 
 public class PizzaFurnace : PizzaModeInteractable
@@ -10,6 +11,8 @@ public class PizzaFurnace : PizzaModeInteractable
     [SerializeField] ParticleSystem cookingParticles;
     [SerializeField] ParticleSystem burningParticles;
 
+    public TextMeshProUGUI timerText;
+    
     public Vector3 pizzaPosition;
     private Pizza currentPizza;
 
@@ -45,6 +48,9 @@ public class PizzaFurnace : PizzaModeInteractable
         if (currentPizza)
         {
             timeInOven += 1 * Time.deltaTime;
+            
+            SetUpTimerText(Mathf.Ceil(timeToCook - timeInOven));
+            
             if (timeInOven >= timeToBurn)
             {
                 currentPizza.Burn();
@@ -58,6 +64,23 @@ public class PizzaFurnace : PizzaModeInteractable
                 currentPizza.Cook();
             }
         }
+    }
+
+    private void SetUpTimerText(float timer)
+    {
+        var anim = timerText.GetComponent<Animator>();
+        
+        timerText.text = $"00:{timer}";
+        anim.SetFloat("timer", timer);
+        
+        if (timer < 10)
+        {
+            timerText.text = $"00:0{timer}";
+        }
+
+        if (!(timer < 0)) return;
+        timerText.text = $"00:00";
+        anim.SetFloat("timer", timer);
     }
 
     void PlacePizza(GameObject pizza)
@@ -78,6 +101,10 @@ public class PizzaFurnace : PizzaModeInteractable
             currentPizza.GetComponent<Rigidbody>().isKinematic = false;
             grabber.Grab(currentPizza.GetComponent<Grabbable>());
             currentPizza = null;
+            
+            var anim = timerText.GetComponent<Animator>();
+            anim.SetFloat("timer", 0.02f);
+            
             cookingParticles.Stop();
             burningParticles.Stop();
         }
