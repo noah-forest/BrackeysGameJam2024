@@ -124,7 +124,8 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactionRange: 2
+  HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Drink'
   isGrabbed: 0
   onRelease:
     m_PersistentCalls:
