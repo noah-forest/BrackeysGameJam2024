@@ -20,8 +20,8 @@ namespace Interact
 
         void Start()
         {
-            onLook.AddListener(TestOnLook);
-            onLookAway.AddListener(TestOnLookAway);
+            //onLook.AddListener(TestOnLook);
+            //onLookAway.AddListener(TestOnLookAway);
 
         }
         void LateUpdate()
@@ -48,8 +48,14 @@ namespace Interact
                 // raycast from camera
                 if (targetInteractable != null)
                 {
-                    targetInteractable.Interact(this.gameObject);
-                    onInteract.Invoke(hit.collider.gameObject);
+                    IInteractable[] subinteracts = objUnderCrosshair.GetComponents<IInteractable>();
+                    foreach (IInteractable interactable in subinteracts)
+                    {
+                        Debug.Log(interactable);
+                        interactable.Interact(gameObject);
+                    }
+
+                    onInteract.Invoke(objUnderCrosshair);
                 }
             }
         }
