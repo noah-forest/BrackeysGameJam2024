@@ -48,12 +48,7 @@ namespace Interact
                 // raycast from camera
                 if (targetInteractable != null)
                 {
-                    IInteractable[] subinteracts = objUnderCrosshair.GetComponent<IInteractable>();
-                    foreach (IInteractable interactable in subinteracts)
-                    {
-                        Debug.Log(interactable);
-                        interactable.Interact(gameObject);
-                    }
+                    targetInteractable.Interact(gameObject);
 
                     onInteract.Invoke(objUnderCrosshair);
                 }
