@@ -5,6 +5,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,9 +42,13 @@ public class GameManager : MonoBehaviour
     public UnityEvent<int> dayChanged;
     int _day;
 
+    public bool enableTutorial;
+    
     [HideInInspector] public UnityEvent pauseGame;
     [HideInInspector] public UnityEvent resumeGame;
 
+    [HideInInspector] public UnityEvent tutorialMenuInit;
+    
     [HideInInspector] public UnityEvent carModeInit;
     [HideInInspector] public UnityEvent pizzaModeInit;
     
@@ -108,8 +113,8 @@ public class GameManager : MonoBehaviour
     {
         if (pizzaManager)
         {
-            pizzaModeInit.Invoke();
             ++Day;
+            pizzaModeInit.Invoke();
             pizzaManager.gameManager = this;
             ambiancePlayer.spatialBlend = 0.9f;
             ambiancePlayer.minDistance = 1;

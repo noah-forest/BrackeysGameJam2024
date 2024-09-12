@@ -19,8 +19,8 @@ public class MouseLook : MonoBehaviour
     private void Start()
     {
         _gameManager = GameManager.singleton;
-
-        LockCursor();
+        
+        CheckToLockCursor();
         
         _gameManager.pauseGame.AddListener(UnLockCursor);
         _gameManager.resumeGame.AddListener(LockCursor);
@@ -49,5 +49,18 @@ public class MouseLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         gamePaused = true;
+    }
+
+    // locks the cursor on the first day so that you can click tutorial pop up
+    private void CheckToLockCursor()
+    {
+        if (_gameManager.Day != 1 || !_gameManager.enableTutorial)
+        {
+            LockCursor();
+        }
+        else
+        {
+            UnLockCursor();
+        }
     }
 }

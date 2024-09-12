@@ -5,51 +5,56 @@ using UnityEngine.Serialization;
 public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject carGameUI;
-    public GameObject pizzaGameUI;
-    public GameObject carGameControls;
-    public GameObject pizzaGameControls;
+    public GameObject tutorialMenu;
     
     private GameManager gameManager;
 
     private bool gameIsPaused;
     private bool openPauseMenu;
+
+    private bool tutorialOpen;
     
     private void Start()
     {
-        gameManager = GetComponent<GameManager>();
+        gameManager = GameManager.singleton;
+
+        if (gameManager.enableTutorial)
+        {
+            gameManager.pizzaModeInit.AddListener(SetUpTutorial);
+        }
         
         gameManager.pauseGame.AddListener(PauseGame);
         gameManager.resumeGame.AddListener(UnPauseGame);
-        
-        //gameManager.carModeInit.AddListener(InitializeCarGameUI);
-        //gameManager.pizzaModeInit.AddListener(InitializePizzaGameUI);
+ 
     }
 
-    private void InitializeCarGameUI()
+    private void SetUpTutorial()
     {
-        SwitchUI(pizzaGameUI, carGameUI);
-        SwitchUI(pizzaGameControls, carGameControls);
+        if (gameManager.Day != 1) return;
+        Debug.Log("its first day, pause game");
+        tutorialMenu.SetActive(true);
+        Time.timeScale = 0;
+        tutorialOpen = true;
+        gameIsPaused = true;
+        gameManager.tutorialMenuInit.Invoke();
     }
 
-    private void InitializePizzaGameUI()
+    public void CloseTutorial()
     {
-        SwitchUI(carGameUI, pizzaGameUI);
-        SwitchUI(carGameControls, pizzaGameControls);
+        tutorialMenu.SetActive(false);
+        Time.timeScale = 1;
+        tutorialOpen = false;
+        gameIsPaused = false;
+        gameManager.resumeGame.Invoke();
     }
-
-    private static void SwitchUI(GameObject prevObj, GameObject uiObject)
-    {
-        prevObj.SetActive(false);
-        uiObject.SetActive(true);
-    }
-
+    
     #region Pause Menu
 
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == gameManager.mainSceneName) return;
-
+        if (tutorialOpen) return;
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
