@@ -509,6 +509,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Mute'
   tv: {fileID: 7852413286025742911}
   videoScreen: {fileID: 3292425020563791347}
   videoSoundPlayer: {fileID: 1590560005870653972}
@@ -747,6 +748,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Toggle Power'
   tv: {fileID: 7852413286025742911}
   videoScreen: {fileID: 3292425020563791347}
   videoSoundPlayer: {fileID: 1590560005870653972}
@@ -771,8 +773,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3592861, y: 0.17421558, z: 0.19625348}
-  m_Center: {x: 0.1562997, y: 0.04356116, z: 0.088953815}
+  m_Size: {x: 0.118002154, y: 0.06798967, z: 0.2107083}
+  m_Center: {x: 0.27694342, y: 0.021412414, z: 0.08172636}
 --- !u!82 &2994277433599194070
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1038,6 +1040,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Remote'
   isGrabbed: 0
   onRelease:
     m_PersistentCalls:

@@ -62,9 +62,7 @@ MonoBehaviour:
   - {fileID: 0}
   player: {fileID: 0}
   gameManager: {fileID: 0}
-  ordersReadyToDeliver: 1
   ordersRequired: 1
-  ordersGenerated: 0
   ordersFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -74,13 +72,13 @@ MonoBehaviour:
   - minOrders: 6
     maxOrders: 6
   - minOrders: 7
-    maxOrders: 11
-  - minOrders: 8
-    maxOrders: 12
-  - minOrders: 9
     maxOrders: 13
+  - minOrders: 8
+    maxOrders: 15
+  - minOrders: 9
+    maxOrders: 15
   - minOrders: 10
-    maxOrders: 14
+    maxOrders: 16
   ambianceSoundLocation: {fileID: 927813515153477697}
 --- !u!1 &3169507140271145908
 GameObject:

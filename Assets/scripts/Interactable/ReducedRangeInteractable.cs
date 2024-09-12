@@ -15,7 +15,7 @@ namespace Interact
         public float range = 2f;
 
         // Start is called before the first frame update
-        public override bool CanInteract()
+        public override bool CanInteract(GameObject interactor)
         {
             //if (Vector3.Distance(gameObject.transform.position, transform.position) <= range)
             //{

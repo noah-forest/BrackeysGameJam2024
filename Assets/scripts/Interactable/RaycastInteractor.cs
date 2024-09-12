@@ -46,7 +46,7 @@ namespace Interact
             if (Input.GetMouseButtonDown(0))
             {
                 // raycast from camera
-                if (targetInteractable != null)
+                if (targetInteractable != null && targetInteractable.CanInteract(gameObject))
                 {
                     targetInteractable.Interact(gameObject);
 
@@ -68,7 +68,7 @@ namespace Interact
         void SetTargetInteractor(GameObject obj)
         {
             IInteractable interactable = obj?.GetComponent<IInteractable>();
-            if (interactable != null && interactable.CanInteract())
+            if (interactable != null && interactable.CanInteract(gameObject))
             {
                 targetInteractable = interactable;
                 onLook.Invoke(objUnderCrosshair, interactable.GetDisplayString());

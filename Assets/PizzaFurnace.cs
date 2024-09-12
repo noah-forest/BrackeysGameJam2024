@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Grabbing;
 using Interact;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -31,12 +32,24 @@ public class PizzaFurnace : PizzaModeInteractable
     {
         originalColor = timerText.color;
     }
-
-    public override void Interact(GameObject gameObject)
+    public override bool CanInteract(GameObject interactor)
     {
-        base.Interact(gameObject);
+        Grabber grabber = interactor.GetComponent<Grabber>();
+        if (grabber.IsGrabbing())
+        {
+            Pizza pizza = grabber.GetCurrentlyGrabbed().gameObject.GetComponent<Pizza>();
+            return pizza;
+        }
+        else
+        {
+            return currentPizza;
+        }
+    }
+    public override void Interact(GameObject interactor)
+    {
+        base.Interact(interactor);
 
-        Grabber grabber = gameObject.GetComponent<Grabber>();
+        Grabber grabber = interactor.GetComponent<Grabber>();
 
         if (grabber.IsGrabbing())
         {
@@ -45,6 +58,10 @@ public class PizzaFurnace : PizzaModeInteractable
             {
                 grabber.ReleaseCurrentlyGrabbed();
                 PlacePizza(pizza.gameObject);
+                
+                displayText = "[LMB] Grab Pizza";
+                interactor.GetComponent<RaycastInteractor>().onLook.Invoke(interactor, displayText);
+                
                 GrabCurrentPizza(grabber);
                 timeInOven = pizza.GetTimeCooked();
             }
@@ -53,6 +70,9 @@ public class PizzaFurnace : PizzaModeInteractable
         else
         {
             GrabCurrentPizza(grabber);
+            
+            displayText = "[LMB] Cook Pizza";
+            interactor.GetComponent<RaycastInteractor>().onLook.Invoke(interactor, displayText);
         }
     }
 
@@ -123,6 +143,8 @@ public class PizzaFurnace : PizzaModeInteractable
 
             timerText.text = $"00:00";
             timerText.color = originalColor;
+            
+            displayText = "[LMB] Cook Pizza";
             
             cookingAudioPlayer.Stop();
             cookingParticles.Stop();

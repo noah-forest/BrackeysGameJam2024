@@ -35,7 +35,7 @@ public class Gunner : CarHazard
         fireTimeStamp = Time.time + fireInterval;
     }
 
-    public override bool CanInteract()
+    public override bool CanInteract(GameObject interactor)
     {
         return true;
     }

@@ -26,19 +26,26 @@ public class TvRemoteInteractable : PizzaModeInteractable
         switch (remoteType)
         {
             case RemoteType.toggleAudio:
-                ChangeAudio();
+                ChangeAudio(gameObject);
                 break; 
             case RemoteType.togglePower:
-                ChangePower();
+                ChangePower(gameObject);
                 break;
         }
 
     }
-    public void ChangeAudio()
+    public void ChangeAudio(GameObject obj)
     {
-        Debug.Log("[changeAud]Tv video: " + tvOn);
+        //Debug.Log("[changeAud]Tv video: " + tvOn);
+        
+        displayText = "[LMB] Mute";
+        obj.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+        
         if (tvOn && !videoSoundPlayer.mute)
         {
+            displayText = "[LMB] Toggle Power";
+            obj.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+            
             videoSoundPlayer.mute = !videoSoundPlayer.mute;
             int matIdx = videoSoundPlayer.mute ? 2 : 1;
             buttonDisplay.ChangeMaterial(matIdx);
@@ -46,13 +53,23 @@ public class TvRemoteInteractable : PizzaModeInteractable
         else
         {
             videoSoundPlayer.mute = false;
-            ChangePower();
+            ChangePower(obj);
+
+            if (tvOn)
+            {
+                displayText = "[LMB] Mute";
+                obj.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+            }
+            else
+            {
+                displayText = "[LMB] Toggle Power";
+                obj.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+            }
         }
 
     }
-    public void ChangePower()
+    public void ChangePower(GameObject obj)
     {
-
         tvOn = tv.TogglePower();
         int matIdx  = tvOn ? 1 : 0;
         Debug.Log("[changePow]Tv video: " + tvOn);

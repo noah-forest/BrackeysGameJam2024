@@ -19,13 +19,14 @@ public class DoorInteractable : PizzaModeInteractable
     public void StartGlow()
     {
         glowEffect.SetActive(true);
+        displayText = "[LMB] Start Delivery";
     }
 
 
-    public override bool CanInteract()
+    public override bool CanInteract(GameObject interactor)
     {
         //Debug.Log(base.CanInteract(gameObject) && modeManager.ReadyToLeave());
-        return base.CanInteract() && modeManager.ReadyToLeave();
+        return base.CanInteract(interactor) && modeManager.ReadyToLeave();
     }
 
     public override void Interact(GameObject gameObject)

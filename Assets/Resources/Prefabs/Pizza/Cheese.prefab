@@ -128,7 +128,9 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactionRange: 3
+  HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Cheese'
+  isGrabbed: 0
   onRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -138,6 +140,7 @@ MonoBehaviour:
   canGrab: 1
   handMustBeEmpty: 0
   offset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   tag: cheese
   topping: 1
 --- !u!64 &623226133861601981

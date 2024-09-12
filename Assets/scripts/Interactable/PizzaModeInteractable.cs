@@ -8,8 +8,8 @@ namespace Interact
     {
         public UnityEvent<GameObject> onInteract;
         [SerializeField] GameObject HoverDisplay;
-        [SerializeField] string displayText;
-        public virtual bool CanInteract()
+        public string displayText;
+        public virtual bool CanInteract(GameObject interactor)
         { 
             return true;
         }
