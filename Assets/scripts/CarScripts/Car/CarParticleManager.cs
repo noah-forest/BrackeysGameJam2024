@@ -14,17 +14,17 @@ public class CarParticleManager : MonoBehaviour
 
     private void Update()
     {
-        turboVisuals[0].SetActive(car.FootOnTurbo && car.VerticalInput > 0);
-        turboVisuals[1].SetActive(car.FootOnTurbo && car.VerticalInput < 0);
+        turboVisuals[0].SetActive(car.FootOnTurbo && car.motorAxis > 0);
+        turboVisuals[1].SetActive(car.FootOnTurbo && car.motorAxis < 0);
 
-        foreach(GameObject b in breakVisuals){
-            b.SetActive(car.FootOnBreak);
-        }
+        //foreach(GameObject b in breakVisuals){
+        //    b.SetActive(car.FootOnBreak);
+        //}
 
-        for(int i = 0; i < smearVisuals.Length; i++) 
-        {
-            smearVisuals[i].SetActive((i <= 1 && car.VerticalInput > 0) || (i > 1 && car.VerticalInput < 0));
-        }
+        //for(int i = 0; i < smearVisuals.Length; i++) 
+        //{
+        //    smearVisuals[i].SetActive((i <= 1 && car.motorAxis > 0) || (i > 1 && car.motorAxis < 0));
+        //}
         
     }
 }
