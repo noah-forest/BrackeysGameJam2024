@@ -8,6 +8,10 @@ public class Drinker : MonoBehaviour
 {
     [SerializeField] Animator armsAnim;
     [SerializeField] Grabber grabber;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip sipSound;
+    [SerializeField] AudioClip postDrinkSound;
+
     EdibleIneractable drink;
 
     private void Update()
@@ -27,5 +31,14 @@ public class Drinker : MonoBehaviour
     public void AlterEdible()
     {
         drink.DeductUse();
+    }
+
+    public void PlaySip()
+    {
+        audioSource.PlayOneShot(sipSound);
+    }
+    public void PlayPostDrink()
+    {
+        audioSource.PlayOneShot(postDrinkSound);
     }
 }

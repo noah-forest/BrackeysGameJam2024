@@ -25,4 +25,9 @@ public abstract class CarHazard : MonoBehaviour, IInteractable
     {
         
     }
+
+    public string GetDisplayString()
+    {
+        return "CAR HAZARD:" + gameObject.name;
+    }
 }
