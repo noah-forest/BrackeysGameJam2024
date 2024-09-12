@@ -7,7 +7,7 @@ public abstract class CarHazard : MonoBehaviour, IInteractable
 {
     CarController car;
 
-    public abstract bool CanInteract();
+    public abstract bool CanInteract(GameObject interactor);
 
     public abstract void Interact(GameObject interactor);
 

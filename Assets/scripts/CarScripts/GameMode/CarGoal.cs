@@ -17,6 +17,7 @@ public class CarGoal : MonoBehaviour
         carModeManager = CarModeManager.singleton;
         clearingVisualStartScale = clearingVisual.localScale;
     }
+
     private void OnTriggerStay(Collider other)
     {
         //Debug.Log(other.name);
@@ -26,8 +27,8 @@ public class CarGoal : MonoBehaviour
         {
             if (clearEffect) Instantiate(clearEffect, transform.position, transform.rotation, transform.parent);
             carModeManager.DeliverPizza();
+            timeTouching = 0;
         }
-
     }
 
     private void OnTriggerExit(Collider other)

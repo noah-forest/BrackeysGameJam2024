@@ -31,12 +31,21 @@ public class PizzaFurnace : PizzaModeInteractable
     {
         originalColor = timerText.color;
     }
-
-    public override void Interact(GameObject gameObject)
+    public override bool CanInteract(GameObject interactor)
     {
-        base.Interact(gameObject);
+        Grabber grabber = interactor.GetComponent<Grabber>();
+        if (grabber.IsGrabbing())
+        {
+            Pizza pizza = grabber.GetCurrentlyGrabbed().gameObject.GetComponent<Pizza>();
+            return pizza;
+        }
+        return false;
+    }
+    public override void Interact(GameObject interactor)
+    {
+        base.Interact(interactor);
 
-        Grabber grabber = gameObject.GetComponent<Grabber>();
+        Grabber grabber = interactor.GetComponent<Grabber>();
 
         if (grabber.IsGrabbing())
         {
@@ -47,7 +56,7 @@ public class PizzaFurnace : PizzaModeInteractable
                 PlacePizza(pizza.gameObject);
                 
                 displayText = "[LMB] Grab Pizza";
-                gameObject.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+                interactor.GetComponent<RaycastInteractor>().onLook.Invoke(interactor, displayText);
                 
                 GrabCurrentPizza(grabber);
             }
@@ -58,7 +67,7 @@ public class PizzaFurnace : PizzaModeInteractable
             GrabCurrentPizza(grabber);
             
             displayText = "[LMB] Cook Pizza";
-            gameObject.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+            interactor.GetComponent<RaycastInteractor>().onLook.Invoke(interactor, displayText);
         }
     }
 
