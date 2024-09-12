@@ -108,6 +108,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Radio'
   isGrabbed: 0
   onRelease:
     m_PersistentCalls:
@@ -434,6 +435,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Toggle Power'
   range: 2
 --- !u!1 &7318967921718449444
 GameObject:
@@ -827,6 +829,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Change Track'
   player: {fileID: 2454007857888300275}
   trackList:
   - {fileID: 8300000, guid: f94ec35ad1fd7524188aefda877554d1, type: 3}

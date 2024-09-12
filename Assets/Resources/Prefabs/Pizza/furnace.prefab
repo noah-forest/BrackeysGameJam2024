@@ -1036,6 +1036,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Cook Pizza'
   cookingParticles: {fileID: 1878600931225544908}
   burningParticles: {fileID: 4448707415355328870}
   timerText: {fileID: 7275044969650180973}

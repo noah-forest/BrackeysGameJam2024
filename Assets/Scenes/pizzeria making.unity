@@ -5227,6 +5227,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99553194}
   m_Mesh: {fileID: -5287425419667122880, guid: 4ac39b8b048356a4091271a793190df4, type: 3}
+--- !u!114 &100675682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5449235248401656826, guid: ad9e7837ac672ee41a7b67dcbb898bea,
+    type: 3}
+  m_PrefabInstance: {fileID: 342263847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8115a407bb62a6f4dab9ba49851f1c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100785122
 GameObject:
   m_ObjectHideFlags: 0
@@ -112602,6 +112614,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pizza Mode Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4873335009966409133, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873335009966409133, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873335009966409133, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873335009966409133, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873335009966409133, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873335009966409133, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
       propertyPath: ordersRequired
@@ -112672,6 +112714,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7411148137608187163, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: interactor
+      value: 
+      objectReference: {fileID: 100675682}
     - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
       propertyPath: m_AnchorMax.y

@@ -101,7 +101,9 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactionRange: 3
+  HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Dough'
+  isGrabbed: 0
   onRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -111,6 +113,7 @@ MonoBehaviour:
   canGrab: 1
   handMustBeEmpty: 0
   offset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   tag: PizzaDough
 --- !u!54 &-3010857203712588150
 Rigidbody:
