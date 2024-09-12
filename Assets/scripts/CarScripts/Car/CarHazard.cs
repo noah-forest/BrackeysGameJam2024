@@ -16,4 +16,13 @@ public abstract class CarHazard : MonoBehaviour, IInteractable
     {
         if(InteractParticleEffect) Instantiate(InteractParticleEffect, transform.position, transform.rotation);
     }
+    public void OnLook()
+    {
+       
+    }
+
+    public void OnLookAway()
+    {
+        
+    }
 }

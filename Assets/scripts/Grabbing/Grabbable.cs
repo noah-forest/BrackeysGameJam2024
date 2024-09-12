@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Grabbing
 {
-    public class Grabbable : TriggerInteractor
+    public class Grabbable : PizzaModeInteractable
     {
         public bool isGrabbed = false;
         public UnityEvent onRelease = new UnityEvent();
@@ -14,6 +14,7 @@ namespace Grabbing
         public bool handMustBeEmpty = false;
         public Vector3 offset;
         public Vector3 rotationOffset;
+        //public Vector3 scaleOffset;
         public string tag = "";
 
         public void Start()

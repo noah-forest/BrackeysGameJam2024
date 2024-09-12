@@ -7,7 +7,7 @@ using PizzaOrder;
 using TMPro;
 using UnityEngine;
 
-public class PizzaBox : TriggerInteractor
+public class PizzaBox : PizzaModeInteractable
 {
     private Pizza pizzaInBox = null;
     private Animator animator;

@@ -49,6 +49,7 @@ namespace Grabbing
                 currentlyGrabbed.transform.position = targetTransform.position;
                 currentlyGrabbed.transform.localPosition = grabbable.offset;
                 currentlyGrabbed.transform.localRotation = Quaternion.Euler(grabbable.rotationOffset);
+                //currentlyGrabbed.transform.localScale = grabbable.scaleOffset;
 
 
                 // Disable collider and rigidbody

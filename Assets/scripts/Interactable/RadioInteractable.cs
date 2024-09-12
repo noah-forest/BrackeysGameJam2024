@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RadioInteractable : TriggerInteractor
+public class RadioInteractable : PizzaModeInteractable
 {
     [SerializeField] AudioSource player;
     [SerializeField] List<AudioClip> trackList;

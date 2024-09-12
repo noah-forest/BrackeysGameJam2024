@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TvRemoteInteractable : RangeInteractable
+public class TvRemoteInteractable : PizzaModeInteractable
 {
 
     enum RemoteType

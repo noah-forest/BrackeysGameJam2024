@@ -520,7 +520,7 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactionRange: 2
+  HoverDisplay: {fileID: 0}
 --- !u!65 &8192159825737784565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -557,7 +557,8 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactionRange: 2
+  HoverDisplay: {fileID: 0}
+  isGrabbed: 0
   onRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -566,7 +567,9 @@ MonoBehaviour:
       m_Calls: []
   canGrab: 1
   handMustBeEmpty: 0
-  offset: {x: -0.5, y: -0.2, z: 0.7}
+  offset: {x: -0.4, y: -0.3, z: -0.5}
+  rotationOffset: {x: 0, y: 0, z: 0}
+  scaleOffset: {x: -1, y: -1, z: -1}
   tag: 
 --- !u!54 &7632237499572357561
 Rigidbody:

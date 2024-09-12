@@ -2,7 +2,7 @@
 using UnityEngine;
 namespace Interact
 {
-    public class CreateGrabbableInteractable : TriggerInteractor
+    public class CreateGrabbableInteractable : PizzaModeInteractable
     {
         public Grabbable grabbablePrefab;
         public override void Interact(GameObject gameObject)

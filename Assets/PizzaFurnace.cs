@@ -5,7 +5,7 @@ using Grabbing;
 using Interact;
 using UnityEngine;
 
-public class PizzaFurnace : TriggerInteractor
+public class PizzaFurnace : PizzaModeInteractable
 {
     [SerializeField] ParticleSystem cookingParticles;
     [SerializeField] ParticleSystem burningParticles;
@@ -85,7 +85,6 @@ public class PizzaFurnace : TriggerInteractor
 
     public void OnDrawGizmosSelected()
     {
-        base.OnDrawGizmosSelected();
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position + pizzaPosition, 0.1f);
     }

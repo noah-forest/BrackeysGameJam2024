@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorInteractable : TriggerInteractor
+public class DoorInteractable : PizzaModeInteractable
 {
 
     PizzaModeManager modeManager;
