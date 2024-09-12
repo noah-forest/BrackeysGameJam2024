@@ -8,6 +8,9 @@ public class CarGameUI : MonoBehaviour
 {
     public TextMeshProUGUI pizzaCountText;
     public GameObject pizzaIcon;
+    public GameObject textCont;
+    public GameObject returnIcon;
+    public GameObject returnText;
     
     private GameManager gameManager;
     private CarModeManager modeManager;
@@ -25,6 +28,20 @@ public class CarGameUI : MonoBehaviour
 
     private void UpdatePizzaCount(uint count)
     {
+        if (count == 0)
+        {
+            textCont.SetActive(false);
+            pizzaIcon.SetActive(false);
+            
+            returnIcon.SetActive(true);
+            returnText.SetActive(true);
+            
+            var returnAnim = returnIcon.GetComponent<Animator>();
+            returnAnim.SetTrigger("return");
+
+            return;
+        }
+        
         pizzaCountText.text = $"{count}";
         
         var anim = pizzaCountText.GetComponent<Animator>();
