@@ -15,14 +15,15 @@ namespace Interact
         public float range = 2f;
 
         // Start is called before the first frame update
-        public override bool CanInteract(GameObject gameObject)
+        public override bool CanInteract()
         {
-            if (Vector3.Distance(gameObject.transform.position, transform.position) <= range)
-            {
-                return true;
-            }
+            //if (Vector3.Distance(gameObject.transform.position, transform.position) <= range)
+            //{
+            //    return true;
+            //}
 
-            return false;
+            //return false;
+            return true;
         }
 
         public override void OnLook()

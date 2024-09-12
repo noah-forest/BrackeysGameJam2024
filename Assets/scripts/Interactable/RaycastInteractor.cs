@@ -7,58 +7,77 @@ namespace Interact
     public class RaycastInteractor : MonoBehaviour
     {
         public UnityEvent<GameObject> onInteract = new();
+        public UnityEvent<GameObject> onLook = new();
+        public UnityEvent<GameObject> onLookAway = new();
 
         public LayerMask layerMask;
         [SerializeField] Transform head;
         [SerializeField] float distance;
 
-        IInteractable _target;
-        public IInteractable Target 
+        IInteractable targetInteractable;
+
+        GameObject objUnderCrosshair;
+
+        void Start()
         {
-            get { return _target; }
-            set
-            {
-                if (_target != null) // call look away on old target if there was one
-                {
-                    _target.OnLookAway();
-                }
-
-                _target = value;    // set new target
-                if(_target != null) // call look if we have one
-                {
-                    _target.OnLook();
-                }
-                else
-                {
-                }
-            }
-
+            onLook.AddListener(TestOnLook);
+            onLookAway.AddListener(TestOnLookAway);
 
         }
-
-        void Update()
+        void LateUpdate()
         {
             RaycastHit hit;
             if (Physics.Raycast(head.position, head.forward, out hit, distance, layerMask))
             {
-                Target = hit.collider.gameObject.GetComponent<IInteractable>();
+                GameObject newObj = hit.collider.gameObject;
+                if (objUnderCrosshair != newObj)
+                {
+                    if (newObj) SetTargetInteractor(newObj);
+                    objUnderCrosshair = newObj;
+                }
             }
-            else
+            else if (objUnderCrosshair)
             {
-                Target = null;
+                SetTargetInteractor(null);
+                objUnderCrosshair = null;
             }
 
             // on mouse down
             if (Input.GetMouseButtonDown(0))
             {
                 // raycast from camera
-                if (Target != null)
+                if (targetInteractable != null)
                 {
-                    Target.Interact(this.gameObject);
+                    targetInteractable.Interact(this.gameObject);
                     onInteract.Invoke(hit.collider.gameObject);
                 }
             }
         }
-    }
 
+        void TestOnLook(GameObject obj)
+        {
+            if (obj) Debug.Log("LookedAt from:" + obj.name);
+        }
+        void TestOnLookAway(GameObject obj)
+        {
+            if (obj) Debug.Log("LookedAway from:" + obj.name);
+        }
+
+
+        void SetTargetInteractor(GameObject obj)
+        {
+            IInteractable interactable = obj?.GetComponent<IInteractable>();
+            if (interactable != null && interactable.CanInteract())
+            {
+                targetInteractable = interactable;
+                onLook.Invoke(objUnderCrosshair);
+            }
+            else
+            {
+                onLookAway.Invoke(objUnderCrosshair);
+                targetInteractable = null;
+            }
+        }
+
+    }
 }

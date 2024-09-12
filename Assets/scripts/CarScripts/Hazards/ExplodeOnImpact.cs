@@ -6,7 +6,7 @@ public class ExplodeOnImpact : CarHazard
 {
     [SerializeField] protected float explosiveForce;
     [SerializeField] protected float explosionRadius;
-    public override bool CanInteract(GameObject interactor)
+    public override bool CanInteract()
     {
         return true;
     }
