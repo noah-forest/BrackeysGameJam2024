@@ -7,12 +7,16 @@ using PizzaOrder;
 using TMPro;
 using UnityEngine;
 
-public class PizzaBox : PizzaModeInteractable
+public class PizzaBox : Grabbable
 {
     private Pizza pizzaInBox = null;
     private Animator animator;
-    private Grabbable thisGrabbable;
     private Order order;
+    
+    public override bool CanGrab(Grabber grabber)
+    {
+        return pizzaInBox != null && base.CanGrab(grabber);
+    }
     
     public Pizza GetPizzaInBox()
     {
@@ -21,15 +25,9 @@ public class PizzaBox : PizzaModeInteractable
     
     public void Start()
     {
-        thisGrabbable = GetComponent<Grabbable>();
+        canGrab = false;
         animator = GetComponent<Animator>();
-        thisGrabbable.canGrab = false;
         animator.SetBool("Open", true);
-    }
-    
-    public override bool CanInteract()
-    {
-        return pizzaInBox == null;
     }
     
     public override void Interact(GameObject gameObject)
@@ -85,6 +83,6 @@ public class PizzaBox : PizzaModeInteractable
     void EnableGrabbable()
     {
         GetComponent<Rigidbody>().isKinematic = false;
-        thisGrabbable.canGrab = true;
+        canGrab = true;
     }
 }
