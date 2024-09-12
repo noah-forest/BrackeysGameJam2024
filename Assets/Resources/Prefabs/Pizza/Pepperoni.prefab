@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9108721344439059430}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.032591652, y: -0.80471885, z: -0.5410765, w: 0.24207765}
   m_LocalPosition: {x: -1.4795258, y: 1.4376643, z: -0.33888}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -62.45, y: -129.995, z: -26.935}
 --- !u!33 &5734010151567850938
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -149,6 +149,8 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+  HoverDisplay: {fileID: 0}
+  isGrabbed: 0
   onRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -158,5 +160,6 @@ MonoBehaviour:
   canGrab: 1
   handMustBeEmpty: 0
   offset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: -62.45, y: -129.995, z: -23.958}
   tag: pep
   topping: 0

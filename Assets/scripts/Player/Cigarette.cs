@@ -40,6 +40,12 @@ public class Cigarette : MonoBehaviour
         }
 
         filter.mesh = cigStages[meshInterp];
+
+        if (meshInterp is 2 or 3)
+        {
+            transform.localPosition = new Vector3(-0.458000004f, 0.959999979f, 0.214000002f);
+        }
+        
         for(int i = 0; i < cigColliders.Length; i++)
         {
             if (i == meshInterp)
