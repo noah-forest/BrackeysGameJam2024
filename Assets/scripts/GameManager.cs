@@ -29,13 +29,15 @@ public class GameManager : MonoBehaviour
     public PizzaModeManager pizzaManager;
     public CarModeManager carManager;
 
+    public UIManager UIManager;
+    
     /// <summary>
     /// used to transfer the pizzas between the pizza and car modes
     /// </summary>
     public uint pizzaCount;
 
     public string mainSceneName;
-    public UIManager UIManager;
+    [SerializeField] private string endOfDayScene;
     [SerializeField] string pizzaSceneName;
     [SerializeField] string carSceneName;
     [SerializeField] AudioSource ambiancePlayer;
