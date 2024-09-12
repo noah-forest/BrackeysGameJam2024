@@ -18,6 +18,8 @@ public class Pizza : MonoBehaviour
     private bool isCooked = false;
     private bool isBurned = false;
 
+    private float timeCooked = 0;
+
     public enum Toppings
     {
         Pepperoni,
@@ -67,5 +69,15 @@ public class Pizza : MonoBehaviour
     {
         isBurned = true;
         onBurned.Invoke();
+    }
+    
+    public float GetTimeCooked()
+    {
+        return timeCooked;
+    }
+    
+    public void SetTimeCooked(float time)
+    {
+        timeCooked = time;
     }
 }

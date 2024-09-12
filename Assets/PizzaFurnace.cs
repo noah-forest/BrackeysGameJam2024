@@ -46,6 +46,7 @@ public class PizzaFurnace : PizzaModeInteractable
                 grabber.ReleaseCurrentlyGrabbed();
                 PlacePizza(pizza.gameObject);
                 GrabCurrentPizza(grabber);
+                timeInOven = pizza.GetTimeCooked();
             }
             currentPizza = pizza;
         }
@@ -60,6 +61,7 @@ public class PizzaFurnace : PizzaModeInteractable
         if (currentPizza)
         {
             timeInOven += 1 * Time.deltaTime;
+            currentPizza.SetTimeCooked(timeInOven);
             
             SetUpTimerText(Mathf.Ceil(timeToCook - timeInOven));
             
@@ -99,7 +101,6 @@ public class PizzaFurnace : PizzaModeInteractable
 
     void PlacePizza(GameObject pizza)
     {
-        timeInOven = 0;
         pizza.transform.position = transform.position + pizzaPosition;
         pizza.transform.rotation = Quaternion.identity;
         pizza.GetComponent<Rigidbody>().velocity = Vector3.zero;
