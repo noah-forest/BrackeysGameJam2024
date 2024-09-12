@@ -7,6 +7,7 @@ using PizzaOrder;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PizzaModeManager : MonoBehaviour
 {
@@ -38,12 +39,26 @@ public class PizzaModeManager : MonoBehaviour
     /// <summary>
     /// When the player leaves the pizzaria, This value is passed to the Game manager, which is then passed to the car mode
     /// </summary>
-    public uint ordersReadyToDeliver;
+    public uint numberOfCompletedOrders
+    {
+        get
+        {
+            return OrderManager.GetNumberOfCompletedOrders();
+        }
+    }
+
     /// <summary>
     /// This would be the total number of orders for the day the player needs to complete before they can leave the Pizzaria
     /// </summary>
     public uint ordersRequired;
-    public uint ordersGenerated;
+
+    int currentNumberOfOrders
+    {
+        get
+        {
+            return OrderManager.orders.Count;
+        }
+    }
 
     public UnityEvent ordersFinished = new();
 
@@ -66,9 +81,48 @@ public class PizzaModeManager : MonoBehaviour
     [SerializeField] stupid[] DailyOrders = new stupid[5];
 
     public Transform ambianceSoundLocation;
+    
+    private void Start()
+    {
+        Clean();
+        Setup();
+        int day = Mathf.Clamp(gameManager.Day - 1, 0, DailyOrders.Length);
+
+        ordersRequired = DailyOrders[day].GetTodaysOrderCount();
+        Debug.Log($"[PIZZA MODE] dayidx: {day} Todays Order Count: {ordersRequired}");
+    }
+    
+    void OnOrderManagerCompletedOrder(Order order)
+    {
+        Debug.Log(
+            $"[PIZZA MODE][PIZZA SUBMISSION]: ORDER STATUS: {numberOfCompletedOrders} / {ordersRequired} : DAY COMPLETE");
+        if (numberOfCompletedOrders >= ordersRequired)
+        {
+            ordersFinished.Invoke();
+        }
+    }
+
+    void Setup()
+    {
+        OrderManager.SetRecipeBook(defaultRecipeBook);
+        OrderManager.onOrderCompleted.AddListener(OnOrderManagerCompletedOrder);
+
+        StartCoroutine(NextOrder());
+    }
+
+    void Clean()
+    {
+        OrderManager.ClearOrders();
+        OrderManager.ClearCompletedOrders();
+        ClearPizzaBoxSpawnerOrders();
+        OrderManager.onOrderCompleted.RemoveListener(OnOrderManagerCompletedOrder);
+        
+        StopCoroutine(NextOrder());
+    }
+    
     public bool ReadyToLeave()
     {
-        return ordersReadyToDeliver >= ordersRequired;
+        return numberOfCompletedOrders >= ordersRequired;
     }
 
     public void PizzaSubmission(GameObject obj)
@@ -79,67 +133,59 @@ public class PizzaModeManager : MonoBehaviour
 
         if (obj.TryGetComponent<PizzaBox>(out pizzaBox))
         {
-            if (pizzaBox.GetPizzaInBox() == null)
+            if (pizzaBox.GetOrder() == null || pizzaBox.GetOrder().IsCompleted())
             {
                 return;
             }
+            
             var pizza = pizzaBox.GetPizzaInBox();
             Order order = pizzaBox.GetOrder();
-            var score = order.CalculatePizzaScore(pizza);
-
-            Debug.Log(score);
             order.CompleteOrder(pizza);
             OrderManager.RemoveOrder(order);
-
-            ++ordersReadyToDeliver;
-            if (ordersReadyToDeliver >= ordersRequired) 
-            {
-                Debug.Log($"[PIZZA MODE][PIZZA SUBMISSION]: ORDER STATUS: {ordersReadyToDeliver} / {ordersRequired} : DAY COMPLETE");
-                ordersFinished.Invoke();
-            } 
         }
     }
 
-    private void GenerateRandomOrders()
+    private void CreateNextPizzaOrder()
     {
-        //Debug.Log($"[PIZZA MODE][ORDER GENERATOR]: attempting to generate order");
-        for (int i = 0; i < pizzaBoxSpawners.Length; i++)
+        if (currentNumberOfOrders < 4)
         {
-            //Debug.Log($"[PIZZA MODE][ORDER GENERATOR]: searching for unassigned box");
-
-            if (pizzaBoxSpawners[i].currentOrder == null)
+            var emptyBox = GetEmptyPizzaBoxSpawner();
+            if (emptyBox != null)
             {
-
                 var order = OrderManager.CreateRandomOrder();
-                pizzaBoxSpawners[i].SetCurrentOrder(order);
-                ordersGenerated++;
-                Debug.Log($"[PIZZA MODE][ORDER GENERATOR]: Generated order {ordersGenerated} / {ordersRequired} for pizzaBox {i}");
-                return;
+                emptyBox.SetCurrentOrder(order);
+            }
+        }
+    }
+    
+    public PizzaBoxSpawner GetEmptyPizzaBoxSpawner()
+    {
+        foreach (PizzaBoxSpawner boxSpawner in pizzaBoxSpawners)
+        {
+            if (boxSpawner.currentOrder == null)
+            {
+                return boxSpawner;
             }
         }
 
+        return null;
     }
 
-    private void Start()
+    private void ClearPizzaBoxSpawnerOrders()
     {
-        OrderManager.SetRecipeBook(defaultRecipeBook);
-
-
-        int day = Mathf.Clamp(gameManager.Day - 1, 0, DailyOrders.Length);
-
-        ordersRequired = DailyOrders[day].GetTodaysOrderCount();
-        foreach(PizzaBoxSpawner boxSpawners in pizzaBoxSpawners) boxSpawners.currentOrder = null;
-        Debug.Log($"[PIZZA MODE] dayidx: {day} Todays Order Count: {ordersRequired}");
-
+        foreach(PizzaBoxSpawner boxSpawners in pizzaBoxSpawners) boxSpawners.ClearOrder();
     }
 
-    private void FixedUpdate()
+    private IEnumerator NextOrder()
     {
-        if(OrderManager.orders.Count < 4 && ordersGenerated < ordersRequired && ordersReadyToDeliver < ordersRequired && Time.time > timeStamp)
+        while (true)
         {
-            GenerateRandomOrders();
-            float waitTime = (ordersGenerated < 2) ? UnityEngine.Random.Range(2, 5) : UnityEngine.Random.Range(minOrdertime, maxOrdertime);
-            timeStamp = Time.time + waitTime;
+            if (currentNumberOfOrders < 4 && (currentNumberOfOrders + numberOfCompletedOrders) < ordersRequired)
+            {
+                CreateNextPizzaOrder();
+            }
+            float waitTime = (currentNumberOfOrders < 2) ? UnityEngine.Random.Range(2, 5) : UnityEngine.Random.Range(minOrdertime, maxOrdertime);
+            yield return new WaitForSeconds(waitTime);
         }
     }
 }

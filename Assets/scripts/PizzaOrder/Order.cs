@@ -14,7 +14,7 @@ namespace PizzaOrder
         public Recipe recipe;
         public List<Pizza.Toppings> excludedToppings;
         public List<Pizza.Toppings> toppings = new List<Pizza.Toppings>();
-        public bool completed = false;
+        bool completed = false;
         public float score;
 
         public Order(string name, Recipe recipe, List<Pizza.Toppings> excludedToppings)
@@ -57,7 +57,6 @@ namespace PizzaOrder
             // plus 1 for being cooked
             float bestScore = toppings.Count + 1;
             
-            completed = true;
             score = 0;
             foreach (var topping in pizza.GetToppings())
             {
@@ -90,6 +89,7 @@ namespace PizzaOrder
             }
             onOrderCompleted.Invoke();
             score = CalculatePizzaScore(pizza);
+            completed = true;
         }
         
         public bool IsCompleted()

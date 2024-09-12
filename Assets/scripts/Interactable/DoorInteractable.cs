@@ -32,7 +32,7 @@ public class DoorInteractable : PizzaModeInteractable
     {
         //Debug.Log("Interacted with Door");
         base.Interact(gameObject);
-        modeManager.gameManager.pizzaCount = modeManager.ordersReadyToDeliver;
+        modeManager.gameManager.pizzaCount = modeManager.numberOfCompletedOrders;
         modeManager.gameManager.LoadCarScene();
     }
 }

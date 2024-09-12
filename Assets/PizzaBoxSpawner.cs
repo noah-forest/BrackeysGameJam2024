@@ -12,7 +12,11 @@ public class PizzaBoxSpawner : MonoBehaviour
     private float timeSpentStill = 0;
     private Vector3 lastPosition;
 
-    public Order currentOrder;
+    public Order currentOrder
+    {
+        get => _currentOrder;
+    }
+    private Order _currentOrder;
     
     void Start()
     {
@@ -21,18 +25,23 @@ public class PizzaBoxSpawner : MonoBehaviour
 
     public void SetCurrentOrder(Order order)
     {
-        currentOrder = order;
+        _currentOrder = order;
         // SpawnPizzaBox();
     }
 
     public void ClearOrder()
     {
-        currentOrder = null;
+        _currentOrder = null;
         expectingPizzaBox = false;
     }
     
     private void FixedUpdate()
     {
+        if (currentOrder != null && currentOrder.IsCompleted())
+        {
+            ClearOrder();
+            DestroyCurrentBox();
+        }
         if (currentPizzaBox == null && currentOrder != null && !currentOrder.IsCompleted())
         {
             SpawnPizzaBox();
