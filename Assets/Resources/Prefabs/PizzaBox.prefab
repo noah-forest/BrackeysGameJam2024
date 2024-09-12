@@ -437,10 +437,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0a302d76342b24fa67990dcbb8f357,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4252695474935543391}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0a302d76342b24fa67990dcbb8f357,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7632237499572357561}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0a302d76342b24fa67990dcbb8f357,
         type: 3}
@@ -521,6 +517,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  isGrabbed: 0
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  canGrab: 0
+  handMustBeEmpty: 0
+  offset: {x: 0.3, y: -0.2, z: -0.7}
+  rotationOffset: {x: 0, y: 0, z: 0}
+  tag: 
 --- !u!65 &8192159825737784565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,35 +550,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.32, y: 0.14, z: 1.38}
   m_Center: {x: 0, y: 0.055, z: 0.02}
---- !u!114 &4252695474935543391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4554684539718571735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b70314bba68b346bc2869a9b799dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  HoverDisplay: {fileID: 0}
-  isGrabbed: 0
-  onRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  onGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  canGrab: 1
-  handMustBeEmpty: 0
-  offset: {x: -0.4, y: -0.3, z: -0.5}
-  rotationOffset: {x: 0, y: 0, z: 0}
-  scaleOffset: {x: -1, y: -1, z: -1}
-  tag: 
 --- !u!54 &7632237499572357561
 Rigidbody:
   m_ObjectHideFlags: 0

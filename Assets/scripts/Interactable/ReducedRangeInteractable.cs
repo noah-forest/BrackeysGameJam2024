@@ -28,7 +28,7 @@ namespace Interact
 
         public override void OnLook()
         {
-            if (Vector3.Distance(gameObject.transform.position, transform.position) > range) return;
+            //if (Vector3.Distance(gameObject.transform.position, transform.position) > range) return;
             base.OnLook();
 
         }

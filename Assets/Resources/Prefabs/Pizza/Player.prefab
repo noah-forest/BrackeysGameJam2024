@@ -10995,9 +10995,15 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+  onLook:
+    m_PersistentCalls:
+      m_Calls: []
+  onLookAway:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 63
   head: {fileID: 3384005178858186632}
   distance: 3
 --- !u!1 &3342110802126816603
@@ -18214,7 +18220,7 @@ Transform:
   m_GameObject: {fileID: 9090245298162220104}
   serializedVersion: 2
   m_LocalRotation: {x: 0.039161302, y: -0.97573876, z: 0.15454276, w: -0.1500565}
-  m_LocalPosition: {x: 0.40139726, y: -0.16539359, z: 0.894123}
+  m_LocalPosition: {x: 0.40139905, y: -0.16539347, z: 0.8941299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
