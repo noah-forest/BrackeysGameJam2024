@@ -14,4 +14,6 @@ public interface IInteractable
     /// Typically onLookaway should be used to hide whatever visuals were shown via onlook
     /// </summary>
     public void OnLookAway();
+
+    public string GetDisplayString();
 }

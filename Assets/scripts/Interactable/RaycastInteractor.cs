@@ -7,8 +7,8 @@ namespace Interact
     public class RaycastInteractor : MonoBehaviour
     {
         public UnityEvent<GameObject> onInteract = new();
-        public UnityEvent<GameObject> onLook = new();
-        public UnityEvent<GameObject> onLookAway = new();
+        public UnityEvent<GameObject, string> onLook = new();
+        public UnityEvent<GameObject, string> onLookAway = new();
 
         public LayerMask layerMask;
         [SerializeField] Transform head;
@@ -55,13 +55,13 @@ namespace Interact
             }
         }
 
-        void TestOnLook(GameObject obj)
+        void TestOnLook(GameObject obj, string displaytext)
         {
-            if (obj) Debug.Log("LookedAt from:" + obj.name);
+            if (obj) Debug.Log("LookedAt from:" + obj.name + displaytext);
         }
-        void TestOnLookAway(GameObject obj)
+        void TestOnLookAway(GameObject obj, string displaytext)
         {
-            if (obj) Debug.Log("LookedAway from:" + obj.name);
+            if (obj) Debug.Log("LookedAway from:" + obj.name + displaytext);
         }
 
 
@@ -71,11 +71,11 @@ namespace Interact
             if (interactable != null && interactable.CanInteract())
             {
                 targetInteractable = interactable;
-                onLook.Invoke(objUnderCrosshair);
+                onLook.Invoke(objUnderCrosshair, interactable.GetDisplayString());
             }
             else
             {
-                onLookAway.Invoke(objUnderCrosshair);
+                onLookAway.Invoke(objUnderCrosshair, interactable?.GetDisplayString());
                 targetInteractable = null;
             }
         }
