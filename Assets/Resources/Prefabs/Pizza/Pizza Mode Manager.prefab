@@ -51,6 +51,10 @@ MonoBehaviour:
     toppings: 010000000000000002000000
   - name: Sausage
     toppings: 030000000100000002000000
+  - name: All Meat
+    toppings: 03000000000000000100000002000000
+  - name: Cheese
+    toppings: 0100000002000000
   pizzaBoxSpawners:
   - {fileID: 0}
   - {fileID: 0}
@@ -64,19 +68,19 @@ MonoBehaviour:
   ordersFinished:
     m_PersistentCalls:
       m_Calls: []
-  minOrdertime: 5
+  minOrdertime: 10.2
   maxOrdertime: 40
   DailyOrders:
   - minOrders: 6
-    maxOrders: 12
+    maxOrders: 6
   - minOrders: 7
-    maxOrders: 14
+    maxOrders: 11
   - minOrders: 8
-    maxOrders: 16
+    maxOrders: 12
   - minOrders: 9
-    maxOrders: 18
+    maxOrders: 13
   - minOrders: 10
-    maxOrders: 20
+    maxOrders: 14
   ambianceSoundLocation: {fileID: 927813515153477697}
 --- !u!1 &3169507140271145908
 GameObject:
