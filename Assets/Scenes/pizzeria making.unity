@@ -100220,6 +100220,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  glowEffect: {fileID: 0}
 --- !u!1 &1908889445
 GameObject:
   m_ObjectHideFlags: 0
@@ -112661,11 +112662,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
       propertyPath: pizzaBoxSpawners.Array.data[0]
       value: 
       objectReference: {fileID: 1193776223}
@@ -112686,53 +112682,68 @@ PrefabInstance:
       objectReference: {fileID: 162681209}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[0].name
-      value: Classic Pepperoni
+      propertyPath: defaultRecipeBook.Array.data[4].name
+      value: Cheese
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[1].name
-      value: Sausage
+      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[0].toppings.Array.size
-      value: 3
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.size
-      value: 3
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[3]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[0].toppings.Array.data[0]
+      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[0].toppings.Array.data[1]
+      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374773699927520450, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[0].toppings.Array.data[2]
-      value: 2
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.data[0]
-      value: 3
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.data[1]
-      value: 1
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.data[2]
-      value: 2
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
