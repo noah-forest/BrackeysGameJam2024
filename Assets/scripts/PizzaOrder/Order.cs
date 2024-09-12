@@ -26,6 +26,14 @@ namespace PizzaOrder
             toppings.AddRange(recipe.toppings);
         }
 
+        public Order(string name, List<Pizza.Toppings> toppings, List<Pizza.Toppings> excludedToppings)
+        {
+            this.name = name;
+            this.excludedToppings = excludedToppings;
+            
+            toppings.AddRange(toppings);
+        }
+
         public string GetOrderString()
         {
             var excludedStr = "";
@@ -47,7 +55,7 @@ namespace PizzaOrder
         public float CalculatePizzaScore(Pizza pizza)
         {
             // plus 1 for being cooked
-            float bestScore = excludedToppings.Count + toppings.Count + 1;
+            float bestScore = toppings.Count + 1;
             
             completed = true;
             score = 0;
@@ -62,20 +70,16 @@ namespace PizzaOrder
                     score -= 1;
                 }
             }
-            foreach (var excluded in excludedToppings)
-            {
-                if (recipe.toppings.Contains(excluded))
-                {
-                    score -= 1;
-                }
-            }
-
+            
             if (pizza.IsBurned() || !pizza.IsCooked())
             {
                 score -= 1;
+            } else if (pizza.IsCooked())
+            {
+                score += 1;
             }
             
-            return Mathf.Clamp(score, 0, bestScore);
+            return (Mathf.Clamp(score, 0, bestScore) / bestScore) * 100;
         }
 
         public void CompleteOrder(Pizza pizza)

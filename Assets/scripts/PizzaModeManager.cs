@@ -42,6 +42,8 @@ public class PizzaModeManager : MonoBehaviour
             var pizza = pizzaBox.GetPizzaInBox();
             Order order = pizzaBox.GetOrder();
             var score = order.CalculatePizzaScore(pizza);
+
+            Debug.Log(score);
             order.CompleteOrder(pizza);
             OrderManager.RemoveOrder(order);
             
