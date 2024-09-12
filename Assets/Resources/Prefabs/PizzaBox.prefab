@@ -517,6 +517,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Order'
   isGrabbed: 0
   onRelease:
     m_PersistentCalls:

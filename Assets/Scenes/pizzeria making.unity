@@ -7989,18 +7989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pizzaBoxPrefab: {fileID: 4783555659747945958, guid: 1128c4e47724b4349947fda925668476,
     type: 3}
-  currentOrder:
-    onOrderCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    name: 
-    recipe:
-      name: 
-      toppings: 
-    excludedToppings: 
-    toppings: 
-    completed: 0
-    score: 0
 --- !u!23 &162681210
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11603,7 +11591,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
-  displayText: 
+  displayText: '[LMB] Grab Sausage'
   grabbablePrefab: {fileID: 3565088834398689190, guid: a345bda607b194345996e91f427fcf0d,
     type: 3}
 --- !u!1 &233528425
@@ -19725,18 +19713,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pizzaBoxPrefab: {fileID: 4783555659747945958, guid: 1128c4e47724b4349947fda925668476,
     type: 3}
-  currentOrder:
-    onOrderCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    name: 
-    recipe:
-      name: 
-      toppings: 
-    excludedToppings: 
-    toppings: 
-    completed: 0
-    score: 0
 --- !u!23 &409210456
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47692,7 +47668,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   HoverDisplay: {fileID: 0}
-  displayText: 
+  displayText: '[LMB] Place'
 --- !u!114 &858082041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56463,7 +56439,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
-  displayText: 
+  displayText: '[LMB] Grab Dough'
   grabbablePrefab: {fileID: 9075645069050556250, guid: f072b2724a3562e49b124d7559b32811,
     type: 3}
 --- !u!65 &1014095041
@@ -63183,7 +63159,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
-  displayText: 
+  displayText: '[LMB] Grab Tomato'
   grabbablePrefab: {fileID: 1761893298857588491, guid: 52a65215e309b924aaaf465a4d08cc18,
     type: 3}
 --- !u!65 &1157662381
@@ -64917,18 +64893,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pizzaBoxPrefab: {fileID: 4783555659747945958, guid: 1128c4e47724b4349947fda925668476,
     type: 3}
-  currentOrder:
-    onOrderCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    name: 
-    recipe:
-      name: 
-      toppings: 
-    excludedToppings: 
-    toppings: 
-    completed: 0
-    score: 0
 --- !u!1 &1194874332
 GameObject:
   m_ObjectHideFlags: 0
@@ -74401,7 +74365,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
-  displayText: 
+  displayText: '[LMB] Grab Cheese'
   grabbablePrefab: {fileID: 3565088834398689190, guid: 316a5778c6bdbc34388613b05b386402,
     type: 3}
 --- !u!65 &1364411074
@@ -89891,7 +89855,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
-  displayText: 
+  displayText: '[LMB] Grab Pepperoni'
   grabbablePrefab: {fileID: 3565088834398689190, guid: 38f74ffb57579ba4286e4cb547672681,
     type: 3}
 --- !u!1 &1693661371
@@ -111524,18 +111488,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pizzaBoxPrefab: {fileID: 4783555659747945958, guid: 1128c4e47724b4349947fda925668476,
     type: 3}
-  currentOrder:
-    onOrderCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    name: 
-    recipe:
-      name: 
-      toppings: 
-    excludedToppings: 
-    toppings: 
-    completed: 0
-    score: 0
 --- !u!23 &2134997850
 MeshRenderer:
   m_ObjectHideFlags: 0

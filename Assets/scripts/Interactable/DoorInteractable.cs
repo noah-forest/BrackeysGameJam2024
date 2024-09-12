@@ -19,6 +19,7 @@ public class DoorInteractable : PizzaModeInteractable
     public void StartGlow()
     {
         glowEffect.SetActive(true);
+        displayText = "[LMB] Start Delivery";
     }
 
 

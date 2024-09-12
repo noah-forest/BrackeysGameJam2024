@@ -45,6 +45,10 @@ public class PizzaFurnace : PizzaModeInteractable
             {
                 grabber.ReleaseCurrentlyGrabbed();
                 PlacePizza(pizza.gameObject);
+                
+                displayText = "[LMB] Grab Pizza";
+                gameObject.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
+                
                 GrabCurrentPizza(grabber);
             }
             currentPizza = pizza;
@@ -52,6 +56,9 @@ public class PizzaFurnace : PizzaModeInteractable
         else
         {
             GrabCurrentPizza(grabber);
+            
+            displayText = "[LMB] Cook Pizza";
+            gameObject.GetComponent<RaycastInteractor>().onLook.Invoke(gameObject, displayText);
         }
     }
 
@@ -122,6 +129,8 @@ public class PizzaFurnace : PizzaModeInteractable
 
             timerText.text = $"00:00";
             timerText.color = originalColor;
+            
+            displayText = "[LMB] Cook Pizza";
             
             cookingAudioPlayer.Stop();
             cookingParticles.Stop();
