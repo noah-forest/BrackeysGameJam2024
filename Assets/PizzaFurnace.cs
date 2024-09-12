@@ -5,6 +5,7 @@ using Grabbing;
 using Interact;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PizzaFurnace : PizzaModeInteractable
 {
@@ -12,7 +13,10 @@ public class PizzaFurnace : PizzaModeInteractable
     [SerializeField] ParticleSystem burningParticles;
 
     public TextMeshProUGUI timerText;
-    public AudioSource audioPlayer;
+    
+    [Header("audio stuff")]
+    public AudioSource dingAudioPlayer;
+    public AudioSource cookingAudioPlayer;
     
     public Vector3 pizzaPosition;
     private Pizza currentPizza;
@@ -70,7 +74,7 @@ public class PizzaFurnace : PizzaModeInteractable
             else if (timeInOven >= timeToCook && !currentPizza.IsCooked())
             {
                 currentPizza.Cook();
-                audioPlayer.PlayOneShot(audioPlayer.clip);
+                dingAudioPlayer.PlayOneShot(dingAudioPlayer.clip);
             }
         }
     }
@@ -101,6 +105,7 @@ public class PizzaFurnace : PizzaModeInteractable
         pizza.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pizza.GetComponent<Rigidbody>().isKinematic = true;
         cookingParticles.Play();
+        cookingAudioPlayer.Play();
     }
 
     void GrabCurrentPizza(Grabber grabber)
@@ -118,6 +123,7 @@ public class PizzaFurnace : PizzaModeInteractable
             timerText.text = $"00:00";
             timerText.color = originalColor;
             
+            cookingAudioPlayer.Stop();
             cookingParticles.Stop();
             burningParticles.Stop();
         }

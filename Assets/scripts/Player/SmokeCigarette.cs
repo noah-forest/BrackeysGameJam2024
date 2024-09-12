@@ -13,8 +13,14 @@ public class SmokeCigarette : MonoBehaviour
 
     public Cigarette cig;
     
+    private AudioSource audioSource;
+    public AudioClip inhaleSFX;
+    public AudioClip exhaleSFX;
+
+    public ParticleSystem exhaleParticles;
+    
     private float animCooldown = 1.5f;
-    private float animTime = 1.5f;
+    private float animTime = 2f;
     private float lastButtonTime = 0f;
 
     private bool canPlay;
@@ -22,6 +28,7 @@ public class SmokeCigarette : MonoBehaviour
     
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         leftArm.SetActive(false);
     }
 
@@ -67,6 +74,8 @@ public class SmokeCigarette : MonoBehaviour
         if (canPlay || canPlay && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl)))
         {
             armsAnim.Play("Exhale");
+            exhaleParticles.Play();
+            audioSource.PlayOneShot(exhaleSFX);
             StartCoroutine(StartCigParticles());
             canPlay = false;
         }
@@ -74,6 +83,7 @@ public class SmokeCigarette : MonoBehaviour
 
     IEnumerator Inhale()
     {
+        audioSource.PlayOneShot(inhaleSFX);
         armsAnim.Play("Inhale");
         yield return new WaitForSeconds(animTime);
         cig.Smoke();
