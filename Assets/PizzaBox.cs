@@ -57,6 +57,7 @@ public class PizzaBox : PizzaModeInteractable
                 
                 animator.SetBool("Open", false);
                 Invoke("EnableGrabbable", 0.1f);
+                Invoke("DisableAnimator", 1f);
             }
         }
     }
@@ -76,6 +77,11 @@ public class PizzaBox : PizzaModeInteractable
         return order;
     }
 
+    void DisableAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
+    }
+    
     void EnableGrabbable()
     {
         GetComponent<Rigidbody>().isKinematic = false;

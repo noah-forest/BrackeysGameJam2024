@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PizzaOrder
 {
     [Serializable]
     public class Order
     {
+        public UnityEvent onOrderCompleted = new UnityEvent();
         public string name;
         public Recipe recipe;
         public List<Pizza.Toppings> excludedToppings;
@@ -82,7 +84,7 @@ namespace PizzaOrder
             {
                 return;
             }
-
+            onOrderCompleted.Invoke();
             score = CalculatePizzaScore(pizza);
         }
         
