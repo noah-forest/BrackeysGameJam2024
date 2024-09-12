@@ -12,10 +12,10 @@ public class DoorInteractable : PizzaModeInteractable
     {
         modeManager = PizzaModeManager.singleton;
     }
-    public override bool CanInteract(GameObject gameObject)
+    public override bool CanInteract()
     {
         //Debug.Log(base.CanInteract(gameObject) && modeManager.ReadyToLeave());
-        return base.CanInteract(gameObject) && modeManager.ReadyToLeave();
+        return base.CanInteract() && modeManager.ReadyToLeave();
     }
 
     public override void Interact(GameObject gameObject)

@@ -4,7 +4,7 @@ using Interact;
 public interface IInteractable
 {
     public void Interact(GameObject gameObject);
-    public bool CanInteract(GameObject gameObject);
+    public bool CanInteract();
     /// <summary>
     /// Onlook should typically enable any custom visuals you want to show when the player is looking at this interactable
     /// </summary>

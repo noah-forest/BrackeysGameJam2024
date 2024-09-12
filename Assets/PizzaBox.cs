@@ -27,7 +27,7 @@ public class PizzaBox : PizzaModeInteractable
         animator.SetBool("Open", true);
     }
     
-    public override bool CanInteract(GameObject gameObject)
+    public override bool CanInteract()
     {
         return pizzaInBox == null;
     }
