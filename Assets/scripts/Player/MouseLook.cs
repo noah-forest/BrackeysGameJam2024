@@ -12,13 +12,15 @@ public class MouseLook : MonoBehaviour
     private float mouseX;
     private float mouseY;
 
+    private bool gamePaused;
+
     private GameManager _gameManager;
     
     private void Start()
     {
         _gameManager = GameManager.singleton;
-        
-        Cursor.lockState = CursorLockMode.Locked;
+
+        LockCursor();
         
         _gameManager.pauseGame.AddListener(UnLockCursor);
         _gameManager.resumeGame.AddListener(LockCursor);
@@ -26,6 +28,7 @@ public class MouseLook : MonoBehaviour
 
     private void Update()
     {
+        if (gamePaused) return;
         mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -36,13 +39,15 @@ public class MouseLook : MonoBehaviour
         playerBody.Rotate(Vector3.up * mouseX);
     }
 
-    private static void LockCursor()
+    private void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        gamePaused = false;
     }
 
-    private static void UnLockCursor()
+    private void UnLockCursor()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        gamePaused = true;
     }
 }
