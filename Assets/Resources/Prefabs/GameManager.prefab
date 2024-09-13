@@ -1527,8 +1527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000091552734, y: 43}
-  m_SizeDelta: {x: 0.00012207, y: -222.0112}
+  m_AnchoredPosition: {x: 10.8812, y: 51.58443}
+  m_SizeDelta: {x: 21.7626, y: -238.8208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3430058266451376758
 CanvasRenderer:
@@ -1562,12 +1562,13 @@ MonoBehaviour:
 
 
     Your job is to make
-    and deliver our loyal customers some of Joe''s classic pizzas. Make sure to stick
-    to the recipes!
+    and deliver our loyal customers some of Joe''s classic pizzas. Be sure to look
+    at the menu and stick to the recipes for a good score!
 
 
-    We will evaluate you at the end of each day, and if you
-    didnt make enough money, you will be terminated.
+    We will evaluate
+    you at the end of each day, and if you didn''t deliver enough pizzas, we''ll
+    have to let you go.
 
 
     Good luck out there!'
@@ -1598,8 +1599,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.8
-  m_fontSizeBase: 40.8
+  m_fontSize: 36.87
+  m_fontSizeBase: 36.87
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3569,8 +3570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000091552734, y: 43}
-  m_SizeDelta: {x: 0.00012207, y: -222.0112}
+  m_AnchoredPosition: {x: 10.961914, y: 51.404816}
+  m_SizeDelta: {x: 21.7626, y: -238.8208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1996088288946496427
 CanvasRenderer:
@@ -3604,12 +3605,13 @@ MonoBehaviour:
 
 
     Your job is to make
-    and deliver our loyal customers some of Joe''s classic pizzas. Make sure to stick
-    to the recipes!
+    and deliver our loyal customers some of Joe''s classic pizzas. Be sure to look
+    at the menu and stick to the recipes for a good score!
 
 
-    We will evaluate you at the end of each day, and if you
-    didnt make enough money, you will be terminated.
+    We will evaluate
+    you at the end of each day, and if you didn''t deliver enough pizzas, we''ll
+    have to let you go.
 
 
     Good luck out there!'
@@ -3640,8 +3642,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.8
-  m_fontSizeBase: 40.8
+  m_fontSize: 36.87
+  m_fontSizeBase: 36.87
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
