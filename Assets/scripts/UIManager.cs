@@ -53,6 +53,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == gameManager.mainSceneName) return;
+        if (SceneManager.GetActiveScene().name == gameManager.endOfDayScene) return;
         if (tutorialOpen) return;
         
         if (Input.GetKeyDown(KeyCode.Escape))

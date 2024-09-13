@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
+using PizzaOrder;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -36,13 +34,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public uint pizzaCount;
 
-    public string mainSceneName;
-    [SerializeField] private string endOfDayScene;
+    public string mainSceneName; 
+    public string endOfDayScene;
     [SerializeField] string pizzaSceneName;
     [SerializeField] string carSceneName;
     [SerializeField] AudioSource ambiancePlayer;
     public UnityEvent<int> dayChanged;
     int _day;
+    private int _quota;
+    public UnityEvent<int> quotaChanged;
 
     public bool enableTutorial;
     
@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UnityEvent carModeInit;
     [HideInInspector] public UnityEvent pizzaModeInit;
     
+    public List<Order> completedOrders = new();
+    
     public int Day
     {
         get { return _day; }
@@ -62,6 +64,16 @@ public class GameManager : MonoBehaviour
             _day = value;
             Debug.Log("[GAME MANAGER]: Current Day: " + _day);
             dayChanged.Invoke(_day);
+        }
+    }
+
+    public int Quota
+    {
+        get { return _quota; }
+        set
+        {
+            _quota = value;
+            quotaChanged.Invoke(_quota);
         }
     }
 
@@ -128,6 +140,11 @@ public class GameManager : MonoBehaviour
     public void LoadPizzaScene()
     {
         SceneManager.LoadScene(pizzaSceneName);
+    }
+
+    public void LoadDayOver()
+    {
+        SceneManager.LoadScene(endOfDayScene);
     }
     public void LoadMenuScene()
     {

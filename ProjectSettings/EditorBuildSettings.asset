@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/map making.unity
     guid: 99fbb92e93475544f9fa4ab7c51cadd0
+  - enabled: 1
+    path: Assets/Scenes/endOfDay.unity
+    guid: 38a6c957c8bd4084e8131f91146bc8b6
   m_configObjects: {}

@@ -66,7 +66,6 @@ public class PizzaModeManager : MonoBehaviour
     [SerializeField][Range(1, 120)] float maxOrdertime;
     float timeStamp;
 
-
     [Serializable]
     struct stupid
     {
@@ -141,6 +140,7 @@ public class PizzaModeManager : MonoBehaviour
             var pizza = pizzaBox.GetPizzaInBox();
             Order order = pizzaBox.GetOrder();
             order.CompleteOrder(pizza);
+            gameManager.completedOrders.Add(order);
             OrderManager.RemoveOrder(order);
         }
     }

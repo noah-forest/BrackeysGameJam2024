@@ -169,7 +169,7 @@ public class CarModeManager : MonoBehaviour
     IEnumerator StartPizza()
     {
         yield return new WaitForSeconds(2);
-        gameManager.LoadPizzaScene();
+        gameManager.LoadDayOver();
     }
     IEnumerator SetHomeBase() // this exists to prevent frame issue/ occasioan instant scene change on last delivery
     {
