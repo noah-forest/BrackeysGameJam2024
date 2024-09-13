@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/endOfDay.unity
     guid: 38a6c957c8bd4084e8131f91146bc8b6
+  - enabled: 1
+    path: Assets/Scenes/gameEnd.unity
+    guid: ffe6f54712c995447bdab22f7d00dace
   m_configObjects: {}

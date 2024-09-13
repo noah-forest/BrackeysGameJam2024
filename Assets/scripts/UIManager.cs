@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == gameManager.mainSceneName) return;
         if (SceneManager.GetActiveScene().name == gameManager.endOfDayScene) return;
+        if (SceneManager.GetActiveScene().name == gameManager.endGameScene) return;
         if (tutorialOpen) return;
         
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -92,11 +93,16 @@ public class UIManager : MonoBehaviour
         if (gameIsPaused)
         {
             openPauseMenu = false;
+            if (SceneManager.GetActiveScene().name == gameManager.carSceneName)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
             gameManager.resumeGame.Invoke();
         }
         else
         {
             openPauseMenu = true;
+            Cursor.lockState = CursorLockMode.Confined;
             gameManager.pauseGame.Invoke();
         }
     }

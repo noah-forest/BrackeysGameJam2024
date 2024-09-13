@@ -157,7 +157,9 @@ public class CarModeManager : MonoBehaviour
             {
                 possibleRoads.AddRange(goalSpawners);
             }
-            while (!TryGenerateNextGoal()) ;
+            while (!TryGenerateNextGoal())
+            {
+            }
         }
         else
         {
@@ -170,8 +172,15 @@ public class CarModeManager : MonoBehaviour
     
     IEnumerator StartPizza()
     {
-        yield return new WaitForSeconds(2);
-        gameManager.LoadDayOver();
+        yield return new WaitForSeconds(1);
+        if (gameManager.victory)
+        {
+            gameManager.LoadEndGame();
+        }
+        else
+        {
+            gameManager.LoadDayOver();
+        }
     }
     IEnumerator SetHomeBase() // this exists to prevent frame issue/ occasioan instant scene change on last delivery
     {

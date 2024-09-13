@@ -37,8 +37,9 @@ public class GameManager : MonoBehaviour
 
     public string mainSceneName; 
     public string endOfDayScene;
+    public string endGameScene;
     [SerializeField] string pizzaSceneName;
-    [SerializeField] string carSceneName;
+    public string carSceneName;
     [SerializeField] AudioSource ambiancePlayer;
     public UnityEvent<int> dayChanged;
     int _day;
@@ -56,6 +57,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UnityEvent pizzaModeInit;
     
     public List<Order> OrdersToDeliver = new();
+
+    public int daysNeededToWin = 5;
+    public bool victory;
     
     public int Day
     {
@@ -82,8 +86,16 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        
+        dayChanged.AddListener(CheckWinCondition);
     }
 
+    private void CheckWinCondition(int day)
+    {
+        if (day < daysNeededToWin) return;
+        victory = true;
+    }
+    
     public void UnscoreNextPizza()
     {
         Debug.Log($"UNSCORING PIZZA: {OrdersToDeliver.Count}");
@@ -185,6 +197,11 @@ public class GameManager : MonoBehaviour
     public void LoadDayOver()
     {
         StartCoroutine(ChangeScene(endOfDayScene));
+    }
+
+    public void LoadEndGame()
+    {
+        StartCoroutine(ChangeScene(endGameScene));
     }
     public void LoadMenuScene()
     {

@@ -17,7 +17,8 @@ public class FadeInOut : MonoBehaviour
         {
             if (!(canvasGroup.alpha < 1)) return;
             canvasGroup.blocksRaycasts = true;
-            canvasGroup.alpha += fadeSpeed * Time.deltaTime;
+            if(Time.timeScale == 0) canvasGroup.alpha += fadeSpeed * Time.fixedUnscaledDeltaTime;
+            else canvasGroup.alpha += fadeSpeed * Time.deltaTime;
             if (canvasGroup.alpha >= 1)
             {
                 fadeIn = false;
@@ -28,7 +29,8 @@ public class FadeInOut : MonoBehaviour
         if (!fadeOut) return;
         if (!(canvasGroup.alpha >= 0)) return;
         canvasGroup.blocksRaycasts = true;
-        canvasGroup.alpha -= fadeSpeed * Time.deltaTime;
+        if(Time.timeScale == 0) canvasGroup.alpha -= fadeSpeed * Time.fixedUnscaledDeltaTime;
+        else canvasGroup.alpha -= fadeSpeed * Time.deltaTime;
         if (canvasGroup.alpha <= 0.01f)
         {
             fadeOut = false;
