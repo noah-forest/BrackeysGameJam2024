@@ -21,6 +21,8 @@ public class CarController : MonoBehaviour
     [SerializeField] float unstickForce;
     [SerializeField] GameObject superUnstickPrefab;
 
+    [SerializeField] Transform[] steerJets;
+    [SerializeField] float steerJetPower;
 
     [Space(20)]
     //[Header("CAR SETUP")]
@@ -45,6 +47,9 @@ public class CarController : MonoBehaviour
     public int handbrakeDriftMultiplier = 5; // How much grip the car loses when the user hit the handbrake.
     [Range(0, 1)]
     [SerializeField] float flatDrift = 1;
+    [Range(0, 10)]
+    [SerializeField] float maxDriftTime = 1;
+    float timeSpentBreaking;
     [Space(10)]
 
     [Space(20)]
@@ -83,8 +88,6 @@ public class CarController : MonoBehaviour
     float decelTimeStamp;
     float decelInterval = 0.0f;
     bool recoveringTraction;
-    float recoverTimeStamp;
-    float recoverInterval = 0.1f;
     float carSoundTimeStamp;
     float carSoundInterval = 0.1f;
     Vector2 xzVel = Vector2.zero;
@@ -185,7 +188,10 @@ public class CarController : MonoBehaviour
         {
             RecoverTraction();
         }
-
+        if(FootOnBreak)
+        {
+            timeSpentBreaking += Time.deltaTime;
+        }
 
         Gas();
         Steer();
@@ -210,9 +216,18 @@ public class CarController : MonoBehaviour
             RecoverTraction();
         }
         FootOnTurbo = Input.GetKey(KeyCode.LeftShift);
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            timeSpentBreaking = 0;
+        }
 
 
+        UnStick();
 
+    }
+
+    void UnStick()
+    {
         if (Input.GetMouseButton(0))
         {
             float xPos = Random.Range(mainCollider.bounds.min.x, mainCollider.bounds.max.x);
@@ -238,8 +253,8 @@ public class CarController : MonoBehaviour
         {
             Instantiate(superUnstickPrefab, transform.position, Quaternion.identity);
         }
-
     }
+
     void Steer()
     {
         //SteerWheel(wheels[FWL]);
@@ -271,6 +286,8 @@ public class CarController : MonoBehaviour
         Debug.Log($"[TurnLeft] SteeringAxis: {steeringAxis} : SteeringAngle: {steeringAngle}");
         wheels[FWL].steerAngle = Mathf.Lerp(wheels[FWL].steerAngle, steeringAngle, Time.deltaTime * steeringSpeed * 10);
         wheels[FWR].steerAngle = Mathf.Lerp(wheels[FWR].steerAngle, steeringAngle, Time.deltaTime * steeringSpeed * 10);
+
+        carBody.AddForceAtPosition(steerJetPower * steerJets[0].forward, steerJets[0].position);
     }
 
     //The following method turns the front car wheels to the right. The speed of this movement will depend on the steeringSpeed variable.
@@ -284,6 +301,8 @@ public class CarController : MonoBehaviour
         var steeringAngle = steeringAxis * maxSteeringAngle;
         wheels[FWL].steerAngle = Mathf.Lerp(wheels[FWL].steerAngle, steeringAngle, steeringSpeed);
         wheels[FWR].steerAngle = Mathf.Lerp(wheels[FWR].steerAngle, steeringAngle, steeringSpeed);
+
+        carBody.AddForceAtPosition(steerJetPower * steerJets[1].forward, steerJets[1].position);
     }
 
     void SteerWheel(WheelCollider wheel)
@@ -485,6 +504,14 @@ public class CarController : MonoBehaviour
     public void Handbrake()
     {
         if (!FootOnBreak) return;
+        if(timeSpentBreaking > maxDriftTime)
+        {
+            deceleratingCar = true;
+            DecelerateCar();
+            recoveringTraction = true;
+            RecoverTraction();
+            return;
+        }
         //CancelInvoke("DecelerateCar");
         deceleratingCar = false;
         //CancelInvoke("RecoverTraction");

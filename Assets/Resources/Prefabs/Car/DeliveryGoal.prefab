@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundingBox: {fileID: 1351138500989490733}
-  timeToClear: 2.5
+  timeToClear: 2
   clearEffect: {fileID: 2345811393223776307, guid: a4873bf011ee96b4788ac493da48e615,
     type: 3}
   clearingVisual: {fileID: 4731071371749115202}
