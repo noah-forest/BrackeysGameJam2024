@@ -37,8 +37,30 @@ public class EndOfDayUI : MonoBehaviour
             var orderUI = Instantiate(completedOrder, content);
             var uiInfo = orderUI.GetComponent<CompletedOrderUI>();
 
-            uiInfo.orderName.text = order.name;
-            uiInfo.orderScore.text = $"{order.score}";
+            if (!order.validForScoring)
+            {
+                uiInfo.orderName.text = $"{order.name} (Lost)";
+                uiInfo.orderName.color = new Color32(250, 143, 143, 255);
+            }
+            else
+            {
+                uiInfo.orderName.text = order.name;
+            }
+            
+            uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
+
+            if (order.score <= 75)
+            {
+                uiInfo.orderScore.color = new Color32(255, 255, 143, 255);
+            } else if (order.score < 50)
+            {
+                uiInfo.orderScore.color = new Color32(250, 143, 143, 255);
+            }
+            else
+            {
+                uiInfo.orderScore.color = new Color32(140, 255, 140, 255);
+            }
+
             uiInfo.thumbsUp.SetActive(order.score >= 100);
         }
     }
