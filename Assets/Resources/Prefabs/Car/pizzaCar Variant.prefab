@@ -16289,11 +16289,12 @@ MonoBehaviour:
   accelerationMultiplier: 20
   maxSteeringAngle: 60
   steeringSpeed: 2
-  brakeForce: 602
+  brakeForce: 300
   decelerationMultiplier: 1
   handbrakeDriftMultiplier: 19
   flatDrift: 1
   maxDriftTime: 0.3
+  velocityEffectOnSteerJets: 3
   RLWParticleSystem: {fileID: 581944555648164636}
   RRWParticleSystem: {fileID: 7071582302485234620}
   RLWTireSkid: {fileID: 2462547957510196007}
