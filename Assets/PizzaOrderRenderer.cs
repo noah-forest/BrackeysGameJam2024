@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using PizzaOrder;
 using TMPro;
+using UnityEngine.Events;
+
 public class PizzaOrderRenderer : MonoBehaviour
 {
+    public UnityEvent onOrderAdded = new UnityEvent();
     public GameObject orderChit;
 
     private Dictionary<Order, GameObject> orderChits = new Dictionary<Order, GameObject>();
@@ -18,6 +21,7 @@ public class PizzaOrderRenderer : MonoBehaviour
         orderChitInstance.GetComponentInChildren<TextMeshProUGUI>().text = orderText;
         
         orderChits.Add(order, orderChitInstance);
+        onOrderAdded.Invoke();
     }
 
     void RemoveOrder(Order order)
