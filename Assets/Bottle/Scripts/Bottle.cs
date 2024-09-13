@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bottle : MonoBehaviour
 {
     [SerializeField] GameObject brokenBottlePrefab;
-    
+    [SerializeField] float explodeSpeed;
     void Update() // just for testing
     {
         if(Input.GetKeyDown(KeyCode.K))
@@ -19,5 +19,13 @@ public class Bottle : MonoBehaviour
         GameObject brokenBottle = Instantiate(brokenBottlePrefab, this.transform.position, Quaternion.identity);
         brokenBottle.GetComponent<BrokenBottle>().RandomVelocities();
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.relativeVelocity.magnitude > explodeSpeed)
+        {
+            Explode();
+        }
     }
 }

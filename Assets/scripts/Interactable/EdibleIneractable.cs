@@ -5,16 +5,20 @@ using Interact;
 using Grabbing;
 public class EdibleIneractable : Grabbable
 {
-    [SerializeField] protected int usesRemaining;
+    [SerializeField] protected int maxUses;
+    int uses;
+    [SerializeField] Rigidbody rb;
 
     public virtual void DeductUse()
     {
-        --usesRemaining;
+        if (!CanEat()) return;
+        ++uses;
+        rb.mass /= uses;
     }
 
     public virtual bool CanEat()
     {
-        if (usesRemaining > 0) return true;
+        if (uses < maxUses) return true;
         return false;
     }
 }

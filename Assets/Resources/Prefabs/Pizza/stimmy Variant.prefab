@@ -1050,7 +1050,7 @@ MonoBehaviour:
       m_Calls: []
   canGrab: 1
   handMustBeEmpty: 0
-  offset: {x: 0.02, y: 0, z: 0}
+  offset: {x: 0.16, y: 0.03, z: -0.15}
   rotationOffset: {x: -60, y: -20, z: 0}
   tag: 
 --- !u!4 &5216433676146362117 stripped

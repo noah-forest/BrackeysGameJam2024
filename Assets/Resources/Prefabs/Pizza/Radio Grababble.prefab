@@ -142,8 +142,8 @@ MonoBehaviour:
         m_CallState: 2
   canGrab: 1
   handMustBeEmpty: 1
-  offset: {x: -0.023, y: 0.025, z: -0.06}
-  rotationOffset: {x: -20, y: 0, z: 0}
+  offset: {x: -0.023, y: 0.025, z: -0.1}
+  rotationOffset: {x: -20, y: -10, z: 0}
   tag: 
 --- !u!54 &927913325069334944
 Rigidbody:
