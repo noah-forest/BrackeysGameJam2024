@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class Wind : MonoBehaviour
 {
     public UnityEvent onSucked;
-    public Vector3 forceDirection;
     public float force;
     public bool shrink = false;
     public float shrinkSpeed = 1f;
@@ -30,8 +29,7 @@ public class Wind : MonoBehaviour
         {
             if (hit.collider.gameObject == rb.gameObject)
             {
-                var t = this.transform.position + forceDirection - rb.transform.position;
-                rb.AddForce((forceDirection + t).normalized * force, ForceMode.Acceleration);
+                rb.AddForce(transform.forward * force, ForceMode.Acceleration);
                 
                 if (shrink)
                 {
@@ -49,9 +47,9 @@ public class Wind : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         var transPosition = transform.position;
-        var normDir = forceDirection.normalized;
+        var normDir = transform.forward;
         Gizmos.DrawLine(transform.position, transPosition + normDir);
         Gizmos.DrawCube(transform.position + normDir, Vector3.one * 0.1f);
-        Gizmos.DrawCube(transform.position + forceDirection, Vector3.one * 0.1f);
+        Gizmos.DrawCube(transform.position + transform.forward * force, Vector3.one * 0.1f);
     }
 }
