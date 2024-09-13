@@ -34,7 +34,6 @@ public class VaccumProp : PizzaModeInteractable
         base.Interact(gameObject);
         state += 1;
         if(((int)state) > 2) { state = VacState.off; }
-        Debug.Log("Vaccume Sate: " + state.ToString()) ;
         switch(state)
         {
             case VacState.off:

@@ -30,7 +30,7 @@ public class Drinker : MonoBehaviour
 
     public void AlterEdible()
     {
-        drink.DeductUse();
+       if(drink) drink.DeductUse();
     }
 
     public void PlaySip()
