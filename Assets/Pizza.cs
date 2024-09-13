@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class PizzaMaterial
 {
+    public Pizza.Toppings topping;
     public Material rawMaterial;
     public Material cookedMaterial;
 }
@@ -25,7 +26,9 @@ public class Pizza : MonoBehaviour
         Pepperoni,
         Cheese,
         Sauce,
-        Sausage
+        Sausage,
+        Pineapple,
+        Mushroom
     }
 
     List<Toppings> toppings = new List<Toppings>();

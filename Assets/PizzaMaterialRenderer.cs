@@ -5,11 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Pizza))]
 public class PizzaMaterialRenderer : MonoBehaviour
 {
-    public PizzaMaterial doughMaterial;
-    public PizzaMaterial sauceMaterial;
-    public PizzaMaterial cheeseMaterial;
-    public PizzaMaterial pepperoniMaterial;
-    public PizzaMaterial sausageMaterial;
+    public PizzaMaterial[] materials;
+    
+    public Material rawDoughMaterial;
+    public Material cookedDoughMaterial;
+    // public PizzaMaterial sauceMaterial;
+    // public PizzaMaterial cheeseMaterial;
+    // public PizzaMaterial pepperoniMaterial;
+    // public PizzaMaterial sausageMaterial;
 
     public Material burntDoughMaterial;
     private Renderer renderer;
@@ -24,6 +27,18 @@ public class PizzaMaterialRenderer : MonoBehaviour
         pizza.onCooked.AddListener(UpdateMaterial);
         pizza.onBurned.AddListener(() => renderer.materials = new Material[] { burntDoughMaterial, burntDoughMaterial });
         UpdateMaterial();
+    }
+    
+    public Material GetDoughMaterial()
+    {
+        if (pizza.IsCooked())
+        {
+            return cookedDoughMaterial;
+        }
+        else
+        {
+            return rawDoughMaterial;
+        }
     }
 
     public Material GetMaterial(PizzaMaterial material)
@@ -40,32 +55,51 @@ public class PizzaMaterialRenderer : MonoBehaviour
 
     public void UpdateMaterial()
     {
-        List<Material> materials = new List<Material>();
-        materials.Add(GetMaterial(doughMaterial));
-        materials.Add(GetMaterial(doughMaterial));
-
-        if (pizza.HasTopping(Pizza.Toppings.Sauce))
+        List<Material> materialsToPlace = new List<Material>();
+        materialsToPlace.Add(GetDoughMaterial());
+        materialsToPlace.Add(GetDoughMaterial());
+        
+        foreach (var material in materials)
         {
-            materials.Add(GetMaterial(sauceMaterial));
+            if (pizza.HasTopping(material.topping))
+            {
+                materialsToPlace.Add(GetMaterial(material));
+            }
         }
-
-        if (pizza.HasTopping(Pizza.Toppings.Cheese))
-        {
-            materials.Add(GetMaterial(cheeseMaterial));
-        }
-
-        if (pizza.HasTopping(Pizza.Toppings.Pepperoni))
-        {
-            materials.Add(GetMaterial(pepperoniMaterial));
-        }
-
-        if (pizza.HasTopping(Pizza.Toppings.Sausage))
-        {
-            materials.Add(GetMaterial(sausageMaterial));
-        }
+        //
+        // foreach (var topping in pizza.GetToppings())
+        // {
+        //     foreach (var material in materials)
+        //     {
+        //         if (material.topping == topping)
+        //         {
+        //             materialsToPlace.Add(GetMaterial(material));
+        //         }
+        //     }
+        // }
+        //
+        // if (pizza.HasTopping(Pizza.Toppings.Sauce))
+        // {
+        //     materialsToPlace.Add(GetMaterial(sauceMaterial));
+        // }
+        //
+        // if (pizza.HasTopping(Pizza.Toppings.Cheese))
+        // {
+        //     materialsToPlace.Add(GetMaterial(cheeseMaterial));
+        // }
+        //
+        // if (pizza.HasTopping(Pizza.Toppings.Pepperoni))
+        // {
+        //     materialsToPlace.Add(GetMaterial(pepperoniMaterial));
+        // }
+        //
+        // if (pizza.HasTopping(Pizza.Toppings.Sausage))
+        // {
+        //     materialsToPlace.Add(GetMaterial(sausageMaterial));
+        // }
 
         //Debug.Log(materials);
 
-        renderer.materials = materials.ToArray();
+        renderer.materials = materialsToPlace.ToArray();
     }
 }

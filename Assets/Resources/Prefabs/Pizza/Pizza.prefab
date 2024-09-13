@@ -213,21 +213,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcc96d1fca7ed64b845116e91d27073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doughMaterial:
-    rawMaterial: {fileID: 2100000, guid: 81b5effafd0c1c34eb2a271f0cd03c0f, type: 2}
-    cookedMaterial: {fileID: 2100000, guid: 5396eac2d89ab3247a3451bad8aea6fc, type: 2}
-  sauceMaterial:
-    rawMaterial: {fileID: 2100000, guid: cbe3991bf68b7224abe7da8ed7c602a0, type: 2}
-    cookedMaterial: {fileID: 2100000, guid: ddffac316937bda4fac806919b70fe72, type: 2}
-  cheeseMaterial:
-    rawMaterial: {fileID: 2100000, guid: 45de896be1a277b43b018983e77458a3, type: 2}
-    cookedMaterial: {fileID: 2100000, guid: 972cfdb0bab979e42b49932b61fde14a, type: 2}
-  pepperoniMaterial:
+  materials:
+  - topping: 0
     rawMaterial: {fileID: 2100000, guid: f72f52fddf8749f478c469c4c54a4d99, type: 2}
     cookedMaterial: {fileID: 2100000, guid: aa3de75b4910e604d88715468f08932f, type: 2}
-  sausageMaterial:
+  - topping: 1
+    rawMaterial: {fileID: 2100000, guid: 45de896be1a277b43b018983e77458a3, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: 972cfdb0bab979e42b49932b61fde14a, type: 2}
+  - topping: 2
+    rawMaterial: {fileID: 2100000, guid: cbe3991bf68b7224abe7da8ed7c602a0, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: ddffac316937bda4fac806919b70fe72, type: 2}
+  - topping: 3
     rawMaterial: {fileID: 2100000, guid: 39df174a05ea7ce468d49f07beb5030c, type: 2}
     cookedMaterial: {fileID: 2100000, guid: f8c171a1dd725c6469646a96fdcddb74, type: 2}
+  - topping: 4
+    rawMaterial: {fileID: 2100000, guid: 3b1459025a8b6a74f9c8ecb4778f51ad, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: 752e09ed0350f8f42845fe8964e77c24, type: 2}
+  - topping: 4
+    rawMaterial: {fileID: 2100000, guid: 3b1459025a8b6a74f9c8ecb4778f51ad, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: 752e09ed0350f8f42845fe8964e77c24, type: 2}
+  - topping: 5
+    rawMaterial: {fileID: 2100000, guid: 6d791ab292eb78e42ad23cace91f03c9, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: 4679f2fed9950ee40b71a0b247098960, type: 2}
+  rawDoughMaterial: {fileID: 2100000, guid: 81b5effafd0c1c34eb2a271f0cd03c0f, type: 2}
+  cookedDoughMaterial: {fileID: 2100000, guid: 5396eac2d89ab3247a3451bad8aea6fc, type: 2}
   burntDoughMaterial: {fileID: 2100000, guid: e975044b9439e0d498c0b088c0bec072, type: 2}
 --- !u!82 &8370380974250211508
 AudioSource:
