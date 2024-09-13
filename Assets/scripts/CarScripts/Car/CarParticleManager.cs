@@ -6,25 +6,32 @@ public class CarParticleManager : MonoBehaviour
 {
 
     [SerializeField] GameObject[] turboVisuals;
-    [SerializeField] GameObject[] smearVisuals;
-    [SerializeField] GameObject[] breakVisuals;
+    [SerializeField] ParticleSystem hurtParticles;
+    [SerializeField] CarMaster car;
+    [SerializeField] int lastPizzaCount;
 
-    [SerializeField] CarController car;
+    private void Start()
+    {
+        lastPizzaCount = (int)car.modeManager.PizzasToDeliver - 1;
+        car.health.carDamaged.AddListener(PlayPizzaParticles);
 
+    }
 
     private void Update()
     {
-        turboVisuals[0].SetActive(car.FootOnTurbo && car.motorAxis > 0);
-        turboVisuals[1].SetActive(car.FootOnTurbo && car.motorAxis < 0);
-
-        //foreach(GameObject b in breakVisuals){
-        //    b.SetActive(car.FootOnBreak);
-        //}
-
-        //for(int i = 0; i < smearVisuals.Length; i++) 
-        //{
-        //    smearVisuals[i].SetActive((i <= 1 && car.motorAxis > 0) || (i > 1 && car.motorAxis < 0));
-        //}
+        turboVisuals[0].SetActive(car.controller.FootOnTurbo && car.controller.VerticalInput > 0);
+        turboVisuals[1].SetActive(car.controller.FootOnTurbo && car.controller.VerticalInput < 0);
         
+    }
+
+
+    public void PlayPizzaParticles()
+    {
+        Debug.Log("[PIZZA PARTICLE]"+lastPizzaCount);
+        if (lastPizzaCount > 0)
+        {
+            hurtParticles.Play();
+        }
+        lastPizzaCount--;
     }
 }
