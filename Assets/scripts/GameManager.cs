@@ -55,11 +55,19 @@ public class GameManager : MonoBehaviour
     
     [HideInInspector] public UnityEvent carModeInit;
     [HideInInspector] public UnityEvent pizzaModeInit;
+
+    [SerializeField] uint[] scoreRequiredToPass;
     
     public List<Order> OrdersToDeliver = new();
 
     public int daysNeededToWin = 5;
-    public bool victory;
+    public enum GameState
+    {
+        ongoing,
+        victory,
+        loss
+    }
+    public GameState gameState;
     
     public int Day
     {
@@ -86,15 +94,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
-        
-        dayChanged.AddListener(CheckWinCondition);
     }
 
-    private void CheckWinCondition(int day)
-    {
-        if (day < daysNeededToWin) return;
-        victory = true;
-    }
+    //private void CheckWinCondition(int day)
+    //{
+    //    if (day < daysNeededToWin) return;
+    //    gameState = GameState.victory;
+    //}
     
     public void UnscoreNextPizza()
     {
@@ -186,6 +192,48 @@ public class GameManager : MonoBehaviour
     {
         fade.FadeOut();
         yield return new WaitForSeconds(1f);
+    }
+
+    public void PostCarGame()
+    {
+
+        float totalScore = 0;
+
+        foreach(Order order in OrdersToDeliver)
+        {
+            if (order.validForScoring)
+            {
+                totalScore += order.score;
+            }
+        }
+
+        if(totalScore < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
+        {
+            gameState = GameState.loss;
+        }
+        else if(Day >= daysNeededToWin)
+        {
+            gameState = GameState.victory;
+        }
+        else
+        {
+            gameState = GameState.ongoing;
+        }
+
+
+
+        switch (gameState)
+        {
+            case GameState.ongoing:
+                LoadDayOver();
+                break;
+            case GameState.victory:
+                LoadEndGame();
+                break;
+            case GameState.loss:
+                LoadEndGame();
+                break;
+        }
     }
     
     #region SceneLoading

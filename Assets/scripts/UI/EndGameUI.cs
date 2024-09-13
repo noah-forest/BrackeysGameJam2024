@@ -19,7 +19,7 @@ public class EndGameUI : MonoBehaviour
 
 		Cursor.lockState = CursorLockMode.Confined;
 		
-		if (gameManager.victory)
+		if (gameManager.gameState == GameManager.GameState.victory)
 		{
 			// won
 			wonScreen.SetActive(true);

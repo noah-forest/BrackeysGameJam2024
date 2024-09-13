@@ -37,7 +37,6 @@ public class CarModeManager : MonoBehaviour
 
     List<BoxCollider> possibleRoads = new List<BoxCollider>();
 
-    [SerializeField] float deliveryReward;
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
     [HideInInspector] public UnityEvent<uint> pizzasChanged = new();
@@ -67,7 +66,6 @@ public class CarModeManager : MonoBehaviour
         if (PizzasToDeliver != 0)
         {
             PizzasToDeliver--;
-            moneyEarned = (float)System.Math.Round((double)(moneyEarned + deliveryReward), 2);
         }
         UpdateGoal();
     }
@@ -147,7 +145,7 @@ public class CarModeManager : MonoBehaviour
         if (atHomeBase)
         {
             Destroy(goalInstance.gameObject);
-            StartCoroutine(StartPizza());
+            StartCoroutine(StartNextScene());
             return;
         }
 
@@ -169,19 +167,13 @@ public class CarModeManager : MonoBehaviour
         }
         car.compass.currentGoal = goalInstance.transform;
     }
-    
-    IEnumerator StartPizza()
+
+    IEnumerator StartNextScene()
     {
-        yield return new WaitForSeconds(1);
-        if (gameManager.victory)
-        {
-            gameManager.LoadEndGame();
-        }
-        else
-        {
-            gameManager.LoadDayOver();
-        }
+        yield return new WaitForSeconds(1f);
+        gameManager.PostCarGame();
     }
+   
     IEnumerator SetHomeBase() // this exists to prevent frame issue/ occasioan instant scene change on last delivery
     {
         yield return new WaitForSeconds(0.1f);
