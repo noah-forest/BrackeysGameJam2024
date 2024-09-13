@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using PizzaOrder;
 using UnityEngine;
@@ -26,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     public PizzaModeManager pizzaManager;
     public CarModeManager carManager;
-
     public UIManager UIManager;
+    public FadeInOut fade;
     
     /// <summary>
     /// used to transfer the pizzas between the pizza and car modes
@@ -85,6 +86,8 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
+        StartCoroutine(fadeOutTransition());
+        
         if (LocateModeManager(scene))
         {
             InitializePizzaMode();
@@ -136,23 +139,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ChangeScene(string sceneName)
+    {
+        fade.FadeIn();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public IEnumerator fadeOutTransition()
+    {
+        fade.FadeOut();
+        yield return new WaitForSeconds(1f);
+    }
+    
     #region SceneLoading
     public void LoadPizzaScene()
     {
-        SceneManager.LoadScene(pizzaSceneName);
+        StartCoroutine(ChangeScene(pizzaSceneName));
     }
 
     public void LoadDayOver()
     {
-        SceneManager.LoadScene(endOfDayScene);
+        StartCoroutine(ChangeScene(endOfDayScene));
     }
     public void LoadMenuScene()
     {
-        SceneManager.LoadScene(mainSceneName);
+        StartCoroutine(ChangeScene(mainSceneName));
     }
     public void LoadCarScene()
     {
-        SceneManager.LoadScene(carSceneName);
+        StartCoroutine(ChangeScene(carSceneName));
     }
     #endregion SceneLoading
 }
