@@ -278,7 +278,7 @@ MonoBehaviour:
   quotaChanged:
     m_PersistentCalls:
       m_Calls: []
-  enableTutorial: 1
+  enableTutorial: 0
   pauseGame:
     m_PersistentCalls:
       m_Calls: []
