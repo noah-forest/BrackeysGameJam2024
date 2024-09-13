@@ -226,9 +226,15 @@ MonoBehaviour:
   - topping: 3
     rawMaterial: {fileID: 2100000, guid: 39df174a05ea7ce468d49f07beb5030c, type: 2}
     cookedMaterial: {fileID: 2100000, guid: f8c171a1dd725c6469646a96fdcddb74, type: 2}
+  - topping: 6
+    rawMaterial: {fileID: 2100000, guid: 762705300f8b7ba46a6bc6856f52fe98, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: d5c755ec9f09c3f49acdb85b95a7b9dd, type: 2}
   - topping: 4
     rawMaterial: {fileID: 2100000, guid: 3b1459025a8b6a74f9c8ecb4778f51ad, type: 2}
     cookedMaterial: {fileID: 2100000, guid: 752e09ed0350f8f42845fe8964e77c24, type: 2}
+  - topping: 7
+    rawMaterial: {fileID: 2100000, guid: 828cfe697ef8c1648a045eefb4723218, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: e00f669386c243c42a71e6d0bf7774a0, type: 2}
   - topping: 5
     rawMaterial: {fileID: 2100000, guid: 6d791ab292eb78e42ad23cace91f03c9, type: 2}
     cookedMaterial: {fileID: 2100000, guid: 4679f2fed9950ee40b71a0b247098960, type: 2}

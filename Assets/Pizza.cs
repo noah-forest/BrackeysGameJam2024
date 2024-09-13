@@ -28,7 +28,9 @@ public class Pizza : MonoBehaviour
         Sauce,
         Sausage,
         Pineapple,
-        Mushroom
+        Mushroom,
+        Pepper,
+        Olives
     }
 
     List<Toppings> toppings = new List<Toppings>();
