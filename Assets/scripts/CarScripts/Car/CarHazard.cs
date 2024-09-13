@@ -5,7 +5,6 @@ using UnityEngine.VFX;
 
 public abstract class CarHazard : MonoBehaviour, IInteractable
 {
-    CarController car;
 
     public abstract bool CanInteract(GameObject interactor);
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollowCar : MonoBehaviour
 {
 
-    [SerializeField] CarController car;
+    [SerializeField] CarMaster car;
     [SerializeField] bool mimicRotation = false;
     // Update is called once per frame
     void Update()
