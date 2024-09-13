@@ -76,6 +76,7 @@ public class CarModeManager : MonoBehaviour
         if (PizzasToDeliver != 0)
         {
             PizzasToDeliver--;
+            gameManager.UnscoreNextPizza();
             if(PizzasToDeliver == 0) UpdateGoal();
         }
     }
@@ -83,7 +84,7 @@ public class CarModeManager : MonoBehaviour
     private void Start()
     {
         possibleRoads.AddRange(goalSpawners);
-        Debug.Log($"[CAR MODE MANAGER][Start] Pizzas to Deliver : {PizzasToDeliver}");
+        //Debug.Log($"[CAR MODE MANAGER][Start] Pizzas to Deliver : {PizzasToDeliver}");
         UpdateGoal();
         car.health.carDamaged.AddListener(LosePizza);
         pizzasChanged.AddListener(LogPizzaCount);

@@ -32,7 +32,7 @@ public class EndOfDayUI : MonoBehaviour
         scrollRect.onValueChanged.AddListener(CheckIfScrolledToEnd);
         
         //create the UI objects
-        foreach (var order in gameManager.completedOrders)
+        foreach (var order in gameManager.OrdersToDeliver)
         {
             var orderUI = Instantiate(completedOrder, content);
             var uiInfo = orderUI.GetComponent<CompletedOrderUI>();

@@ -16,6 +16,7 @@ namespace PizzaOrder
         public List<Pizza.Toppings> toppings = new List<Pizza.Toppings>();
         bool completed = false;
         public float score;
+        public bool validForScoring = true;
 
         public Order(string name, Recipe recipe, List<Pizza.Toppings> excludedToppings)
         {

@@ -140,7 +140,7 @@ public class PizzaModeManager : MonoBehaviour
             var pizza = pizzaBox.GetPizzaInBox();
             Order order = pizzaBox.GetOrder();
             order.CompleteOrder(pizza);
-            gameManager.completedOrders.Add(order);
+            gameManager.OrdersToDeliver.Add(order);
             OrderManager.RemoveOrder(order);
         }
     }
