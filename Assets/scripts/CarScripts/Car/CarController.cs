@@ -43,6 +43,8 @@ public class CarController : MonoBehaviour
     public int decelerationMultiplier = 2; // How fast the car decelerates when the user is not using the throttle.
     [Range(1, 30)]
     public int handbrakeDriftMultiplier = 5; // How much grip the car loses when the user hit the handbrake.
+    [Range(0, 1)]
+    [SerializeField] float flatDrift = 1;
     [Space(10)]
 
     [Space(20)]
@@ -259,14 +261,16 @@ public class CarController : MonoBehaviour
 
     public void TurnLeft()
     {
+
         steeringAxis = steeringAxis - (Time.deltaTime * 10f * steeringSpeed);
         if (steeringAxis < -1f)
         {
             steeringAxis = -1f;
         }
         var steeringAngle = steeringAxis * maxSteeringAngle;
-        wheels[FWL].steerAngle = Mathf.Lerp(wheels[FWL].steerAngle, steeringAngle, steeringSpeed);
-        wheels[FWR].steerAngle = Mathf.Lerp(wheels[FWR].steerAngle, steeringAngle, steeringSpeed);
+        Debug.Log($"[TurnLeft] SteeringAxis: {steeringAxis} : SteeringAngle: {steeringAngle}");
+        wheels[FWL].steerAngle = Mathf.Lerp(wheels[FWL].steerAngle, steeringAngle, Time.deltaTime * steeringSpeed * 10);
+        wheels[FWR].steerAngle = Mathf.Lerp(wheels[FWR].steerAngle, steeringAngle, Time.deltaTime * steeringSpeed * 10);
     }
 
     //The following method turns the front car wheels to the right. The speed of this movement will depend on the steeringSpeed variable.
@@ -489,11 +493,11 @@ public class CarController : MonoBehaviour
         // place. This variable will start from 0 and will reach a top value of 1, which means that the maximum
         // drifting value has been reached. It will increase smoothly by using the variable Time.deltaTime.
         driftingAxis = driftingAxis + (Time.deltaTime);
-        float secureStartingPoint = driftingAxis * frictionInfo[0].externumSlip * handbrakeDriftMultiplier;
+        float secureStartingPoint = driftingAxis * (frictionInfo[0].externumSlip + flatDrift) * handbrakeDriftMultiplier;
 
         if (secureStartingPoint < frictionInfo[0].externumSlip)
         {
-            driftingAxis = frictionInfo[0].externumSlip / (frictionInfo[0].externumSlip * handbrakeDriftMultiplier);
+            driftingAxis = (frictionInfo[0].externumSlip + flatDrift) / (frictionInfo[0].externumSlip + flatDrift) * handbrakeDriftMultiplier;
         }
         driftingAxis = Mathf.Min(driftingAxis, 1);
         //If the forces aplied to the rigidbody in the 'x' asis are greater than
@@ -508,7 +512,7 @@ public class CarController : MonoBehaviour
         {
             for (int i = 0; i < wheels.Length; i++)
             {
-                frictionInfo[i].curve.extremumSlip = frictionInfo[i].externumSlip * handbrakeDriftMultiplier * driftingAxis;
+                frictionInfo[i].curve.extremumSlip = (frictionInfo[0].externumSlip + flatDrift) * handbrakeDriftMultiplier * driftingAxis;
                 wheels[i].sidewaysFriction = frictionInfo[i].curve;
             }
         }
@@ -537,14 +541,14 @@ public class CarController : MonoBehaviour
         {
             for (int i = 0; i < wheels.Length; i++)
             {
-                frictionInfo[i].curve.extremumSlip = frictionInfo[i].externumSlip * handbrakeDriftMultiplier * driftingAxis;
+                frictionInfo[i].curve.extremumSlip = (frictionInfo[0].externumSlip + flatDrift) * handbrakeDriftMultiplier * driftingAxis;
                 wheels[i].sidewaysFriction = frictionInfo[i].curve;
             }
 
             recoveringTraction = true;
 
         }
-        else if (frictionInfo[0].curve.extremumSlip < frictionInfo[0].externumSlip)
+        else if (frictionInfo[0].curve.extremumSlip < (frictionInfo[0].externumSlip + flatDrift))
         {
             for (int i = 0; i < wheels.Length; i++)
             {
@@ -561,8 +565,8 @@ public class CarController : MonoBehaviour
     {
         if (!FootOnTurbo) return;
         Vector3 turboTarget = transform.position;
-        turboTarget += transform.forward * motorAxis * 5;
-        Vector3 turboForce = transform.forward * turboPower * motorAxis;
+        turboTarget += transform.forward * VerticalInput * 5;
+        Vector3 turboForce = transform.forward * turboPower * VerticalInput;
         carBody.AddForceAtPosition(turboForce, turboTarget);
     }
 
@@ -572,23 +576,5 @@ public class CarController : MonoBehaviour
         {
             wheel.brakeTorque = brakeForce;
         }
-    }
-
-    void UpdateAllWheelVisuals()
-    {
-        for (int i = 0; i < wheelVisuals.Length; i++)
-        {
-            UpdateWheelVisual(wheels[i], wheelVisuals[i]);
-        }
-    }
-
-    void UpdateWheelVisual(WheelCollider wheel, Transform visual)
-    {
-        if (!wheel || !visual) return;
-        Vector3 pos;
-        Quaternion rot;
-        wheel.GetWorldPose(out pos, out rot);
-        visual.rotation = rot;
-        visual.position = pos;
     }
 }

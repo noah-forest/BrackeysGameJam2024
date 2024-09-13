@@ -143,3 +143,5 @@ MonoBehaviour:
   spawnInterval: 0.5
   spawnBurst: 5
   requiredProximity: 100
+  minBurstInterval: 0.2
+  maxBurstInterval: 0.5

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractParticleEffect: {fileID: 2838796121813620981, guid: 6a5f9f3dd97e67e4eb9ae89193377391,
     type: 3}
-  explosiveForce: 900000
+  explosiveForce: 400000
   explosionRadius: 10
   explosionCollider: {fileID: 4472194086761795609}
   fuseTime: 5

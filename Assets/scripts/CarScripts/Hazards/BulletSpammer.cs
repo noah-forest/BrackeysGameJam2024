@@ -19,6 +19,9 @@ public class BulletSpammer : MonoBehaviour
     [SerializeField] float requiredProximity;
     float timeStamp;
 
+    [SerializeField] float minBurstInterval = 0;
+    [SerializeField] float maxBurstInterval = 0.5f;
+    bool isBursting;
 
     private void Start()
     {
@@ -29,17 +32,20 @@ public class BulletSpammer : MonoBehaviour
     {
         if (CanSpawn())
         {
-            BurstSpawn();
+            StartCoroutine(BurstSpawn());
         }
     }
 
-    void BurstSpawn()
+    IEnumerator BurstSpawn()
     {
+        isBursting = true;
         timeStamp = Time.time + spawnInterval;
         for (int i = 0; i < spawnBurst; i++)
         {
+            yield return new WaitForSeconds(Random.Range(minBurstInterval, maxBurstInterval));
             Spawn();
         }
+        isBursting = false;
     }
 
     bool CanSpawn()
@@ -50,7 +56,7 @@ public class BulletSpammer : MonoBehaviour
             dist = Vector3.Distance(car.transform.position, transform.position);
         }
 
-        return Time.time > timeStamp && dist < requiredProximity;
+        return !isBursting && Time.time > timeStamp && dist < requiredProximity;
     }
 
     protected void Spawn()
@@ -77,6 +83,6 @@ public class BulletSpammer : MonoBehaviour
     {
         float roll = Random.value;
         // Debug.Log($" {gameObject.name}: Obsticale Count: {obsticalesGenerated.Count} ==> {roll}/{chanceToSpawnNothing}");
-        return obsticalesGenerated.Count > minObsticales && roll <= chanceToSpawnNothing;
+        return  obsticalesGenerated.Count > minObsticales && roll <= chanceToSpawnNothing;
     }
 }
