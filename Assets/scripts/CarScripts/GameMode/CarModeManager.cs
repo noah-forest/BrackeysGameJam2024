@@ -19,6 +19,7 @@ public class CarModeManager : MonoBehaviour
         }
 
         singleton = this;
+        car.modeManager = this;
     }
     #endregion
 

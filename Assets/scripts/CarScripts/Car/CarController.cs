@@ -50,6 +50,7 @@ public class CarController : MonoBehaviour
     [Range(0, 10)]
     [SerializeField] float maxDriftTime = 1;
     float timeSpentBreaking;
+    [SerializeField] float velocityEffectOnSteerJets = 3;
     [Space(10)]
 
     [Space(20)]
@@ -283,11 +284,11 @@ public class CarController : MonoBehaviour
             steeringAxis = -1f;
         }
         var steeringAngle = steeringAxis * maxSteeringAngle;
-        Debug.Log($"[TurnLeft] SteeringAxis: {steeringAxis} : SteeringAngle: {steeringAngle}");
+        //Debug.Log($"[TurnLeft] SteeringAxis: {steeringAxis} : SteeringAngle: {steeringAngle}");
         wheels[FWL].steerAngle = Mathf.Lerp(wheels[FWL].steerAngle, steeringAngle, Time.deltaTime * steeringSpeed * 10);
         wheels[FWR].steerAngle = Mathf.Lerp(wheels[FWR].steerAngle, steeringAngle, Time.deltaTime * steeringSpeed * 10);
 
-        carBody.AddForceAtPosition(steerJetPower * steerJets[0].forward, steerJets[0].position);
+        carBody.AddForceAtPosition((steerJetPower + (localVelocityZ * velocityEffectOnSteerJets)) * -steerJets[0].forward, steerJets[0].position);
     }
 
     //The following method turns the front car wheels to the right. The speed of this movement will depend on the steeringSpeed variable.
@@ -302,7 +303,7 @@ public class CarController : MonoBehaviour
         wheels[FWL].steerAngle = Mathf.Lerp(wheels[FWL].steerAngle, steeringAngle, steeringSpeed);
         wheels[FWR].steerAngle = Mathf.Lerp(wheels[FWR].steerAngle, steeringAngle, steeringSpeed);
 
-        carBody.AddForceAtPosition(steerJetPower * steerJets[1].forward, steerJets[1].position);
+        carBody.AddForceAtPosition((steerJetPower + (localVelocityZ * velocityEffectOnSteerJets)) * -steerJets[1].forward, steerJets[1].position);
     }
 
     void SteerWheel(WheelCollider wheel)
