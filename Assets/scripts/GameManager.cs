@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UnityEvent carModeInit;
     [HideInInspector] public UnityEvent pizzaModeInit;
     
-    public List<Order> completedOrders = new();
+    public List<Order> AllOrders = new();
     
     public int Day
     {
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         set 
         { 
             _day = value;
-            Debug.Log("[GAME MANAGER]: Current Day: " + _day);
+            //Debug.Log("[GAME MANAGER]: Current Day: " + _day);
             dayChanged.Invoke(_day);
         }
     }
@@ -82,6 +82,27 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    public void UnscoreNextPizza()
+    {
+        Debug.Log($"UNSCORING PIZZA: {AllOrders.Count}");
+        for (int i = 0; i < AllOrders.Count; i++)
+        {
+            if (AllOrders[i].validForScoring)
+            {
+                AllOrders[i].validForScoring = false;
+                break;
+            }
+
+        }
+
+        string logString = "[orderReport]: ";
+        for (int i = 0; i < AllOrders.Count; i++)
+        {
+            logString += $"Order: {AllOrders[i].name} | Score: {AllOrders[i].score} | Valid: {AllOrders[i].validForScoring}\n";
+        }
+        Debug.Log(logString);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -122,6 +143,8 @@ public class GameManager : MonoBehaviour
             ambiancePlayer.spatialBlend = 0.9f;
             ambiancePlayer.minDistance = 50;
             transform.position = carManager.ambianceSoundLocation.position;
+
+            AllOrders.Sort((o, o1) => o.score.CompareTo(o1.score));
 
         }
     }
