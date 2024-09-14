@@ -261,7 +261,6 @@ public class GameManager : MonoBehaviour
     }
     public void LoadMenuScene()
     {
-        Cursor.lockState = CursorLockMode.Confined;
         StartCoroutine(ChangeScene(mainSceneName));
     }
     public void LoadCarScene()
