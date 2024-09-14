@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UnityEvent carModeInit;
     [HideInInspector] public UnityEvent pizzaModeInit;
 
-    [SerializeField] uint[] scoreRequiredToPass;
+    public uint[] scoreRequiredToPass;
     
     public List<Order> OrdersToDeliver = new();
 
