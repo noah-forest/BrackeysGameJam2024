@@ -24,6 +24,8 @@ public class EndOfDayUI : MonoBehaviour
     public AudioSource audioPlayer;
     
     private int daysLeftCount;
+
+    private float curScore;
     
     private GameManager gameManager;
 
@@ -35,6 +37,8 @@ public class EndOfDayUI : MonoBehaviour
         
         if (!gameManager) return;
         Cursor.lockState = CursorLockMode.Confined;
+
+        curScore = 0;
         
         currentDay.text = $"{gameManager.Day}";
         daysLeft.text = $"{gameManager.daysNeededToWin -  gameManager.Day}";
@@ -42,13 +46,13 @@ public class EndOfDayUI : MonoBehaviour
         scrollRect.onValueChanged.AddListener(CheckIfScrolledToEnd);
         
         //create the UI objects
-        SetUpScrollRect();
         SetUpScoreText();
+        SetUpScrollRect();
     }
 
     private void SetUpScoreText()
     {
-        score.text = $"{gameManager.scoreToday}";
+        score.text = $"0";
         neededScore.text = $"{gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)]}";
         timeScore.text = $"{gameManager.scoreTime}";
     }
@@ -78,6 +82,12 @@ public class EndOfDayUI : MonoBehaviour
         else
         {
             uiInfo.orderName.text = order.name;
+            
+            var scoreAnim = score.GetComponent<Animator>();
+            scoreAnim.SetTrigger("addScore");
+            
+            curScore += order.score;
+            score.text = $"{curScore}";
         }
             
         uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
