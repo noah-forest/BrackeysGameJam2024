@@ -14,6 +14,7 @@ public class PizzaOrderRenderer : MonoBehaviour
     
     private PizzaModeManager pizzaModeManager;
     private Dictionary<Order, GameObject> orderChits = new Dictionary<Order, GameObject>();
+    bool doneFortheDay;
 
     public void Start()
     {
@@ -50,7 +51,7 @@ public class PizzaOrderRenderer : MonoBehaviour
             orderChits.Remove(order);
         }
 
-        if(OrderManager.orders.Count == 0)
+        if(OrderManager.orders.Count == 0 && !doneFortheDay)
         {
             waitingText.SetActive(true);
         }
@@ -75,7 +76,7 @@ public class PizzaOrderRenderer : MonoBehaviour
     {
         waitingText.SetActive(false);
         finishedText.SetActive(true);
-
+        doneFortheDay = true;
     }
 
 }
