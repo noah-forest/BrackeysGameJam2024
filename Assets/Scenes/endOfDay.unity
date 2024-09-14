@@ -2557,7 +2557,7 @@ MonoBehaviour:
   daysLeft: {fileID: 1495261950}
   score: {fileID: 922493040}
   neededScore: {fileID: 17462867}
-  timeScore: {fileID: 0}
+  timeScore: {fileID: 1288974598}
   scrollRect: {fileID: 825457651}
   exitButton: {fileID: 876612354}
   content: {fileID: 1738997433}
