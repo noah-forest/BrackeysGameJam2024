@@ -807,7 +807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 12301
+  m_text: 'Score: 0
 
 '
   m_isRightToLeft: 0
@@ -1936,7 +1936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 12301
+  m_text: 'Score: 0
 
 '
   m_isRightToLeft: 0
@@ -3035,6 +3035,8 @@ MonoBehaviour:
   lostText: {fileID: 1520215125}
   postLossText: {fileID: 1702379884}
   buttons: {fileID: 613826976}
+  wonScoreText: {fileID: 1206440055}
+  lostScoreText: {fileID: 469897418}
   sounds:
   - {fileID: 8300000, guid: bbade209c5ba95645b33358d4e3149e4, type: 3}
   - {fileID: 8300000, guid: f200c778a4c65264fb1df4d647115a12, type: 3}
@@ -3173,7 +3175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1990115464
 MonoBehaviour:
   m_ObjectHideFlags: 0

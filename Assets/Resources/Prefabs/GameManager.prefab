@@ -298,6 +298,9 @@ MonoBehaviour:
   OrdersToDeliver: []
   daysNeededToWin: 2
   gameState: 0
+  scoreAllTime: 0
+  scoreToday: 0
+  scoreTime: 0
 --- !u!114 &7565176506748353607
 MonoBehaviour:
   m_ObjectHideFlags: 0
