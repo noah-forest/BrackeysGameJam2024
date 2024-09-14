@@ -33,6 +33,7 @@ public class FadeInOut : MonoBehaviour
         else canvasGroup.alpha -= fadeSpeed * Time.deltaTime;
         if (canvasGroup.alpha <= 0.01f)
         {
+            canvasGroup.alpha = 0;
             fadeOut = false;
             canvasGroup.blocksRaycasts = false;
         }

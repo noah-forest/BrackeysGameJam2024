@@ -9,9 +9,21 @@ public class PizzaOrderRenderer : MonoBehaviour
 {
     public UnityEvent onOrderAdded = new UnityEvent();
     public GameObject orderChit;
-
+    public GameObject finishedText;
+    
+    private PizzaModeManager pizzaModeManager;
     private Dictionary<Order, GameObject> orderChits = new Dictionary<Order, GameObject>();
 
+    public void Start()
+    {
+        Initialize();
+        pizzaModeManager = PizzaModeManager.singleton;
+        
+        finishedText.SetActive(false);
+        
+        pizzaModeManager.ordersFinished.AddListener(OnOrdersFinished);
+    }
+    
     public void AddOrder(Order order)
     {
         GameObject orderChitInstance = Instantiate(orderChit, transform);
@@ -48,8 +60,8 @@ public class PizzaOrderRenderer : MonoBehaviour
         OrderManager.onOrderRemoved.AddListener(RemoveOrder);
     }
 
-    public void Start()
+    private void OnOrdersFinished()
     {
-        Initialize();
+        finishedText.SetActive(true);
     }
 }

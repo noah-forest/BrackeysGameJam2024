@@ -51,26 +51,17 @@ public class EndOfDayUI : MonoBehaviour
             uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
             if (!order.validForScoring)
             {
-                uiInfo.orderScore.text = $" 0 [{Mathf.Floor(order.score)}] ";
+                uiInfo.orderScore.text = $"<s>{Mathf.Floor(order.score)}</s>";
                 uiInfo.orderScore.color = new Color32(255, 0, 0, 255);
-
-            }
-            else if (order.score  == 0)
-            {
-                uiInfo.orderScore.color = new Color32(255, 70, 70, 255);
-            }
-            if (order.score < 50)
-            {
-                uiInfo.orderScore.color = new Color32(250, 143, 143, 255);
-            }
-            else if (order.score <= 75)
-            {
-                uiInfo.orderScore.color = new Color32(255, 255, 143, 255);
             }
             else
-            {
-                uiInfo.orderScore.color = new Color32(140, 255, 140, 255);
-            }
+                uiInfo.orderScore.color = order.score switch
+                {
+                    0 => new Color32(255, 70, 70, 255),
+                    < 50 => new Color32(250, 143, 143, 255),
+                    <= 75 => new Color32(255, 255, 143, 255),
+                    _ => new Color32(140, 255, 140, 255)
+                };
 
             uiInfo.thumbsUp.SetActive(order.score >= 100 && order.validForScoring);
         }
