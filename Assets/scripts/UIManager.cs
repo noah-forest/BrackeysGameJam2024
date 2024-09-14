@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     
     private GameManager gameManager;
 
-    private bool gameIsPaused;
+    public bool gameIsPaused { get; private set; }
     private bool openPauseMenu;
 
     private bool tutorialOpen;

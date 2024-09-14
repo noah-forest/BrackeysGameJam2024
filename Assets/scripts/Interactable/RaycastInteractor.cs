@@ -43,7 +43,7 @@ namespace Interact
             }
 
             // on mouse down
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !GameManager.singleton.UIManager.gameIsPaused)
             {
                 // raycast from camera
                 if (targetInteractable != null && targetInteractable.CanInteract(gameObject))
