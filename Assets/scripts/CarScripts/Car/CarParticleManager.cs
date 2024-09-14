@@ -39,6 +39,10 @@ public class CarParticleManager : MonoBehaviour
         {
             hurtParticles.Play();
         }
+        else
+        {
+            hurtParticles.Stop();
+        }
         lastPizzaCount--;
         carHurt.pitch = startingPitch + Random.Range(-0.05f, 0.05f);
         carHurt.PlayOneShot(hurtSounds[Random.Range(0,hurtSounds.Length)]);
