@@ -19,7 +19,7 @@ public class SmokeCigarette : MonoBehaviour
 
     public ParticleSystem exhaleParticles;
     
-    private float animCooldown = 1.5f;
+    private float animCooldown = 3f;
     private float animTime = 2f;
     private float lastButtonTime = 0f;
 
