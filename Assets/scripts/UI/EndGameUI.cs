@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ public class EndGameUI : MonoBehaviour
     public GameObject lostText;
     public GameObject postLossText;
 	public GameObject buttons;
+
+	public TextMeshProUGUI wonScoreText;
+	public TextMeshProUGUI lostScoreText;
 
 	[SerializeField]AudioClip[] sounds;
 	public AudioSource TextChangeSFX;
@@ -68,6 +72,7 @@ public class EndGameUI : MonoBehaviour
 			wonText.SetActive(false);
 			fade.FadeIn();
             postWinText.SetActive(true);
+            wonScoreText.text = $"Score: {gameManager.scoreAllTime}";
         }
         else
         {
@@ -83,6 +88,7 @@ public class EndGameUI : MonoBehaviour
             lostText.SetActive(false);
             fade.FadeIn();
             postLossText.SetActive(true);
+            lostScoreText.text = $"Score: {gameManager.scoreAllTime}";
         }
 		StartCoroutine(ShowButtons());
     }
