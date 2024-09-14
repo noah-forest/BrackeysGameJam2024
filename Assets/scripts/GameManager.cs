@@ -4,6 +4,7 @@ using PizzaOrder;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 public class GameManager : MonoBehaviour
@@ -197,30 +198,33 @@ public class GameManager : MonoBehaviour
     public void PostCarGame()
     {
 
+        Debug.Log("[POST CAR GAME] Scoring Pizzas");
+        Debug.Log($"[POST CAR GAME] Score Needed: {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
         float totalScore = 0;
 
-        foreach(Order order in OrdersToDeliver)
+        for (int i = 0; i < OrdersToDeliver.Count; i++)
         {
-            if (order.validForScoring)
+            if (OrdersToDeliver[i].validForScoring)
             {
-                totalScore += order.score;
-                Debug.Log(totalScore);
+                totalScore += OrdersToDeliver[i].score;
+                Debug.Log($"[POST CAR GAME]pizza {i} Score: {OrdersToDeliver[i].score}");
             }
         }
-        
-        if(totalScore < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
+        Debug.Log($"[POST CAR GAME] RESULT: {totalScore} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
+
+        if (totalScore < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
         {
-            Debug.Log("lost");
+            Debug.Log("[POST CAR GAME] lost");
             gameState = GameState.loss;
         }
         else if(Day >= daysNeededToWin)
         {
-            Debug.Log("won");
+            Debug.Log("[POST CAR GAME] won");
             gameState = GameState.victory;
         }
         else
         {
-            Debug.Log("gonna keep goin");
+            Debug.Log("[POST CAR GAME] gonna keep goin");
             gameState = GameState.ongoing;
         }
 
@@ -257,6 +261,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadMenuScene()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         StartCoroutine(ChangeScene(mainSceneName));
     }
     public void LoadCarScene()

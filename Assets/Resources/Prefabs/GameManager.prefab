@@ -294,7 +294,7 @@ MonoBehaviour:
   pizzaModeInit:
     m_PersistentCalls:
       m_Calls: []
-  scoreRequiredToPass: 0000000064000000c80000009001000058020000
+  scoreRequiredToPass: 3200000064000000c80000009001000058020000
   OrdersToDeliver: []
   daysNeededToWin: 2
   gameState: 0

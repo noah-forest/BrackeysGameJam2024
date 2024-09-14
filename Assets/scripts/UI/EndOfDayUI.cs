@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class EndOfDayUI : MonoBehaviour
@@ -48,20 +49,30 @@ public class EndOfDayUI : MonoBehaviour
             }
             
             uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
-
-            if (order.score <= 75)
+            if (!order.validForScoring)
             {
-                uiInfo.orderScore.color = new Color32(255, 255, 143, 255);
-            } else if (order.score < 50)
+                uiInfo.orderScore.text = $" 0 [{Mathf.Floor(order.score)}] ";
+                uiInfo.orderScore.color = new Color32(255, 0, 0, 255);
+
+            }
+            else if (order.score  == 0)
+            {
+                uiInfo.orderScore.color = new Color32(255, 70, 70, 255);
+            }
+            if (order.score < 50)
             {
                 uiInfo.orderScore.color = new Color32(250, 143, 143, 255);
+            }
+            else if (order.score <= 75)
+            {
+                uiInfo.orderScore.color = new Color32(255, 255, 143, 255);
             }
             else
             {
                 uiInfo.orderScore.color = new Color32(140, 255, 140, 255);
             }
 
-            uiInfo.thumbsUp.SetActive(order.score >= 100);
+            uiInfo.thumbsUp.SetActive(order.score >= 100 && order.validForScoring);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,6 +26,10 @@ namespace PizzaOrder
             this.excludedToppings = excludedToppings;
             
             toppings.AddRange(recipe.toppings);
+            for (int i = 0; i < excludedToppings.Count; i++)
+            {
+                toppings.Remove(excludedToppings[i]);
+            }
         }
 
         public Order(string name, List<Pizza.Toppings> toppings, List<Pizza.Toppings> excludedToppings)
@@ -33,6 +38,10 @@ namespace PizzaOrder
             this.excludedToppings = excludedToppings;
             
             toppings.AddRange(toppings);
+            for (int i = 0; i < excludedToppings.Count; i++)
+            {
+                toppings.Remove(excludedToppings[i]);
+            }
         }
 
         public string GetOrderString()
@@ -55,31 +64,44 @@ namespace PizzaOrder
 
         public float CalculatePizzaScore(Pizza pizza)
         {
+            float pizzaCookValue = 25;
             // plus 1 for being cooked
-            float bestScore = toppings.Count + 1;
-            
-            score = 0;
-            foreach (var topping in pizza.GetToppings())
+            float bestScore = toppings.Count + pizzaCookValue;
+            int toppingsRequsted = toppings.Count;
+            int toppingsReceived = pizza.GetToppings().Length;
+            Debug.Log($"Order: {name} |  Requested Toppings: {toppingsRequsted}  | Received Toppings {toppingsReceived}");
+
+
+
+            score = bestScore;
+            for(int i = 0;  i < toppings.Count; i++)
             {
-                if (toppings.Contains(topping))
+                if (!pizza.HasTopping(toppings[i]))
                 {
-                    score += 1;
-                }
-                else
-                {
-                    score -= 1;
+                    score--;
+                    Debug.Log($"Order: {name} | 1 Score lost for missing topping");
                 }
             }
-            
-            if (pizza.IsBurned() || !pizza.IsCooked())
+            if(toppingsReceived > toppingsRequsted)
             {
-                score -= 1;
-            } else if (pizza.IsCooked())
-            {
-                score += 1;
+                Debug.Log($"Order: {name} | {(toppingsReceived - toppingsRequsted) * 0.5f} Score lost for extra toppings ");
+                score -= (toppingsReceived - toppingsRequsted) * 0.5f;
             }
-            
-            return (Mathf.Clamp(score, 0, bestScore) / bestScore) * 100;
+
+            if (!pizza.IsCooked())
+            {
+                score -= pizzaCookValue;
+                Debug.Log($"Order: {name} | Score lost for raw pizza");
+            }
+            if (pizza.IsBurned())
+            {
+                score = 0;
+                Debug.Log($"Order: {name} | Score eliminated for burnt pizza");
+            }
+            Debug.Log($"Order: {name} | Score: {score}/{bestScore} ");
+
+
+            return Math.Max(0.1f,(Mathf.Clamp(Mathf.Ceil(score), 0, bestScore) / bestScore)) * 100;
         }
 
         public void CompleteOrder(Pizza pizza)
