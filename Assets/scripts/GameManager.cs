@@ -205,6 +205,26 @@ public class GameManager : MonoBehaviour
     public void PostCarGame()
     {
 
+
+
+
+
+        switch (gameState)
+        {
+            case GameState.ongoing:
+                LoadPizzaScene();
+                break;
+            case GameState.victory:
+                LoadEndGame();
+                break;
+            case GameState.loss:
+                LoadEndGame();
+                break;
+        }
+    }
+
+    public void CalculateCarScore()
+    {
         Debug.Log("[POST CAR GAME] Scoring Pizzas");
         Debug.Log($"[POST CAR GAME] Score Needed: {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
         scoreToday = 0;
@@ -220,12 +240,12 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[POST CAR GAME] RESULT: {scoreToday} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
         scoreAllTime += (int)scoreToday;
 
-        if (scoreToday < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
+        if (scoreToday < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
         {
             Debug.Log("[POST CAR GAME] lost");
             gameState = GameState.loss;
         }
-        else if(Day >= daysNeededToWin)
+        else if (Day >= daysNeededToWin)
         {
             Debug.Log("[POST CAR GAME] won");
             gameState = GameState.victory;
@@ -234,21 +254,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("[POST CAR GAME] gonna keep goin");
             gameState = GameState.ongoing;
-        }
-
-
-
-        switch (gameState)
-        {
-            case GameState.ongoing:
-                LoadPizzaScene();
-                break;
-            case GameState.victory:
-                LoadEndGame();
-                break;
-            case GameState.loss:
-                LoadEndGame();
-                break;
         }
     }
     

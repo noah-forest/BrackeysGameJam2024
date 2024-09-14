@@ -172,6 +172,7 @@ public class CarModeManager : MonoBehaviour
 
     IEnumerator StartNextScene()
     {
+        gameManager.CalculateCarScore();
         yield return new WaitForSeconds(1f);
         gameManager.LoadDayOver();
     }
