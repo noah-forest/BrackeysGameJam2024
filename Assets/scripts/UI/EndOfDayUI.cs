@@ -14,6 +14,7 @@ public class EndOfDayUI : MonoBehaviour
     public TextMeshProUGUI score;
     public TextMeshProUGUI neededScore;
     public TextMeshProUGUI timeScore;
+    public TextMeshProUGUI feedback;
     
     public ScrollRect scrollRect;
 
@@ -116,10 +117,17 @@ public class EndOfDayUI : MonoBehaviour
     
     private void CheckIfScrolledToEnd(Vector2 vector)
     {
-        if (scrollRect.verticalNormalizedPosition >= 0.05f) // scrolled to beginning
+        if (!(scrollRect.verticalNormalizedPosition >= 0.01f)) return; // scrolled to beginning
+        exitButton.SetActive(true);
+            
+        //give feedback
+        if (curScore + gameManager.scoreTime <
+            gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)])
         {
-            exitButton.SetActive(true);
+            feedback.color = new Color32(255, 142, 142, 255);
+            feedback.text = "Uh oh...";
         }
+        feedback.gameObject.SetActive(true);
     }
 
     private void OnEnable()
