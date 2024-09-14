@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndGameUI : MonoBehaviour
 {
@@ -29,5 +30,10 @@ public class EndGameUI : MonoBehaviour
 			// lost
 			lostScreen.SetActive(true);
 		}
+	}
+
+	public void BackToMainMenu()
+	{
+		gameManager.LoadMenuScene();
 	}
 }
