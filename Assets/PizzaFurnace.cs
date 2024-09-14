@@ -38,7 +38,7 @@ public class PizzaFurnace : PizzaModeInteractable
         if (grabber.IsGrabbing())
         {
             Pizza pizza = grabber.GetCurrentlyGrabbed().gameObject.GetComponent<Pizza>();
-            return pizza;
+            return pizza || currentPizza;
         }
         else
         {
@@ -66,9 +66,14 @@ public class PizzaFurnace : PizzaModeInteractable
                 timeInOven = pizza.GetTimeCooked();
                 cookingAudioPlayer.Play();
                 cookingParticles.Play();
-
+                currentPizza = pizza;
             }
-            currentPizza = pizza;
+            else
+            {
+                grabber.ReleaseCurrentlyGrabbed();
+                GrabCurrentPizza(grabber);
+            }
+
         }
         else
         {
