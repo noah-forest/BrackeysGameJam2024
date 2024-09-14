@@ -87,6 +87,7 @@ MonoBehaviour:
   verticalOffset: 1.1
   homeBase: {fileID: 2504538522801412187}
   timeScore: 0
+  timeToMakeDelivery: 0
   timeBonusScore: 5
   basetimeNeededForBonus: 0.15
   _pizzasToDeliver: 5

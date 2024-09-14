@@ -7,10 +7,14 @@ using UnityEngine;
 public class CarGameUI : MonoBehaviour
 {
     public TextMeshProUGUI pizzaCountText;
+    public TextMeshProUGUI timerText;
     public GameObject pizzaIcon;
     public GameObject textCont;
     public GameObject returnIcon;
     public GameObject returnText;
+    public GameObject timer;
+
+    private bool timerIsRunning = false;
     
     private GameManager gameManager;
     private CarModeManager modeManager;
@@ -22,6 +26,8 @@ public class CarGameUI : MonoBehaviour
         modeManager = CarModeManager.singleton;
         
         fade = GetComponent<FadeInOut>();
+
+        timerIsRunning = true;
         
         if (modeManager)
         {
@@ -29,6 +35,34 @@ public class CarGameUI : MonoBehaviour
             modeManager.pizzasChanged.AddListener(UpdatePizzaCount);
             UpdatePizzaCount(gameManager.carManager.PizzasToDeliver);
         }
+    }
+
+    private void Update()
+    {
+        if (modeManager.timeToMakeDelivery > 0.1f)
+        {
+            DisplayTime(modeManager.timeToMakeDelivery);
+        }
+        else
+        {
+            DisplayTime(0);
+        }
+    }
+
+    private void DisplayTime(float time)
+    {
+        float minutes = Mathf.FloorToInt(time / 60);
+        float seconds = Mathf.FloorToInt(time % 60);
+        var milliseconds = time % 1 * 1000;
+
+        timerText.color = seconds switch
+        {
+            < 5 => new Color32(255, 143, 143, 255),
+            < 10 => new Color32(255, 255, 143, 255),
+            _ => Color.white
+        };
+
+        timerText.text = $"{minutes:00}:{seconds:00}:{milliseconds:00}";
     }
 
     private void ShowDeliveryUI()
@@ -49,6 +83,7 @@ public class CarGameUI : MonoBehaviour
         {
             textCont.SetActive(false);
             pizzaIcon.SetActive(false);
+            timer.SetActive(false);
             
             returnIcon.SetActive(true);
             returnText.SetActive(true);
