@@ -37,6 +37,10 @@ public class CarModeManager : MonoBehaviour
 
     List<BoxCollider> possibleRoads = new List<BoxCollider>();
 
+    [HideInInspector] public float timeScore = 0;
+    float timeToMakeDelivery;
+    [SerializeField] float timeBonusScore;
+    [SerializeField] float basetimeNeededForBonus;
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
     [HideInInspector] public UnityEvent<uint> pizzasChanged = new();
@@ -58,16 +62,24 @@ public class CarModeManager : MonoBehaviour
 
     [SerializeField] CarGoal goalInstance;
     GameObject currentBuilding;
-    float timeRemaining;
 
     CarModeMusic musicPlayer;
 
+    private void Update()
+    {
+        timeToMakeDelivery -= Time.deltaTime;
+    }
     public void DeliverPizza()
     {
         if (PizzasToDeliver != 0)
         {
             PizzasToDeliver--;
             deliveryMade.Invoke();
+            if(timeToMakeDelivery > 0)
+            {
+                timeScore += timeBonusScore;
+                Debug.Log($"[DTIME]DELIVERY MADE IN TIME: {timeToMakeDelivery} cur tScore {timeScore}");
+            }
         }
         UpdateGoal();
     }
@@ -135,6 +147,12 @@ public class CarModeManager : MonoBehaviour
         return true;
     }
 
+    public float GetTimeToDeliver()
+    {
+ 
+        float distance = Vector3.Distance(goalInstance.transform.position,car.transform.position);
+        return distance * basetimeNeededForBonus;
+    }
 
     private void UpdateGoal()
     {
@@ -160,6 +178,8 @@ public class CarModeManager : MonoBehaviour
             while (!TryGenerateNextGoal())
             {
             }
+            timeToMakeDelivery = GetTimeToDeliver();
+            Debug.Log("[DTIME]"+timeToMakeDelivery);
         }
         else
         {
