@@ -13,6 +13,7 @@ public class EndOfDayUI : MonoBehaviour
     public TextMeshProUGUI daysLeft;
     public TextMeshProUGUI score;
     public TextMeshProUGUI neededScore;
+    public TextMeshProUGUI timeScore;
     
     public ScrollRect scrollRect;
 
@@ -25,12 +26,16 @@ public class EndOfDayUI : MonoBehaviour
     private int daysLeftCount;
     
     private GameManager gameManager;
+
+    private CarModeManager modeManager;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.singleton;
+        modeManager = CarModeManager.singleton;
         
         if (!gameManager) return;
+        if (!modeManager) return;
         Cursor.lockState = CursorLockMode.Confined;
         
         currentDay.text = $"{gameManager.Day}";
@@ -47,6 +52,7 @@ public class EndOfDayUI : MonoBehaviour
     {
         score.text = $"{gameManager.scoreToday}";
         neededScore.text = $"{gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)]}";
+        timeScore.text = $"{gameManager.scoreTime}";
     }
     
     private void SetUpScrollRect()
