@@ -52,9 +52,9 @@ public class EndOfDayUI : MonoBehaviour
 
     private void SetUpScoreText()
     {
-        score.text = $"0";
         neededScore.text = $"{gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)]}";
         timeScore.text = $"{gameManager.scoreTime}";
+        score.text = $"{gameManager.scoreTime}";
     }
     
     private void SetUpScrollRect()
@@ -88,6 +88,7 @@ public class EndOfDayUI : MonoBehaviour
             
             curScore += order.score;
             score.text = $"{curScore}";
+            score.text = $"{curScore + gameManager.scoreTime}";
         }
             
         uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
