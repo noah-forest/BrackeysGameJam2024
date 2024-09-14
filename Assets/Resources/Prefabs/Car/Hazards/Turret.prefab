@@ -1455,7 +1455,7 @@ MonoBehaviour:
     type: 3}
   eye: {fileID: 1362759765149296732}
   bulletOrigin: {fileID: 1134551950837797023}
-  fireInterval: 1
+  fireInterval: 2
   trackingSpeed: 15
   barrel: {fileID: 5181737660406367392}
   burstCount: 3
