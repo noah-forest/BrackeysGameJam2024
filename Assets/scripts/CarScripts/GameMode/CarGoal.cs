@@ -5,7 +5,6 @@ using UnityEngine;
 public class CarGoal : MonoBehaviour
 {
     CarModeManager carModeManager;
-    public BoxCollider boundingBox;
     float timeTouching;
     [SerializeField] float timeToClear;
     [SerializeField] GameObject clearEffect;
