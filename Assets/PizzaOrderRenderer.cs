@@ -10,6 +10,7 @@ public class PizzaOrderRenderer : MonoBehaviour
     public UnityEvent onOrderAdded = new UnityEvent();
     public GameObject orderChit;
     public GameObject finishedText;
+    public GameObject waitingText;
     
     private PizzaModeManager pizzaModeManager;
     private Dictionary<Order, GameObject> orderChits = new Dictionary<Order, GameObject>();
@@ -34,6 +35,10 @@ public class PizzaOrderRenderer : MonoBehaviour
         
         orderChits.Add(order, orderChitInstance);
         onOrderAdded.Invoke();
+        if (OrderManager.orders.Count > 0)
+        {
+            waitingText.SetActive(false);
+        }
     }
 
     void RemoveOrder(Order order)
@@ -44,6 +49,12 @@ public class PizzaOrderRenderer : MonoBehaviour
             Destroy(obj);
             orderChits.Remove(order);
         }
+
+        if(OrderManager.orders.Count == 0)
+        {
+            waitingText.SetActive(true);
+        }
+
     }
 
     public void Initialize()
@@ -62,6 +73,9 @@ public class PizzaOrderRenderer : MonoBehaviour
 
     private void OnOrdersFinished()
     {
+        waitingText.SetActive(false);
         finishedText.SetActive(true);
+
     }
+
 }
