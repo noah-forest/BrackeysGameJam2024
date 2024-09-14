@@ -88,13 +88,12 @@ public class PizzaModeManager : MonoBehaviour
         int day = Mathf.Clamp(gameManager.Day - 1, 0, DailyOrders.Length);
 
         ordersRequired = DailyOrders[day].GetTodaysOrderCount();
-        Debug.Log($"[PIZZA MODE] dayidx: {day} Todays Order Count: {ordersRequired}");
+        //Debug.Log($"[PIZZA MODE] dayidx: {day} Todays Order Count: {ordersRequired}");
     }
     
     void OnOrderManagerCompletedOrder(Order order)
     {
-        Debug.Log(
-            $"[PIZZA MODE][PIZZA SUBMISSION]: ORDER STATUS: {numberOfCompletedOrders} / {ordersRequired} : DAY COMPLETE");
+        //Debug.Log($"[PIZZA MODE][PIZZA SUBMISSION]: ORDER STATUS: {numberOfCompletedOrders} / {ordersRequired} : DAY COMPLETE");
         if (numberOfCompletedOrders >= ordersRequired)
         {
             ordersFinished.Invoke();

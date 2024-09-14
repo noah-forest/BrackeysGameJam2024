@@ -20,13 +20,13 @@ public class BrokenBottle : MonoBehaviour
             allBottlePieces.Add(pieces[i]);
             if (allBottlePieces.Count > overalPeiceLimit)
             {
-                Debug.Log(overalPeiceLimit + " Peices Exceeded. Destroying oldest : " + allBottlePieces[0]?.name + "|");
+                //Debug.Log(overalPeiceLimit + " Peices Exceeded. Destroying oldest : " + allBottlePieces[0]?.name + "|");
 
                 Destroy(allBottlePieces[0]);
                 allBottlePieces.RemoveAt(0);
             }
         }
-        Debug.Log(allBottlePieces.Count);
+        //Debug.Log(allBottlePieces.Count);
     }
     
     public void RandomVelocities()

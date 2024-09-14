@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     
     public void UnscoreNextPizza()
     {
-        Debug.Log($"UNSCORING PIZZA: {OrdersToDeliver.Count}");
+        //Debug.Log($"UNSCORING PIZZA: {OrdersToDeliver.Count}");
         for (int i = 0; i < OrdersToDeliver.Count; i++)
         {
             if (OrdersToDeliver[i].validForScoring)
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         {
             logString += $"Order: {OrdersToDeliver[i].name} | Score: {OrdersToDeliver[i].score} | Valid: {OrdersToDeliver[i].validForScoring}\n";
         }
-        Debug.Log(logString);
+        //Debug.Log(logString);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -227,8 +227,8 @@ public class GameManager : MonoBehaviour
 
     public void CalculateCarScore()
     {
-        Debug.Log("[POST CAR GAME] Scoring Pizzas");
-        Debug.Log($"[POST CAR GAME] Score Needed: {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
+        //Debug.Log("[POST CAR GAME] Scoring Pizzas");
+        //Debug.Log($"[POST CAR GAME] Score Needed: {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
         float score = 0;
 
         for (int i = 0; i < OrdersToDeliver.Count; i++)
@@ -236,10 +236,10 @@ public class GameManager : MonoBehaviour
             if (OrdersToDeliver[i].validForScoring)
             {
                 score += OrdersToDeliver[i].score;
-                Debug.Log($"[POST CAR GAME]pizza {i} Score: {OrdersToDeliver[i].score}");
+                //Debug.Log($"[POST CAR GAME]pizza {i} Score: {OrdersToDeliver[i].score}");
             }
         }
-        Debug.Log($"[POST CAR GAME] RESULT: {score} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
+        //Debug.Log($"[POST CAR GAME] RESULT: {score} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
 
         scoreToday = (int)score; ;
         scoreTime = carManager.timeScore;
@@ -247,17 +247,17 @@ public class GameManager : MonoBehaviour
 
         if (score + scoreTime < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
         {
-            Debug.Log("[POST CAR GAME] lost");
+            //Debug.Log("[POST CAR GAME] lost");
             gameState = GameState.loss;
         }
         else if (Day >= daysNeededToWin)
         {
-            Debug.Log("[POST CAR GAME] won");
+            //Debug.Log("[POST CAR GAME] won");
             gameState = GameState.victory;
         }
         else
         {
-            Debug.Log("[POST CAR GAME] gonna keep goin");
+            //Debug.Log("[POST CAR GAME] gonna keep goin");
             gameState = GameState.ongoing;
         }
     }
