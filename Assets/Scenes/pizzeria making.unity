@@ -116007,21 +116007,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
-      propertyPath: ordersRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: ordersReadyToDeliver
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: pizzaBoxSpawners.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
       propertyPath: pizzaBoxSpawners.Array.data[0]
       value: 
       objectReference: {fileID: 1193776223}
@@ -116040,36 +116025,6 @@ PrefabInstance:
       propertyPath: pizzaBoxSpawners.Array.data[3]
       value: 
       objectReference: {fileID: 162681209}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: defaultRecipeBook.Array.data[4].name
-      value: Cheese
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[3]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7374773699927520450, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -116080,36 +116035,6 @@ PrefabInstance:
       propertyPath: interactor
       value: 
       objectReference: {fileID: 100675682}
-    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7547552871277468517, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
