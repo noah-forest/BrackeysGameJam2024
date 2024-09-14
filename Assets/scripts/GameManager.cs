@@ -239,9 +239,10 @@ public class GameManager : MonoBehaviour
             }
         }
         Debug.Log($"[POST CAR GAME] RESULT: {score} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
-        scoreAllTime += (int)score;
+
         scoreToday = (int)score; ;
         scoreTime = carManager.timeScore;
+        scoreAllTime += (int)score + (int)scoreTime;
 
         if (score + scoreTime < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
         {
