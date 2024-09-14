@@ -38,9 +38,11 @@ public class CarModeManager : MonoBehaviour
     List<BoxCollider> possibleRoads = new List<BoxCollider>();
 
     [HideInInspector] public int timeScore = 0;
-    public float timeToMakeDelivery;
+    [HideInInspector] public float timeToMakeDelivery;
     [SerializeField] int timeBonusScore;
     [SerializeField] float basetimeNeededForBonus;
+    [SerializeField] float minimumTime;
+    [SerializeField] float timeEffectOnScore;
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
     [HideInInspector] public UnityEvent<uint> pizzasChanged = new();
@@ -77,7 +79,7 @@ public class CarModeManager : MonoBehaviour
             deliveryMade.Invoke();
             if(timeToMakeDelivery > 0)
             {
-                timeScore += timeBonusScore + (int)Mathf.Max(timeToMakeDelivery * 2, 0);
+                timeScore += timeBonusScore + (int)Mathf.Max(timeToMakeDelivery * timeEffectOnScore, 0);
             }
         }
         UpdateGoal();
@@ -150,7 +152,7 @@ public class CarModeManager : MonoBehaviour
     {
  
         float distance = Vector3.Distance(goalInstance.transform.position,car.transform.position);
-        return Mathf.Max(distance * basetimeNeededForBonus, 7 + Random.Range(0.12f, 0.63f));
+        return Mathf.Max(distance * basetimeNeededForBonus, minimumTime + Random.Range(0.12f, 0.63f));
     }
 
     private void UpdateGoal()

@@ -89,7 +89,9 @@ MonoBehaviour:
   timeScore: 0
   timeToMakeDelivery: 0
   timeBonusScore: 5
-  basetimeNeededForBonus: 0.15
+  basetimeNeededForBonus: 0.155
+  minimumTime: 10
+  timeEffectOnScore: 1
   _pizzasToDeliver: 15
   pizzasChanged:
     m_PersistentCalls:
