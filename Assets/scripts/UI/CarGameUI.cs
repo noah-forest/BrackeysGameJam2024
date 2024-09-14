@@ -14,16 +14,33 @@ public class CarGameUI : MonoBehaviour
     
     private GameManager gameManager;
     private CarModeManager modeManager;
-
+    private FadeInOut fade;
+    
     private void Start()
     {
         gameManager = GameManager.singleton;
         modeManager = CarModeManager.singleton;
+        
+        fade = GetComponent<FadeInOut>();
+        
         if (modeManager)
         {
+            modeManager.deliveryMade.AddListener(ShowDeliveryUI);
             modeManager.pizzasChanged.AddListener(UpdatePizzaCount);
             UpdatePizzaCount(gameManager.carManager.PizzasToDeliver);
         }
+    }
+
+    private void ShowDeliveryUI()
+    {
+        StartCoroutine(FadeDeliveryText());
+    }
+    
+    private IEnumerator FadeDeliveryText()
+    {
+        fade.FadeIn();
+        yield return new WaitForSeconds(1.5f);
+        fade.FadeOut();
     }
 
     private void UpdatePizzaCount(uint count)
