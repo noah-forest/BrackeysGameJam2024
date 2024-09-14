@@ -72,7 +72,7 @@ public class TvRemoteInteractable : PizzaModeInteractable
     {
         tvOn = tv.TogglePower();
         int matIdx  = tvOn ? 1 : 0;
-        Debug.Log("[changePow]Tv video: " + tvOn);
+        //Debug.Log("[changePow]Tv video: " + tvOn);
         buttonDisplay.ChangeMaterial(matIdx);
         videoScreen.SetActive(!(bool)videoScreen.activeSelf);
     }

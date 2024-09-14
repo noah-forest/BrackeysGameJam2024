@@ -69,7 +69,7 @@ namespace PizzaOrder
             float bestScore = toppings.Count + pizzaCookValue;
             int toppingsRequsted = toppings.Count;
             int toppingsReceived = pizza.GetToppings().Length;
-            Debug.Log($"Order: {name} |  Requested Toppings: {toppingsRequsted}  | Received Toppings {toppingsReceived}");
+            //Debug.Log($"Order: {name} |  Requested Toppings: {toppingsRequsted}  | Received Toppings {toppingsReceived}");
 
 
 
@@ -79,26 +79,26 @@ namespace PizzaOrder
                 if (!pizza.HasTopping(toppings[i]))
                 {
                     score--;
-                    Debug.Log($"Order: {name} | 1 Score lost for missing topping");
+                    //.Log($"Order: {name} | 1 Score lost for missing topping");
                 }
             }
             if(toppingsReceived > toppingsRequsted)
             {
-                Debug.Log($"Order: {name} | {(toppingsReceived - toppingsRequsted) * 0.5f} Score lost for extra toppings ");
+                //Debug.Log($"Order: {name} | {(toppingsReceived - toppingsRequsted) * 0.5f} Score lost for extra toppings ");
                 score -= (toppingsReceived - toppingsRequsted) * 0.5f;
             }
 
             if (!pizza.IsCooked())
             {
                 score -= pizzaCookValue;
-                Debug.Log($"Order: {name} | Score lost for raw pizza");
+                //Debug.Log($"Order: {name} | Score lost for raw pizza");
             }
             if (pizza.IsBurned())
             {
                 score = 0;
-                Debug.Log($"Order: {name} | Score eliminated for burnt pizza");
+                //Debug.Log($"Order: {name} | Score eliminated for burnt pizza");
             }
-            Debug.Log($"Order: {name} | Score: {score}/{bestScore} ");
+            //Debug.Log($"Order: {name} | Score: {score}/{bestScore} ");
 
 
             return Math.Max(0.1f,(Mathf.Clamp(Mathf.Ceil(score), 0, bestScore) / bestScore)) * 100;

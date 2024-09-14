@@ -37,9 +37,9 @@ public class CarModeManager : MonoBehaviour
 
     List<BoxCollider> possibleRoads = new List<BoxCollider>();
 
-    [HideInInspector] public float timeScore = 0;
+    [HideInInspector] public int timeScore = 0;
     public float timeToMakeDelivery;
-    [SerializeField] float timeBonusScore;
+    [SerializeField] int timeBonusScore;
     [SerializeField] float basetimeNeededForBonus;
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
@@ -77,8 +77,7 @@ public class CarModeManager : MonoBehaviour
             deliveryMade.Invoke();
             if(timeToMakeDelivery > 0)
             {
-                timeScore += timeBonusScore;
-                Debug.Log($"[DTIME]DELIVERY MADE IN TIME: {timeToMakeDelivery} cur tScore {timeScore}");
+                timeScore += timeBonusScore + (int)Mathf.Max(timeToMakeDelivery * 2, 0);
             }
         }
         UpdateGoal();
@@ -104,7 +103,7 @@ public class CarModeManager : MonoBehaviour
 
     void LogPizzaCount(uint count)
     {
-        Debug.Log("Pizzas Remaining = " + count);
+        //Debug.Log("Pizzas Remaining = " + count);
     }
 
     public bool TryGenerateNextGoal()
@@ -158,7 +157,7 @@ public class CarModeManager : MonoBehaviour
     {
         if(!goalInstance)
         {
-            Debug.Log("[CAR MODE MANAGER][UPDATE GOAL] No Goal Assigned");
+            //Debug.Log("[CAR MODE MANAGER][UPDATE GOAL] No Goal Assigned");
             return;
         }
 
@@ -179,7 +178,7 @@ public class CarModeManager : MonoBehaviour
             {
             }
             timeToMakeDelivery = GetTimeToDeliver();
-            Debug.Log("[DTIME]"+timeToMakeDelivery);
+            //Debug.Log("[DTIME]"+timeToMakeDelivery);
         }
         else
         {

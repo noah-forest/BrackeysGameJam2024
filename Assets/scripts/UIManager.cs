@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     private void SetUpTutorial()
     {
         if (gameManager.Day != 1) return;
-        Debug.Log("its first day, pause game");
+        //Debug.Log("its first day, pause game");
         tutorialMenu.SetActive(true);
         Time.timeScale = 0;
         tutorialOpen = true;
