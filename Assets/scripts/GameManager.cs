@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int scoreAllTime = 0;
+
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -211,6 +213,7 @@ public class GameManager : MonoBehaviour
             }
         }
         Debug.Log($"[POST CAR GAME] RESULT: {totalScore} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
+        scoreAllTime += (int)totalScore;
 
         if (totalScore < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
         {
