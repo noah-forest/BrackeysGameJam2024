@@ -19,8 +19,12 @@ public class EndGameUI : MonoBehaviour
 	public AudioSource TextChangeSFX;
 
 	public float postScreenDelay = 1.5f;
+
+	public CanvasGroup winCanvas;
+	public CanvasGroup lostCanvas;
 	
 	private GameManager gameManager;
+	private FadeInOut fade;
 
 	private void Start()
 	{
@@ -33,6 +37,8 @@ public class EndGameUI : MonoBehaviour
 		gameManager = GameManager.singleton;
 
 		Cursor.lockState = CursorLockMode.Confined;
+
+		fade = GetComponent<FadeInOut>();
 		
 		if (gameManager.gameState == GameManager.GameState.victory)
 		{
@@ -47,23 +53,35 @@ public class EndGameUI : MonoBehaviour
 		StartCoroutine(ShowPostScreen());
 	}
 
-	IEnumerator ShowPostScreen()
+	private IEnumerator ShowPostScreen()
 	{
-		yield return new WaitForSeconds(postScreenDelay);
         if (gameManager.gameState == GameManager.GameState.victory)
         {
+	        fade.canvasGroup = winCanvas;
+	        fade.FadeIn();
+	        yield return new WaitForSeconds(postScreenDelay);
 			// won
 			TextChangeSFX.clip = sounds[0];
 			TextChangeSFX.Play();
+			fade.FadeOut();
+			yield return new WaitForSeconds(1f);
 			wonText.SetActive(false);
+			fade.FadeIn();
             postWinText.SetActive(true);
         }
         else
         {
             // lost
+            fade.canvasGroup = lostCanvas;
+            fade.FadeIn();
+            yield return new WaitForSeconds(postScreenDelay);
+            // won
             TextChangeSFX.clip = sounds[1];
             TextChangeSFX.Play();
+            fade.FadeOut();
+            yield return new WaitForSeconds(1f);
             lostText.SetActive(false);
+            fade.FadeIn();
             postLossText.SetActive(true);
         }
 		StartCoroutine(ShowButtons());
