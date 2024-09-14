@@ -338,6 +338,11 @@ PrefabInstance:
       propertyPath: steerJetPower
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 8968360810782407845, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
+      propertyPath: immuneDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

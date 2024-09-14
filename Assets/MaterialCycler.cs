@@ -7,11 +7,12 @@ public class MaterialCycler : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] bool useStartingmat = true;
     [SerializeField] int startingMat = 1;
     [SerializeField] Material[] materials;
     void Start()
     {
-        meshRenderer.material = materials[startingMat];
+        if(useStartingmat)meshRenderer.material = materials[startingMat];
     }
 
     public void ChangeMaterial(int idx)

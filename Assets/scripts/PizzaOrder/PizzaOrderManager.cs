@@ -73,7 +73,7 @@ namespace PizzaOrder
             var toppingsToPut = new List<Pizza.Toppings>(randomRecipe.toppings);
             foreach (Pizza.Toppings topping in randomRecipe.toppings)
             {
-                if (Random.Range(0, 100) < GameManager.singleton.Day * 3)
+                if (Random.Range(0, 100) < GameManager.singleton.Day * 3.5)
                 {
                     excludedToppings.Add(topping);
                 }
