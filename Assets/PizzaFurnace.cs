@@ -64,6 +64,9 @@ public class PizzaFurnace : PizzaModeInteractable
                 
                 GrabCurrentPizza(grabber);
                 timeInOven = pizza.GetTimeCooked();
+                cookingAudioPlayer.Play();
+                cookingParticles.Play();
+
             }
             currentPizza = pizza;
         }
