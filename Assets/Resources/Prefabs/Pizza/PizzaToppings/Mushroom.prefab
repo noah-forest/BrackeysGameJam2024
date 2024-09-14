@@ -102,7 +102,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HoverDisplay: {fileID: 0}
-  displayText: '[LMB] Grab Pineapple'
+  displayText: '[LMB] Grab Mushroom'
   isGrabbed: 0
   onRelease:
     m_PersistentCalls:
