@@ -32,10 +32,8 @@ public class EndOfDayUI : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.singleton;
-        modeManager = CarModeManager.singleton;
         
         if (!gameManager) return;
-        if (!modeManager) return;
         Cursor.lockState = CursorLockMode.Confined;
         
         currentDay.text = $"{gameManager.Day}";
