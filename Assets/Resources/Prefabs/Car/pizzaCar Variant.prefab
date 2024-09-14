@@ -16285,7 +16285,7 @@ MonoBehaviour:
   - {fileID: 8045884330022604219}
   steerJetPower: 10000
   maxSpeed: 190
-  maxReverseSpeed: 150
+  maxReverseSpeed: 80
   accelerationMultiplier: 20
   maxSteeringAngle: 60
   steeringSpeed: 2

@@ -19,7 +19,7 @@ public class CarGoal : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log(other.name);
+        if (Vector3.Distance(transform.position, carModeManager.car.transform.position) > 10) return;
         timeTouching += Time.deltaTime;
         clearingVisual.transform.localScale = Vector3.Lerp(clearingVisual.transform.localScale, clearingVisualEndScale, Time.deltaTime);
         if (timeTouching > timeToClear)
