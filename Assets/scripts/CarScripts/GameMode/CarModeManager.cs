@@ -67,7 +67,7 @@ public class CarModeManager : MonoBehaviour
 
     private void Update()
     {
-        timeToMakeDelivery -= Time.deltaTime;
+       if(!goalInstance.CarIsTouching) timeToMakeDelivery -= Time.deltaTime;
     }
     public void DeliverPizza()
     {

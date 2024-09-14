@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         if (day == 1)
         {
             scoreAllTime = 0;
+            ambiancePlayer.Stop();
         }
     }
     

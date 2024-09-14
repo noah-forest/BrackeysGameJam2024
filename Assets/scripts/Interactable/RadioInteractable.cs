@@ -11,6 +11,12 @@ public class RadioInteractable : PizzaModeInteractable
     int currentTrack = 0;
     bool powerOff;
 
+    public void Start()
+    {
+        if (GameManager.singleton.Day > 1)
+            currentTrack = Random.Range(0, trackList.Count);
+    }
+
     public override void Interact(GameObject gameObject)
     {
         if (powerOff) return;

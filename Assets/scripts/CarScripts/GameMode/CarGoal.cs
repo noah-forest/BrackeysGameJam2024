@@ -6,6 +6,7 @@ public class CarGoal : MonoBehaviour
 {
     CarModeManager carModeManager;
     float timeTouching;
+    public bool CarIsTouching { get; private set; }
     [SerializeField] float timeToClear;
     [SerializeField] GameObject clearEffect;
     [SerializeField] Transform clearingVisual;
@@ -27,12 +28,15 @@ public class CarGoal : MonoBehaviour
             if (clearEffect) Instantiate(clearEffect, transform.position, transform.rotation, transform.parent);
             carModeManager.DeliverPizza();
             timeTouching = 0;
+            CarIsTouching = false;
         }
+        CarIsTouching = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         timeTouching = 0;
         clearingVisual.localScale = clearingVisualStartScale;
+        CarIsTouching = false;
     }
 }
