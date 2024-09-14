@@ -151,7 +151,7 @@ public class CarModeManager : MonoBehaviour
     {
  
         float distance = Vector3.Distance(goalInstance.transform.position,car.transform.position);
-        return Mathf.Max(distance * basetimeNeededForBonus, 7);
+        return Mathf.Max(distance * basetimeNeededForBonus, 7 + Random.Range(0.12f, 0.63f));
     }
 
     private void UpdateGoal()
