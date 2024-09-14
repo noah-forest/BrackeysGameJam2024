@@ -9,11 +9,18 @@ public class CarParticleManager : MonoBehaviour
     [SerializeField] ParticleSystem hurtParticles;
     [SerializeField] CarMaster car;
     [SerializeField] int lastPizzaCount;
+    [SerializeField] AudioSource carHorn;
+    [SerializeField] AudioSource carHurt;
+    [SerializeField] AudioClip[] hurtSounds;
+
+    float startingPitch;
 
     private void Start()
     {
         lastPizzaCount = (int)car.modeManager.PizzasToDeliver - 1;
         car.health.carDamaged.AddListener(PlayPizzaParticles);
+        car.modeManager.deliveryMade.AddListener(PlayHorn);
+        startingPitch = carHurt.pitch;
 
     }
 
@@ -33,5 +40,12 @@ public class CarParticleManager : MonoBehaviour
             hurtParticles.Play();
         }
         lastPizzaCount--;
+        carHurt.pitch = startingPitch + Random.Range(-0.05f, 0.05f);
+        carHurt.PlayOneShot(hurtSounds[Random.Range(0,hurtSounds.Length)]);
+    }
+
+    public void PlayHorn()
+    {
+        carHorn.Play();
     }
 }
