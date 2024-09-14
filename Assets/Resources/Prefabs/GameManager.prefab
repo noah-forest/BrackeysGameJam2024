@@ -296,7 +296,7 @@ MonoBehaviour:
       m_Calls: []
   scoreRequiredToPass: 3200000064000000c80000009001000058020000
   OrdersToDeliver: []
-  daysNeededToWin: 2
+  daysNeededToWin: 5
   gameState: 0
   scoreAllTime: 0
   scoreToday: 0

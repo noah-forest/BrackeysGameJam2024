@@ -116642,6 +116642,36 @@ PrefabInstance:
       propertyPath: pizzaBoxSpawners.Array.data[3]
       value: 
       objectReference: {fileID: 162681209}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: DailyOrders.Array.data[1].maxOrders
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: DailyOrders.Array.data[1].minOrders
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: DailyOrders.Array.data[2].maxOrders
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: DailyOrders.Array.data[3].maxOrders
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: DailyOrders.Array.data[4].maxOrders
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: DailyOrders.Array.data[4].minOrders
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7374773699927520450, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
       propertyPath: m_SizeDelta.x
