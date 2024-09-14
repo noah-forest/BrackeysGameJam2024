@@ -12,7 +12,23 @@ public class PizzaBox : Grabbable
     private Pizza pizzaInBox = null;
     private Animator animator;
     private Order order;
-    
+
+    public override bool CanInteract(GameObject interactor)
+    {
+        Grabber grabber = interactor.GetComponent<Grabber>();
+        if (grabber && grabber.GetCurrentlyGrabbed() != null && grabber.GetCurrentlyGrabbed().GetComponent<Pizza>() != null)
+        {
+            displayText = "[LMB] Insert Pizza";
+            return true;
+        }
+        else if (CanGrab(grabber))
+        {
+            displayText = "[LMB] Grab Order";
+            return true;
+        }
+        return false;
+    }
+
     public override bool CanGrab(Grabber grabber)
     {
         return pizzaInBox != null && base.CanGrab(grabber);
