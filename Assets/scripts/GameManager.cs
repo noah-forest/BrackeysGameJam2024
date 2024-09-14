@@ -98,13 +98,17 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        dayChanged.AddListener(ResetScore);
     }
 
-    //private void CheckWinCondition(int day)
-    //{
-    //    if (day < daysNeededToWin) return;
-    //    gameState = GameState.victory;
-    //}
+    private void ResetScore(int day)
+    {
+        if (day == 1)
+        {
+            scoreAllTime = 0;
+        }
+    }
+    
     
     public void UnscoreNextPizza()
     {

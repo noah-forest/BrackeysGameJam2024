@@ -29,6 +29,8 @@ public class EndOfDayUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         
         currentDay.text = $"{gameManager.Day}";
+
+        daysLeft.text = $"{gameManager.daysNeededToWin -  gameManager.Day}";
         
         scrollRect.onValueChanged.AddListener(CheckIfScrolledToEnd);
         
