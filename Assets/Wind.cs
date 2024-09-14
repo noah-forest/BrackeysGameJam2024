@@ -10,10 +10,16 @@ public class Wind : MonoBehaviour
     public float force;
     public bool shrink = false;
     public float shrinkSpeed = 1f;
+    public float minimumScale = 0.1f;
+    Dictionary<Transform, Vector3> objectOriginalScale = new Dictionary<Transform, Vector3>();
 
     public void ShrinkObject(Transform obj, float shrinkSpeed)
     {
-        obj.localScale = Vector3.Lerp(obj.localScale, Vector3.zero, Time.deltaTime * shrinkSpeed);
+        if (!objectOriginalScale.ContainsKey(obj))
+        {
+            objectOriginalScale.Add(obj, obj.localScale);
+        }
+        obj.localScale = Vector3.Lerp(obj.localScale, Vector3.one * minimumScale, Time.deltaTime * shrinkSpeed);
     }
     
     public void OnTriggerStay(Collider other)
@@ -42,6 +48,13 @@ public class Wind : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         onSucked.Invoke();
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (shrink && objectOriginalScale.ContainsKey(other.transform))
+        {
+            other.transform.localScale = objectOriginalScale[other.transform];
+        }
     }
 
     public void OnDrawGizmosSelected()
