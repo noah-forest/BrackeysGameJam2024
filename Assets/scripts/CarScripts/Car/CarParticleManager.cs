@@ -27,7 +27,7 @@ public class CarParticleManager : MonoBehaviour
 
     public void PlayPizzaParticles()
     {
-        Debug.Log("[PIZZA PARTICLE]"+lastPizzaCount);
+       // Debug.Log("[PIZZA PARTICLE]"+lastPizzaCount);
         if (lastPizzaCount > 0)
         {
             hurtParticles.Play();
