@@ -101,7 +101,7 @@ public class EndOfDayUI : MonoBehaviour
     
     private void CheckIfScrolledToEnd(Vector2 vector)
     {
-        if (scrollRect.verticalNormalizedPosition >= 0.95f) // scrolled to end
+        if (scrollRect.verticalNormalizedPosition >= 0.05f) // scrolled to beginning
         {
             exitButton.SetActive(true);
         }
