@@ -40,6 +40,7 @@ public class CarModeManager : MonoBehaviour
 
     /*[HideInInspector]*/ public uint _pizzasToDeliver = 10;
     [HideInInspector] public UnityEvent<uint> pizzasChanged = new();
+    [HideInInspector] public UnityEvent deliveryMade = new();
     bool atHomeBase;
     public uint PizzasToDeliver
     {
@@ -66,6 +67,7 @@ public class CarModeManager : MonoBehaviour
         if (PizzasToDeliver != 0)
         {
             PizzasToDeliver--;
+            deliveryMade.Invoke();
         }
         UpdateGoal();
     }
