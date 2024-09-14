@@ -204,19 +204,23 @@ public class GameManager : MonoBehaviour
             if (order.validForScoring)
             {
                 totalScore += order.score;
+                Debug.Log(totalScore);
             }
         }
-
+        
         if(totalScore < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
         {
+            Debug.Log("lost");
             gameState = GameState.loss;
         }
         else if(Day >= daysNeededToWin)
         {
+            Debug.Log("won");
             gameState = GameState.victory;
         }
         else
         {
+            Debug.Log("gonna keep goin");
             gameState = GameState.ongoing;
         }
 
