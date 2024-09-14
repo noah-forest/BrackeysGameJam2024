@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     }
 
     public int scoreAllTime = 0;
+    public float scoreToday = 0;
 
     private void Start()
     {
@@ -202,20 +203,20 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("[POST CAR GAME] Scoring Pizzas");
         Debug.Log($"[POST CAR GAME] Score Needed: {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
-        float totalScore = 0;
+        scoreToday = 0;
 
         for (int i = 0; i < OrdersToDeliver.Count; i++)
         {
             if (OrdersToDeliver[i].validForScoring)
             {
-                totalScore += OrdersToDeliver[i].score;
+                scoreToday += OrdersToDeliver[i].score;
                 Debug.Log($"[POST CAR GAME]pizza {i} Score: {OrdersToDeliver[i].score}");
             }
         }
-        Debug.Log($"[POST CAR GAME] RESULT: {totalScore} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
-        scoreAllTime += (int)totalScore;
+        Debug.Log($"[POST CAR GAME] RESULT: {scoreToday} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
+        scoreAllTime += (int)scoreToday;
 
-        if (totalScore < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
+        if (scoreToday < scoreRequiredToPass[Mathf.Clamp(Day-1, 0 , daysNeededToWin)])
         {
             Debug.Log("[POST CAR GAME] lost");
             gameState = GameState.loss;
@@ -236,7 +237,7 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.ongoing:
-                LoadDayOver();
+                LoadPizzaScene();
                 break;
             case GameState.victory:
                 LoadEndGame();

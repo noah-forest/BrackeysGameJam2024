@@ -69,7 +69,7 @@ public class EndOfDayUI : MonoBehaviour
 
     public void StartPizza()
     {
-        gameManager.LoadPizzaScene();
+        gameManager.PostCarGame();
     }
     
     private void CheckIfScrolledToEnd(Vector2 vector)

@@ -173,7 +173,7 @@ public class CarModeManager : MonoBehaviour
     IEnumerator StartNextScene()
     {
         yield return new WaitForSeconds(1f);
-        gameManager.PostCarGame();
+        gameManager.LoadDayOver();
     }
    
     IEnumerator SetHomeBase() // this exists to prevent frame issue/ occasioan instant scene change on last delivery
