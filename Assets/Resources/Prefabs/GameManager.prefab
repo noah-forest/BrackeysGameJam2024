@@ -278,7 +278,7 @@ MonoBehaviour:
   quotaChanged:
     m_PersistentCalls:
       m_Calls: []
-  enableTutorial: 0
+  enableTutorial: 1
   pauseGame:
     m_PersistentCalls:
       m_Calls: []
@@ -1562,20 +1562,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to your new job at Hungry Joe''s Pizza!
-
-
-    Your job is to make
-    and deliver our loyal customers some of Joe''s classic pizzas. Be sure to look
-    at the menu and stick to the recipes for a good score!
-
-
-    We will evaluate
-    you at the end of each day, and if you didn''t deliver enough pizzas, we''ll
-    have to let you go.
-
-
-    Good luck out there!'
+  m_text: "Welcome to your new job at Hungry Joe's Pizza!\n\nYour job is to make
+    and cook pizzas then throw them into the chute so you can deliver our loyal customers
+    some of Joe's classic pizzas. Be sure to look at the menu and stick to the recipes
+    for a good score! \n\nWe will evaluate you at the end of each day, and if you
+    didn't deliver enough pizzas, we'll have to let you go.\n\nGood luck out there!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72e53c25c4f200e4cb3c33b037de5264, type: 2}
   m_sharedMaterial: {fileID: 1503855302291487414, guid: 72e53c25c4f200e4cb3c33b037de5264,
@@ -3605,20 +3596,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to your new job at Hungry Joe''s Pizza!
-
-
-    Your job is to make
-    and deliver our loyal customers some of Joe''s classic pizzas. Be sure to look
-    at the menu and stick to the recipes for a good score!
-
-
-    We will evaluate
-    you at the end of each day, and if you didn''t deliver enough pizzas, we''ll
-    have to let you go.
-
-
-    Good luck out there!'
+  m_text: "Welcome to your new job at Hungry Joe's Pizza!\n\nYour job is to make
+    and cook pizzas then throw them into the chute so you can deliver our loyal customers
+    some of Joe's classic pizzas. Be sure to look at the menu and stick to the recipes
+    for a good score! \n\nWe will evaluate you at the end of each day, and if you
+    didn't deliver enough pizzas, we'll have to let you go.\n\nGood luck out there!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72e53c25c4f200e4cb3c33b037de5264, type: 2}
   m_sharedMaterial: {fileID: 1503855302291487414, guid: 72e53c25c4f200e4cb3c33b037de5264,
