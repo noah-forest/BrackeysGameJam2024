@@ -14,6 +14,7 @@ public class PizzaGameUI : MonoBehaviour
     public TextMeshProUGUI interactText;
     public GameObject interactPrompt;
 
+    public TextMeshProUGUI day;
     public TextMeshProUGUI dayNumber;
     
     private FadeInOut fade;
@@ -27,7 +28,16 @@ public class PizzaGameUI : MonoBehaviour
         
         interactPrompt.SetActive(false);
 
-        dayNumber.text = $"{gameManager.Day}";
+        if (gameManager.Day == 5)
+        {
+            day.text = "Final";
+            dayNumber.text = $"Day";
+        }
+        else
+        {
+            dayNumber.text = $"{gameManager.Day}";
+        }
+        
         StartCoroutine(ShowDay());
         
         interactor?.onLook.AddListener(ShowPrompt);
