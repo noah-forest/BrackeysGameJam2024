@@ -25,6 +25,7 @@ public class PizzaModeManager : MonoBehaviour
     
     public Recipe[] defaultRecipeBook;
 
+    public GameObject chuteLight;
 
     public PizzaBoxSpawner[] pizzaBoxSpawners;
 

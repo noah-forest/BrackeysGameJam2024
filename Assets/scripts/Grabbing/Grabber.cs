@@ -23,6 +23,7 @@ namespace Grabbing
             {
                 ThrowCurrentlyGrabbed();
             }
+
         }
 
         public void Start()
@@ -66,6 +67,15 @@ namespace Grabbing
 
                 currentlyGrabbed.onGrab.Invoke();
                 currentlyGrabbed.isGrabbed = true;
+
+                if (currentlyGrabbed.GetComponent<PizzaBox>())
+                {
+                    PizzaModeManager.singleton.chuteLight.SetActive(true);
+                }
+                else
+                {
+                    PizzaModeManager.singleton.chuteLight.SetActive(false);
+                }
             }
         }
 
@@ -90,6 +100,7 @@ namespace Grabbing
                 currentlyGrabbed.isGrabbed = false;
                 currentlyGrabbed = null;
             }
+            PizzaModeManager.singleton.chuteLight.SetActive(false);
         }
 
         public void ThrowCurrentlyGrabbed()
@@ -107,6 +118,7 @@ namespace Grabbing
                 }
                 currentlyGrabbed = null;
             }
+            PizzaModeManager.singleton.chuteLight.SetActive(false);
         }
 
         public void DestroyGrabbed()
@@ -116,6 +128,7 @@ namespace Grabbing
                 Destroy(currentlyGrabbed.gameObject);
                 currentlyGrabbed = null;
             }
+            PizzaModeManager.singleton.chuteLight.SetActive(false);
         }
 
         [CanBeNull]
