@@ -46,6 +46,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd097f0195624944bdb4324b25f661f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dailyRecipieBook:
+  - recipies:
+    - name: Cheese
+      toppings: 0100000002000000
+    - name: Pepperoni
+      toppings: 010000000000000002000000
+    - name: Sausage
+      toppings: 030000000100000002000000
+  - recipies:
+    - name: Cheese
+      toppings: 0100000002000000
+    - name: Pepperoni
+      toppings: 010000000000000002000000
+    - name: Sausage
+      toppings: 030000000100000002000000
+    - name: All Meat
+      toppings: 03000000000000000100000002000000
+    - name: Olive
+      toppings: 010000000200000007000000
+  - recipies:
+    - name: Cheese
+      toppings: 0100000002000000
+    - name: Pepperoni
+      toppings: 010000000000000002000000
+    - name: Sausage
+      toppings: 030000000100000002000000
+    - name: All Meat
+      toppings: 03000000000000000100000002000000
+    - name: Olive
+      toppings: 010000000200000007000000
+    - name: Joe's Special
+      toppings: 01000000020000000000000005000000
+    - name: Veggie Lovers
+      toppings: 010000000200000007000000060000000500000004000000
+  - recipies:
+    - name: Cheese
+      toppings: 0100000002000000
+    - name: Pepperoni
+      toppings: 010000000000000002000000
+    - name: Sausage
+      toppings: 030000000100000002000000
+    - name: All Meat
+      toppings: 03000000000000000100000002000000
+    - name: Olive
+      toppings: 010000000200000007000000
+    - name: Joe's Special
+      toppings: 01000000020000000000000005000000
+    - name: Veggie Lovers
+      toppings: 010000000200000007000000060000000500000004000000
+    - name: Hawaiian
+      toppings: 01000000020000000000000004000000
+    - name: Abomination
+      toppings: 01000000020000000700000004000000
+  - recipies:
+    - name: Cheese
+      toppings: 0100000002000000
+    - name: Pepperoni
+      toppings: 010000000000000002000000
+    - name: Sausage
+      toppings: 030000000100000002000000
+    - name: All Meat
+      toppings: 03000000000000000100000002000000
+    - name: Olive
+      toppings: 010000000200000007000000
+    - name: Joe's Special
+      toppings: 01000000020000000000000005000000
+    - name: Veggie Lovers
+      toppings: 010000000200000007000000060000000500000004000000
+    - name: Hawaiian
+      toppings: 01000000020000000000000004000000
+    - name: Abomination
+      toppings: 01000000020000000700000004000000
+    - name: Deluxe
+      toppings: 01000000020000000300000005000000060000000700000000000000
   defaultRecipeBook:
   - name: Pepperoni
     toppings: 010000000000000002000000
