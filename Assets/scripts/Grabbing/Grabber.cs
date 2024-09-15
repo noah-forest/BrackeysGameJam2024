@@ -65,6 +65,7 @@ namespace Grabbing
                 }
 
                 currentlyGrabbed.onGrab.Invoke();
+                currentlyGrabbed.isGrabbed = true;
             }
         }
 
@@ -86,6 +87,7 @@ namespace Grabbing
                 }
 
                 currentlyGrabbed.onRelease.Invoke();
+                currentlyGrabbed.isGrabbed = false;
                 currentlyGrabbed = null;
             }
         }
