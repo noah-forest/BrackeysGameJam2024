@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 5726788421016742348}
   - component: {fileID: 280017109442213544}
   - component: {fileID: 3042690456786891137}
+  - component: {fileID: 7609014662400328343}
   m_Layer: 0
   m_Name: RenderTexture
   m_TagString: Untagged
@@ -189,7 +190,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0098, y: 0.0088, z: 0}
-  m_LocalScale: {x: 19.449219, y: 10.077071, z: 1}
+  m_LocalScale: {x: 18, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4684497976261630699}
@@ -244,3 +245,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7609014662400328343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721954372931391393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14530ab1709f9ab40b6a863d50768db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
