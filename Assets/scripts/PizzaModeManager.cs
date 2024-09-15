@@ -15,8 +15,17 @@ public class PizzaModeManager : MonoBehaviour
 
     public static PizzaModeManager singleton;
 
-    public Recipe[] defaultRecipeBook;
+    public RecipeBook[] dailyRecipieBook;
+
+    [Serializable]
+    public struct RecipeBook
+    {
+        public Recipe[] recipies;
+    }
     
+    public Recipe[] defaultRecipeBook;
+
+
     public PizzaBoxSpawner[] pizzaBoxSpawners;
 
     private void Awake()
@@ -102,7 +111,7 @@ public class PizzaModeManager : MonoBehaviour
 
     void Setup()
     {
-        OrderManager.SetRecipeBook(defaultRecipeBook);
+        OrderManager.SetRecipeBook(dailyRecipieBook[gameManager.Day-1].recipies);
         OrderManager.onOrderCompleted.AddListener(OnOrderManagerCompletedOrder);
 
         StartCoroutine(NextOrder());
