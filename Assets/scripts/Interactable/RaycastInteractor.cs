@@ -1,3 +1,4 @@
+using Grabbing;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,10 +19,13 @@ namespace Interact
 
         GameObject objUnderCrosshair;
 
+        Grabber grabber;
+
         void Start()
         {
             //onLook.AddListener(TestOnLook);
             //onLookAway.AddListener(TestOnLookAway);
+            grabber = GetComponentInChildren<Grabber>();
 
         }
         void LateUpdate()
@@ -48,6 +52,12 @@ namespace Interact
                 // raycast from camera
                 if (targetInteractable != null && targetInteractable.CanInteract(gameObject))
                 {
+                    EdibleIneractable drink = grabber.currentlyGrabbed?.GetComponent<EdibleIneractable>();
+                    if (drink && drink.Uses > 0)
+                    {
+                        return;
+                    }
+
                     targetInteractable.Interact(gameObject);
 
                     onInteract.Invoke(objUnderCrosshair);
