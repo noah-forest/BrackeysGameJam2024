@@ -9,12 +9,17 @@ public class RadioInteractable : PizzaModeInteractable
     [SerializeField] AudioSource player;
     [SerializeField] List<AudioClip> trackList;
     int currentTrack = 0;
+    float initDelay = 5;
     bool powerOff;
 
     public void Start()
     {
         if (GameManager.singleton.Day > 1)
+        {
             currentTrack = Random.Range(0, trackList.Count);
+        }
+        currentTrack = 0;
+        player.Play();
     }
 
     public override void Interact(GameObject gameObject)

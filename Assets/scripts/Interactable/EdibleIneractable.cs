@@ -6,19 +6,19 @@ using Grabbing;
 public class EdibleIneractable : Grabbable
 {
     [SerializeField] protected int maxUses;
-    int uses;
+    public int Uses { get; private set; }
     [SerializeField] Rigidbody rb;
 
     public virtual void DeductUse()
     {
         if (!CanEat()) return;
-        ++uses;
-        rb.mass /= uses;
+        ++Uses;
+        rb.mass /= Uses;
     }
 
     public virtual bool CanEat()
     {
-        if (uses < maxUses) return true;
+        if (Uses < maxUses) return true;
         return false;
     }
 }

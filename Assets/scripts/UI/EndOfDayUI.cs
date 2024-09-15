@@ -132,8 +132,6 @@ public class EndOfDayUI : MonoBehaviour
             feedback.text = "Nice Work!";
             feedback.color = new Color32(102, 255, 52, 255);
         }
-        
-        feedback.gameObject.SetActive(true);
     }
 
     private void OnEnable()
