@@ -117,7 +117,7 @@ public class EndOfDayUI : MonoBehaviour
     
     private void CheckIfScrolledToEnd(Vector2 vector)
     {
-        if (!(scrollRect.verticalNormalizedPosition >= 0.01f)) return; // scrolled to beginning
+        if (!(scrollRect.verticalNormalizedPosition >= 0.001f)) return; // scrolled to beginning
         exitButton.SetActive(true);
             
         //give feedback
@@ -127,6 +127,12 @@ public class EndOfDayUI : MonoBehaviour
             feedback.color = new Color32(255, 142, 142, 255);
             feedback.text = "Uh oh...";
         }
+        else
+        {
+            feedback.text = "Nice Work!";
+            feedback.color = new Color32(102, 255, 52, 255);
+        }
+        
         feedback.gameObject.SetActive(true);
     }
 
