@@ -45,6 +45,7 @@ public class GoalCompass : MonoBehaviour
 
     private void Update()
     {
+        if (currentGoal == null) return;
         path = pathfinding.FindPath(transform.position, currentGoal.position);
         if (path != null)
         {
