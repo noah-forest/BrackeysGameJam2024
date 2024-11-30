@@ -223,6 +223,9 @@ MonoBehaviour:
   - topping: 0
     rawMaterial: {fileID: 2100000, guid: f72f52fddf8749f478c469c4c54a4d99, type: 2}
     cookedMaterial: {fileID: 2100000, guid: aa3de75b4910e604d88715468f08932f, type: 2}
+  - topping: 8
+    rawMaterial: {fileID: 2100000, guid: 71f8a8e07ddfad74499f7074f338350c, type: 2}
+    cookedMaterial: {fileID: 2100000, guid: f1828d540af59a148b9071d8ee0efa3c, type: 2}
   - topping: 3
     rawMaterial: {fileID: 2100000, guid: 39df174a05ea7ce468d49f07beb5030c, type: 2}
     cookedMaterial: {fileID: 2100000, guid: f8c171a1dd725c6469646a96fdcddb74, type: 2}

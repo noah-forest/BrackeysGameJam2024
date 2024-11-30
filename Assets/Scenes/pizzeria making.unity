@@ -48116,6 +48116,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 171f3a953d20514449bf79ebab4f7757, type: 2}
+    - target: {fileID: -7693236037846682614, guid: 0bb7af864d3d6294d8d11dd1306cf2c2,
+        type: 3}
+      propertyPath: m_Name
+      value: BaconContainer
+      objectReference: {fileID: 0}
     - target: {fileID: -7149379172396571192, guid: 0bb7af864d3d6294d8d11dd1306cf2c2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -48599,6 +48604,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1092677246}
+    - targetCorrespondingSourceObject: {fileID: -7693236037846682614, guid: 0bb7af864d3d6294d8d11dd1306cf2c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1092677251}
   m_SourcePrefab: {fileID: 100100000, guid: 0bb7af864d3d6294d8d11dd1306cf2c2, type: 3}
 --- !u!1 &840521094 stripped
 GameObject:
@@ -63199,6 +63208,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8065297083244912857, guid: 0bb7af864d3d6294d8d11dd1306cf2c2, type: 3}
+--- !u!114 &1092677251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840521094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc13d42047f4e66b5581ac901f0796c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  HoverDisplay: {fileID: 0}
+  displayText: '[LMB] Grab Bacon'
+  grabbablePrefab: {fileID: 3565088834398689190, guid: 0902fef88555a4b41ac19c7b40073c14,
+    type: 3}
 --- !u!1 &1092864376
 GameObject:
   m_ObjectHideFlags: 0
@@ -120081,6 +120109,11 @@ PrefabInstance:
       objectReference: {fileID: 1177088422}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
+      propertyPath: defaultRecipeBook.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
       propertyPath: pizzaBoxSpawners.Array.data[0]
       value: 
       objectReference: {fileID: 1193776223}
@@ -120131,8 +120164,228 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
+      propertyPath: defaultRecipeBook.Array.data[1].name
+      value: Bacon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[2].name
+      value: Sausage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[3].name
+      value: All Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[4].name
+      value: Cheese
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[5].name
+      value: Hawaiian
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[6].name
+      value: Joe's Special
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[7].name
+      value: Veggie Lovers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[8].name
+      value: Deluxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[9].name
+      value: Olive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[10].name
+      value: Abomination
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: dailyRecipieBook.Array.data[0].recipies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
       propertyPath: dailyRecipieBook.Array.data[2].recipies.Array.size
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[2].toppings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[4].toppings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[6].toppings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[7].toppings.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[8].toppings.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[9].toppings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[10].toppings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[1].toppings.Array.data[2]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[2].toppings.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[2].toppings.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[3].toppings.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[5].toppings.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[6].toppings.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[6].toppings.Array.data[3]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[7].toppings.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[7].toppings.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[7].toppings.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[7].toppings.Array.data[5]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[8].toppings.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[8].toppings.Array.data[3]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[8].toppings.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[8].toppings.Array.data[5]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[10].toppings.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[10].toppings.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[10].toppings.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: defaultRecipeBook.Array.data[10].toppings.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: dailyRecipieBook.Array.data[0].recipies.Array.data[3].name
+      value: Bacon
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
@@ -120161,6 +120414,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
+      propertyPath: dailyRecipieBook.Array.data[0].recipies.Array.data[3].toppings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
       propertyPath: dailyRecipieBook.Array.data[2].recipies.Array.data[6].toppings.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -120178,6 +120436,21 @@ PrefabInstance:
         type: 3}
       propertyPath: dailyRecipieBook.Array.data[3].recipies.Array.data[8].toppings.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: dailyRecipieBook.Array.data[0].recipies.Array.data[3].toppings.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: dailyRecipieBook.Array.data[0].recipies.Array.data[3].toppings.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
+        type: 3}
+      propertyPath: dailyRecipieBook.Array.data[0].recipies.Array.data[3].toppings.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6375660563131733213, guid: d1cdcdab03b96134a9a2a2df4777ca9b,
         type: 3}
