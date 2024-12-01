@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 2511351785860113254}
+  useStartingmat: 1
   startingMat: 0
   materials:
   - {fileID: 2100000, guid: 840eac1c141e3d54984c4f8f785ec1f1, type: 2}
@@ -466,6 +467,7 @@ MonoBehaviour:
   force: 20
   shrink: 0
   shrinkSpeed: 1
+  minimumScale: 0.1
 --- !u!65 &1814925751270984638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -813,6 +815,7 @@ MonoBehaviour:
   force: 50
   shrink: 0
   shrinkSpeed: 1
+  minimumScale: 0.1
 --- !u!65 &798779633216209807
 BoxCollider:
   m_ObjectHideFlags: 0
