@@ -167,17 +167,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 72e53c25c4f200e4cb3c33b037de5264, type: 2}
-  m_sharedMaterial: {fileID: 1503855302291487414, guid: 72e53c25c4f200e4cb3c33b037de5264,
+  m_fontAsset: {fileID: 11400000, guid: 3eecb6f55210fb2498fe33ba030f21f1, type: 2}
+  m_sharedMaterial: {fileID: -4308864348018672065, guid: 3eecb6f55210fb2498fe33ba030f21f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -358,17 +360,17 @@ PrefabInstance:
     - target: {fileID: -1794867857779791457, guid: 3f0a302d76342b24fa67990dcbb8f357,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 31.240635
       objectReference: {fileID: 0}
     - target: {fileID: -1794867857779791457, guid: 3f0a302d76342b24fa67990dcbb8f357,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 11.481068
       objectReference: {fileID: 0}
     - target: {fileID: -1794867857779791457, guid: 3f0a302d76342b24fa67990dcbb8f357,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.0000019971392
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f0a302d76342b24fa67990dcbb8f357,
         type: 3}

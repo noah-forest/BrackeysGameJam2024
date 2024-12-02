@@ -48,99 +48,104 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dailyRecipieBook:
   - recipies:
-    - name: Cheese
+    - name: Classic Cheese
       toppings: 0100000002000000
-    - name: Pepperoni
+    - name: Pepperoni Pizza
       toppings: 010000000000000002000000
-    - name: Sausage
+    - name: Sausage Pizza
       toppings: 030000000100000002000000
   - recipies:
-    - name: Cheese
+    - name: Classic Cheese
       toppings: 0100000002000000
-    - name: Pepperoni
+    - name: Pepperoni Pizza
       toppings: 010000000000000002000000
-    - name: Sausage
+    - name: Sausage Pizza
       toppings: 030000000100000002000000
+    - name: Bacon Pizza
+      toppings: 080000000100000002000000
     - name: All Meat
-      toppings: 03000000000000000100000002000000
-    - name: Olive
-      toppings: 010000000200000007000000
+      toppings: 0300000000000000080000000100000002000000
   - recipies:
-    - name: Cheese
+    - name: Classic Cheese
       toppings: 0100000002000000
-    - name: Pepperoni
+    - name: Pepperoni Pizza
       toppings: 010000000000000002000000
-    - name: Sausage
+    - name: Sausage Pizza
       toppings: 030000000100000002000000
+    - name: Bacon Pizza
+      toppings: 010000000200000008000000
+    - name: All Meat
+      toppings: 0300000008000000000000000100000002000000
+    - name: Joe's Special
+      toppings: 01000000020000000000000005000000
+    - name: Joe's Hawaiian
+      toppings: 01000000020000000800000004000000
+  - recipies:
+    - name: Classic Cheese
+      toppings: 0100000002000000
+    - name: Pepperoni Pizza
+      toppings: 010000000000000002000000
+    - name: Sausage Pizza
+      toppings: 030000000100000002000000
+    - name: Bacon Pizza
+      toppings: 080000000100000002000000
     - name: All Meat
       toppings: 03000000000000000100000002000000
-    - name: Olive
+    - name: Olive Pizza
       toppings: 010000000200000007000000
     - name: Joe's Special
       toppings: 01000000020000000000000005000000
-    - name: Veggie Lovers
-      toppings: 010000000200000007000000060000000500000004000000
-  - recipies:
-    - name: Cheese
-      toppings: 0100000002000000
-    - name: Pepperoni
-      toppings: 010000000000000002000000
-    - name: Sausage
-      toppings: 030000000100000002000000
-    - name: All Meat
-      toppings: 03000000000000000100000002000000
-    - name: Olive
-      toppings: 010000000200000007000000
-    - name: Joe's Special
-      toppings: 01000000020000000000000005000000
-    - name: Veggie Lovers
-      toppings: 010000000200000007000000060000000500000004000000
-    - name: Hawaiian
-      toppings: 01000000020000000000000004000000
-    - name: Abomination
+    - name: Joe's Hawaiian
+      toppings: 01000000020000000800000004000000
+    - name: The Abomination
       toppings: 01000000020000000700000004000000
   - recipies:
-    - name: Cheese
+    - name: Classic Cheese
       toppings: 0100000002000000
-    - name: Pepperoni
+    - name: Pepperoni Pizza
       toppings: 010000000000000002000000
-    - name: Sausage
+    - name: Bacon Pizza
+      toppings: 010000000800000002000000
+    - name: Sausage Pizza
       toppings: 030000000100000002000000
     - name: All Meat
       toppings: 03000000000000000100000002000000
-    - name: Olive
+    - name: Olive Pizza
       toppings: 010000000200000007000000
     - name: Joe's Special
       toppings: 01000000020000000000000005000000
+    - name: Joe's Hawaiian
+      toppings: 01000000020000000800000004000000
+    - name: The Abomination
+      toppings: 01000000020000000700000004000000
     - name: Veggie Lovers
       toppings: 010000000200000007000000060000000500000004000000
-    - name: Hawaiian
-      toppings: 01000000020000000000000004000000
-    - name: Abomination
-      toppings: 01000000020000000700000004000000
-    - name: Deluxe
-      toppings: 01000000020000000300000005000000060000000700000000000000
+    - name: Joe's Deluxe
+      toppings: 0100000002000000030000000500000006000000070000000000000008000000
   defaultRecipeBook:
-  - name: Pepperoni
-    toppings: 010000000000000002000000
-  - name: Sausage
-    toppings: 030000000100000002000000
-  - name: All Meat
-    toppings: 03000000000000000100000002000000
-  - name: Cheese
+  - name: Classic Cheese
     toppings: 0100000002000000
-  - name: Hawaiian
-    toppings: 01000000020000000000000004000000
+  - name: Pepperoni Pizza
+    toppings: 010000000000000002000000
+  - name: Bacon Pizza
+    toppings: 010000000200000008000000
+  - name: Sausage Pizza
+    toppings: 030000000100000002000000
+  - name: Olive Pizza
+    toppings: 010000000200000007000000
+  - name: The Abomination
+    toppings: 01000000020000000700000004000000
+  - name: Joe's Hawaiian
+    toppings: 01000000020000000800000004000000
   - name: Joe's Special
     toppings: 01000000020000000000000005000000
+  - name: All Meat
+    toppings: 0300000008000000000000000100000002000000
   - name: Veggie Lovers
     toppings: 010000000200000007000000060000000500000004000000
-  - name: Deluxe
-    toppings: 01000000020000000300000005000000060000000700000000000000
-  - name: Olive
-    toppings: 010000000200000007000000
-  - name: Abomination
-    toppings: 01000000020000000700000004000000
+  - name: Joe's Deluxe
+    toppings: 0100000002000000030000000500000006000000070000000400000008000000
+  chuteLight: {fileID: 0}
   pizzaBoxSpawners:
   - {fileID: 0}
   - {fileID: 0}
@@ -157,14 +162,14 @@ MonoBehaviour:
   DailyOrders:
   - minOrders: 6
     maxOrders: 6
-  - minOrders: 7
-    maxOrders: 13
+  - minOrders: 6
+    maxOrders: 8
   - minOrders: 8
-    maxOrders: 15
+    maxOrders: 10
   - minOrders: 9
+    maxOrders: 11
+  - minOrders: 11
     maxOrders: 15
-  - minOrders: 10
-    maxOrders: 16
   ambianceSoundLocation: {fileID: 927813515153477697}
 --- !u!1 &3169507140271145908
 GameObject:
