@@ -6,13 +6,6 @@ public class Bottle : MonoBehaviour
 {
     [SerializeField] GameObject brokenBottlePrefab;
     [SerializeField] float explodeSpeed;
-    void Update() // just for testing
-    {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            Explode();
-        }
-    }
     
     void Explode()
     {
