@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public CarModeManager carManager;
     public UIManager UIManager;
     public FadeInOut fade;
+	private TimerController timer;
     
     /// <summary>
     /// used to transfer the pizzas between the pizza and car modes
@@ -97,7 +98,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+		timer = TimerController.singleton;
+
+		SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         dayChanged.AddListener(ResetScore);
     }
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour
     {
         if (day == 1)
         {
-            scoreAllTime = 0;
+			scoreAllTime = 0;
             ambiancePlayer.Stop();
         }
     }
@@ -181,7 +184,13 @@ public class GameManager : MonoBehaviour
     {
         if (pizzaManager)
         {
-            ++Day;
+			if (!timer.timerGoing)
+			{
+				timer.ShowTimer();
+				timer.StartTimer();
+			}
+
+			++Day;
             pizzaModeInit.Invoke();
             pizzaManager.gameManager = this;
             ambiancePlayer.spatialBlend = 0.9f;
@@ -206,11 +215,6 @@ public class GameManager : MonoBehaviour
 
     public void PostCarGame()
     {
-
-
-
-
-
         switch (gameState)
         {
             case GameState.ongoing:
@@ -270,16 +274,21 @@ public class GameManager : MonoBehaviour
 
     public void LoadDayOver()
     {
-        StartCoroutine(ChangeScene(endOfDayScene));
+		timer.PauseTimer();
+		StartCoroutine(ChangeScene(endOfDayScene));
     }
 
     public void LoadEndGame()
     {
-        StartCoroutine(ChangeScene(endGameScene));
+		timer.PauseTimer();
+		timer.HideTimer();
+		StartCoroutine(ChangeScene(endGameScene));
     }
     public void LoadMenuScene()
     {
-        StartCoroutine(ChangeScene(mainSceneName));
+		timer.ResetTimer();
+		timer.HideTimer();
+		StartCoroutine(ChangeScene(mainSceneName));
     }
     public void LoadCarScene()
     {

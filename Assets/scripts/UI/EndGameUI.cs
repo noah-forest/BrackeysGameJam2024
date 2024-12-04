@@ -17,6 +17,8 @@ public class EndGameUI : MonoBehaviour
 	public GameObject buttons;
 
 	public TextMeshProUGUI wonScoreText;
+	public TextMeshProUGUI wonTimerText;
+	public TextMeshProUGUI lostTimerText;
 	public TextMeshProUGUI lostScoreText;
 
 	[SerializeField]AudioClip[] sounds;
@@ -73,7 +75,8 @@ public class EndGameUI : MonoBehaviour
 			fade.FadeIn();
             postWinText.SetActive(true);
             wonScoreText.text = $"Score: {gameManager.scoreAllTime}";
-        }
+			wonTimerText.text = "Time: " + TimerController.singleton.time.ToString("hh':'mm':'ss'.'ff");
+		}
         else
         {
             // lost
@@ -89,7 +92,8 @@ public class EndGameUI : MonoBehaviour
             fade.FadeIn();
             postLossText.SetActive(true);
             lostScoreText.text = $"Score: {gameManager.scoreAllTime}";
-        }
+			lostTimerText.text = "Time: " + TimerController.singleton.time.ToString("hh':'mm':'ss'.'ff");
+		}
 		StartCoroutine(ShowButtons());
     }
 

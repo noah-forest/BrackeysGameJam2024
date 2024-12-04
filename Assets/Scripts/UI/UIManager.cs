@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GameManager.singleton;
 
-        if (gameManager.enableTutorial)
+		if (gameManager.enableTutorial)
         {
             gameManager.pizzaModeInit.AddListener(SetUpTutorial);
         }
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == gameManager.endOfDayScene) return;
         if (SceneManager.GetActiveScene().name == gameManager.endGameScene) return;
         if (tutorialOpen) return;
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
@@ -90,18 +90,19 @@ public class UIManager : MonoBehaviour
 
     public void TogglePauseMenu()
     {
+		// game is paused
         if (gameIsPaused)
         {
-            openPauseMenu = false;
+			openPauseMenu = false;
             if (SceneManager.GetActiveScene().name == gameManager.carSceneName)
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }
             gameManager.resumeGame.Invoke();
         }
-        else
+        else //pause game
         {
-            openPauseMenu = true;
+			openPauseMenu = true;
             Cursor.lockState = CursorLockMode.Confined;
             gameManager.pauseGame.Invoke();
         }
