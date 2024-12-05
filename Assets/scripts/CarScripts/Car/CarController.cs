@@ -96,10 +96,10 @@ public class CarController : MonoBehaviour
     Vector2 xzVel = Vector2.zero;
 
     [SerializeField]
-    [Range(0,500)]
+    [Range(0,3000)]
     float maxDownforce = 100;
     [SerializeField]
-    [Range(0, 2)]
+    [Range(0, 10)]
     float velocityDownforceScalar = 0.5f;
 
     struct WheelFrictionInfo

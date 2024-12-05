@@ -442,13 +442,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081078487117681650, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
+      propertyPath: maxDownforce
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081078487117681650, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
       propertyPath: steerJetPower
       value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8081078487117681650, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
       propertyPath: velocityDownforceScalar
-      value: 2
+      value: 5.18
       objectReference: {fileID: 0}
     - target: {fileID: 8968360810782407845, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
