@@ -38,6 +38,8 @@ public class CarController : MonoBehaviour
     public int maxSteeringAngle = 27; // The maximum angle that the tires can reach while rotating the steering wheel.
     [Range(0.1f, 100f)]
     public float steeringSpeed = 0.5f; // How fast the steering wheel turns.
+    [Range(0.1f, 100f)]
+    public float centeringSpeed = 0.5f; // How fast the steering wheel returns to straight.
     [Space(10)]
     [Range(100, 1000)]
     public int brakeForce = 350; // The strength of the wheel brakes.
@@ -92,6 +94,13 @@ public class CarController : MonoBehaviour
     float carSoundTimeStamp;
     float carSoundInterval = 0.1f;
     Vector2 xzVel = Vector2.zero;
+
+    [SerializeField]
+    [Range(0,500)]
+    float maxDownforce = 100;
+    [SerializeField]
+    [Range(0, 2)]
+    float velocityDownforceScalar = 0.5f;
 
     struct WheelFrictionInfo
     {
@@ -198,6 +207,13 @@ public class CarController : MonoBehaviour
         Steer();
         Handbrake();
         Turbo();
+        ApplyDownforce();
+    }
+
+    void ApplyDownforce()
+    {
+
+        carBody.AddForce(0, -carBody.velocity.magnitude * velocityDownforceScalar, 0);
     }
 
     // Update is called once per frame
@@ -319,11 +335,11 @@ public class CarController : MonoBehaviour
     {
         if (steeringAxis < 0f)
         {
-            steeringAxis = Mathf.Lerp(steeringAxis, 0, (Time.deltaTime * 10f * steeringSpeed));
+            steeringAxis = Mathf.Lerp(steeringAxis, 0, (Time.deltaTime * 10f * centeringSpeed));
         }
         else if (steeringAxis > 0f)
         {
-            steeringAxis = Mathf.Lerp(steeringAxis ,0, (Time.deltaTime * 10f * steeringSpeed));
+            steeringAxis = Mathf.Lerp(steeringAxis ,0, (Time.deltaTime * 10f * centeringSpeed));
         }
         if (Mathf.Abs(wheels[FWL].steerAngle) < 1f)
         {
