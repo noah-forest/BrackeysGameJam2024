@@ -74,8 +74,16 @@ public class EndGameUI : MonoBehaviour
 			wonText.SetActive(false);
 			fade.FadeIn();
             postWinText.SetActive(true);
-            wonScoreText.text = $"Score: {gameManager.scoreAllTime}";
-			wonTimerText.text = "Time: " + TimerController.singleton.time.ToString("hh':'mm':'ss'.'ff");
+            wonScoreText.text = $"{gameManager.scoreAllTime}";
+			
+			if(TimerController.singleton.time.TotalHours > 0)
+			{
+				wonTimerText.text = TimerController.singleton.time.ToString("mm':'ss'.'ff");
+			} else
+			{
+				wonTimerText.text = TimerController.singleton.time.ToString("hh':'mm':'ss'.'ff");
+			}
+
 		}
         else
         {
@@ -91,8 +99,8 @@ public class EndGameUI : MonoBehaviour
             lostText.SetActive(false);
             fade.FadeIn();
             postLossText.SetActive(true);
-            lostScoreText.text = $"Score: {gameManager.scoreAllTime}";
-			lostTimerText.text = "Time: " + TimerController.singleton.time.ToString("hh':'mm':'ss'.'ff");
+            lostScoreText.text = $"{gameManager.scoreAllTime}";
+			lostTimerText.text = TimerController.singleton.time.ToString("hh':'mm':'ss'.'ff");
 		}
 		StartCoroutine(ShowButtons());
     }

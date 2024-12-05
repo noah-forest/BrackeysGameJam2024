@@ -79,6 +79,7 @@ public class EndOfDayUI : MonoBehaviour
         {
             uiInfo.orderName.text = $"{order.name} (Lost)";
             uiInfo.orderName.color = new Color32(250, 143, 143, 255);
+			uiInfo.sfxPlayer.PlayOneShot(uiInfo.lostClip);
         }
         else
         {
@@ -86,8 +87,10 @@ public class EndOfDayUI : MonoBehaviour
             
             var scoreAnim = score.GetComponent<Animator>();
             scoreAnim.SetTrigger("addScore");
-            
-            curScore += order.score;
+
+			uiInfo.sfxPlayer.PlayOneShot(uiInfo.scoredClip);
+
+			curScore += order.score;
             score.text = $"{curScore}";
             score.text = $"{curScore + gameManager.scoreTime}";
         }

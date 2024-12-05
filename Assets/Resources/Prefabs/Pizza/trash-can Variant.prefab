@@ -125,13 +125,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 996988084681764713}
+      - m_Target: {fileID: 320820096729622238}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
+        m_MethodName: PlayOneShot
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: 6581ffa8c63f6aa4db12ebe7bd57444e,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -230,7 +231,7 @@ GameObject:
   - component: {fileID: 4110582305924385910}
   - component: {fileID: 8001008789060498289}
   - component: {fileID: 5320852702737094658}
-  - component: {fileID: 996988084681764713}
+  - component: {fileID: 320820096729622238}
   m_Layer: 0
   m_Name: Confetti
   m_TagString: Untagged
@@ -5057,7 +5058,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!82 &996988084681764713
+--- !u!82 &320820096729622238
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5069,8 +5070,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6581ffa8c63f6aa4db12ebe7bd57444e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.395
-  m_Pitch: 0.6
+  m_Volume: 0.202
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0

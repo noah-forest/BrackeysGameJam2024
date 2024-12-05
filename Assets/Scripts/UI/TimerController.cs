@@ -38,7 +38,14 @@ public class TimerController : MonoBehaviour
 		{
 			elaspedTime += Time.deltaTime;
 			time = TimeSpan.FromSeconds(elaspedTime);
-			timeCounter.text = time.ToString("hh':'mm':'ss'.'ff");
+
+			if(time.TotalHours > 0)
+			{
+				timeCounter.text = time.ToString("mm':'ss'.'ff");
+			} else
+			{
+				timeCounter.text = time.ToString("hh':'mm':'ss'.'ff");
+			}
 		}
 	}
 
