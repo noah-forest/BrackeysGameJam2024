@@ -4159,11 +4159,6 @@ PrefabInstance:
       propertyPath: finalBuild
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5014946920848954076, guid: 1b6413c184eb7e6408c74ca9c88834f8,
-        type: 3}
-      propertyPath: daysNeededToWin
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6771912753295502848, guid: 1b6413c184eb7e6408c74ca9c88834f8,
         type: 3}
       propertyPath: m_IsActive

@@ -14,6 +14,8 @@ public class CarGameUI : MonoBehaviour
     public GameObject returnText;
     public GameObject timer;
 
+	private AudioSource sfxPlayer;
+
     private bool timerIsRunning = false;
     
     private GameManager gameManager;
@@ -24,8 +26,9 @@ public class CarGameUI : MonoBehaviour
     {
         gameManager = GameManager.singleton;
         modeManager = CarModeManager.singleton;
-        
-        fade = GetComponent<FadeInOut>();
+
+		sfxPlayer = GetComponent<AudioSource>();
+		fade = GetComponent<FadeInOut>();
 
         timerIsRunning = true;
         
@@ -53,16 +56,17 @@ public class CarGameUI : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
-        var milliseconds = time % 1 * 1000;
+        var milliseconds = Mathf.FloorToInt(time % 1f * 100);
 
-        timerText.color = seconds switch
+		timerText.color = seconds switch
         {
             < 5 => new Color32(255, 143, 143, 255),
             < 10 => new Color32(255, 255, 143, 255),
             _ => Color.white
         };
 
-        timerText.text = $"{minutes:00}:{seconds:00}:{milliseconds:00}";
+
+        timerText.text = $"{minutes:00}:{seconds:00}.{milliseconds:00}";
     }
 
     private void ShowDeliveryUI()
@@ -73,7 +77,9 @@ public class CarGameUI : MonoBehaviour
     private IEnumerator FadeDeliveryText()
     {
         fade.FadeIn();
-        yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(0.2f);
+		sfxPlayer.Play();
+		yield return new WaitForSeconds(1.3f);
         fade.FadeOut();
     }
 
