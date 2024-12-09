@@ -66,6 +66,7 @@ public class CarGameUI : MonoBehaviour
             _ => Color.white
         };
 
+		miliseconds.color = timerText.color;
 
 		timerText.text = $"{minutes:00}:{seconds:00}";
 		miliseconds.text = $".{milliseconds:00}";
