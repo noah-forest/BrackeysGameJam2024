@@ -8,6 +8,7 @@ public class CarGameUI : MonoBehaviour
 {
     public TextMeshProUGUI pizzaCountText;
     public TextMeshProUGUI timerText;
+	public TextMeshProUGUI miliseconds;
     public GameObject pizzaIcon;
     public GameObject textCont;
     public GameObject returnIcon;
@@ -66,8 +67,10 @@ public class CarGameUI : MonoBehaviour
         };
 
 
-        timerText.text = $"{minutes:00}:{seconds:00}.{milliseconds:00}";
-    }
+		timerText.text = $"{minutes:00}:{seconds:00}";
+		miliseconds.text = $".{milliseconds:00}";
+
+	}
 
     private void ShowDeliveryUI()
     {
