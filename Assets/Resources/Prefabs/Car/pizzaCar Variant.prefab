@@ -16499,6 +16499,7 @@ MonoBehaviour:
   accelerationMultiplier: 20
   maxSteeringAngle: 60
   steeringSpeed: 2
+  centeringSpeed: 0.5
   brakeForce: 300
   decelerationMultiplier: 1
   handbrakeDriftMultiplier: 19
@@ -16514,6 +16515,8 @@ MonoBehaviour:
   carSpeed: 0
   isDrifting: 0
   isTractionLocked: 0
+  maxDownforce: 100
+  velocityDownforceScalar: 10
   motorAxis: 0
   steeringAxis: 0
 --- !u!114 &8968360810782407845
@@ -16572,8 +16575,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80fc224b6fca2d4bab34f1ccd516439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 4567668535125108162}
   currentGoal: {fileID: 0}
+  mapPath: {fileID: 0}
+  arrow: {fileID: 0}
+  intermediatePointDistance: 2
+  lineRenderer: {fileID: 4567668535125108162}
 --- !u!54 &8313083721636004941
 Rigidbody:
   m_ObjectHideFlags: 0

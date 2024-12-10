@@ -14,11 +14,11 @@ public class RadioInteractable : PizzaModeInteractable
 
     public void Start()
     {
+        currentTrack = 0;
         if (GameManager.singleton.Day > 1)
         {
             currentTrack = Random.Range(0, trackList.Count);
         }
-        currentTrack = 0;
         player.Play();
     }
 
