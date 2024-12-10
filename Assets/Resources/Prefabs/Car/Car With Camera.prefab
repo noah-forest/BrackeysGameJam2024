@@ -400,6 +400,11 @@ PrefabInstance:
       propertyPath: m_BounceIntensity
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 653450829020337843, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1637211192748709842, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -434,6 +439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pizzaCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3405117350642273481, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3441123921259324793, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
@@ -485,6 +495,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3866767020619760195, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4474488595889747818, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -509,6 +524,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906523699703632413, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7659346768429412822, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}
@@ -539,6 +559,11 @@ PrefabInstance:
         type: 3}
       propertyPath: steerJetPower
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081078487117681650, guid: dcf04eaa7aceb6f43ad5cde241369602,
+        type: 3}
+      propertyPath: accelerationMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8081078487117681650, guid: dcf04eaa7aceb6f43ad5cde241369602,
         type: 3}

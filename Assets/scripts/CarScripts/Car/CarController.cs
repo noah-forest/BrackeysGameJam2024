@@ -27,12 +27,14 @@ public class CarController : MonoBehaviour
     [Space(20)]
     //[Header("CAR SETUP")]
     [Space(10)]
-    [Range(20, 20000)]
+    [Range(20, 500)]
     public int maxSpeed = 90; //The maximum speed that the car can reach in km/h.
-    [Range(10, 20000)]
+    [Range(10, 500)]
     public int maxReverseSpeed = 45; //The maximum speed that the car can reach while going on reverse in km/h.
-    [Range(1, 4000)]
+    [Range(1, 100)]
     public int accelerationMultiplier = 2; // How fast the car can accelerate. 1 is a slow acceleration and 10 is the fastest.
+    [Range(1, 100)]
+    public int reverseAccelerationMultiplier = 2; // How fast the car can accelerate backwards. 1 is a slow acceleration and 10 is the fastest.
     [Space(10)]
     [Range(10, 90)]
     public int maxSteeringAngle = 27; // The maximum angle that the tires can reach while rotating the steering wheel.
@@ -390,12 +392,20 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            if (Mathf.RoundToInt(carSpeed) < maxSpeed)
+            if (motorAxis > 0 && Mathf.RoundToInt(carSpeed) < maxSpeed)
             {
                 foreach (WheelCollider wheel in wheels)
                 {
                     wheel.brakeTorque = 0;
                     wheel.motorTorque = (accelerationMultiplier * 50f) * motorAxis;
+                }
+            }
+            else if (motorAxis < 0 && Mathf.RoundToInt(carSpeed) < maxReverseSpeed)
+            {
+                foreach (WheelCollider wheel in wheels)
+                {
+                    wheel.brakeTorque = 0;
+                    wheel.motorTorque = (reverseAccelerationMultiplier * 50f) * motorAxis;
                 }
             }
             else
