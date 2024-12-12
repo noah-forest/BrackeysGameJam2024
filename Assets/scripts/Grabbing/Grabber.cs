@@ -1,6 +1,7 @@
 ﻿using System;
 using Interact;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,6 +17,8 @@ namespace Grabbing
         public float throwUpForce = 5;
         public float throwRotationForce = 0.5f;
         public Transform targetTransform;
+        public int defaultLayer = 0;
+        public int grabbedLayer = 1;
 
         public void Update()
         {
@@ -50,12 +53,16 @@ namespace Grabbing
                 currentlyGrabbed.transform.position = targetTransform.position;
                 currentlyGrabbed.transform.localPosition = grabbable.offset;
                 currentlyGrabbed.transform.localRotation = Quaternion.Euler(grabbable.rotationOffset);
+
+                RecursiveSetLayer(currentlyGrabbed.gameObject, grabbedLayer);
+
                 //currentlyGrabbed.transform.localScale = grabbable.scaleOffset;
 
 
                 // Disable collider and rigidbody
                 foreach (Collider c in currentlyGrabbed.GetComponents<Collider>())
                 {
+                    
                     c.enabled = false;
                 }
                 
@@ -79,11 +86,27 @@ namespace Grabbing
             }
         }
 
+
+        void RecursiveSetLayer(GameObject obj, int layer)
+        {
+            obj.layer = layer;
+            if(obj.transform.childCount > 0)
+            {
+                foreach(Transform child in obj.transform)
+                {
+                    RecursiveSetLayer(child.gameObject, layer);
+                }
+            }
+        }
+
         public void ReleaseCurrentlyGrabbed()
         {
             if (currentlyGrabbed != null)
             {
                 currentlyGrabbed.transform.SetParent(null);
+                RecursiveSetLayer(currentlyGrabbed.gameObject, defaultLayer);
+
+
 
                 // Enable collider and rigidbody
                 Rigidbody rigidbody = currentlyGrabbed.GetComponent<Rigidbody>();
