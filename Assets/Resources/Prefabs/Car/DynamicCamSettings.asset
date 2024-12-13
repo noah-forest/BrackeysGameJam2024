@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0450598a7faf6364f8b9ec0ea9fec81b, type: 3}
   m_Name: DynamicCamSettings
   m_EditorClassIdentifier: 
-  fov: 34
+  fov: 14
   nearPlane: 0.3
   farPlane: 200
