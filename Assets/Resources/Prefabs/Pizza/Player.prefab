@@ -403,7 +403,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7447065555358317358, guid: f5b02fc70d91fc94da0a3ff1be8f093c, type: 3}
+  - {fileID: 2100000, guid: b38f63a1fa15b6240adfc864608ef4e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6272,7 +6272,7 @@ MonoBehaviour:
       m_Calls: []
   layerMask:
     serializedVersion: 2
-    m_Bits: 65599
+    m_Bits: 63
   head: {fileID: 3384005178858186632}
   distance: 3
 --- !u!1 &3342110802126816603
@@ -11496,7 +11496,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7447065555358317358, guid: f5b02fc70d91fc94da0a3ff1be8f093c, type: 3}
+  - {fileID: 2100000, guid: b38f63a1fa15b6240adfc864608ef4e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
