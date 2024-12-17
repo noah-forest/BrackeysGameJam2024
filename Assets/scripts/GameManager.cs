@@ -49,7 +49,10 @@ public class GameManager : MonoBehaviour
     public UnityEvent<int> quotaChanged;
 
     public bool enableTutorial;
-    
+
+	public GameObject speedrunTimer;
+	public bool speedrunTimerToggled;
+
     [HideInInspector] public UnityEvent pauseGame;
     [HideInInspector] public UnityEvent resumeGame;
 
