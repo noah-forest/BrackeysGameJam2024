@@ -43,6 +43,8 @@ public class Drinker : MonoBehaviour
             drink = grabber.currentlyGrabbed.GetComponent<EdibleIneractable>();
             if (drink && drink.CanEat())
             {
+                grabber.canThrow = false;
+                grabber.canGrab = false;
                 armsAnim.Play("Drank");
 
             }
@@ -56,6 +58,9 @@ public class Drinker : MonoBehaviour
             drink.DeductUse();
             interactor.onInteract.Invoke(drink.gameObject);
         }
+        grabber.canThrow = true;
+        grabber.canGrab = true;
+        
     }
 
     public void PlaySip()

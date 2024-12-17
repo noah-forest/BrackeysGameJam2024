@@ -91,25 +91,19 @@ public class PizzaGameUI : MonoBehaviour
 
     public IEnumerator ValidateDrinker()
     {
-        Debug.Log("Validating edible ---------");
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame(); // wait 2 frames
         EdibleIneractable drink = interactor?.Grabber?.currentlyGrabbed?.GetComponent<EdibleIneractable>();
 
         if (drink)
         {
-            Debug.Log("Has drink");
             if (!drink.CanEat())
             {
-                Debug.Log("drink empty");
-
                 interactText.text = "[RMB] Throw";
             }
         }
         else
         {
-            Debug.Log("drink gone");
-
             interactPrompt.SetActive(false);
         }
     }

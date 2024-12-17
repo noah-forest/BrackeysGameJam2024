@@ -21,10 +21,12 @@ namespace Grabbing
         public int defaultLayer = 0;
         public int grabbedLayer = 1;
         public UnityEvent onRelease = new();
+        public bool canThrow = true;
+        public bool canGrab = true;
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && canThrow)
             {
                 ThrowCurrentlyGrabbed();
             }
@@ -36,7 +38,7 @@ namespace Grabbing
             GetComponent<RaycastInteractor>()?.onInteract.AddListener((gameObject) =>
             {
                 Grabbable grabbable = gameObject.GetComponent<Grabbable>();
-                if (grabbable != null)
+                if (grabbable != null && canGrab)
                 {
                     Grab(grabbable);
                 }
