@@ -8,6 +8,8 @@ namespace Interact
     public class RaycastInteractor : MonoBehaviour
     {
         public UnityEvent<GameObject> onInteract = new();
+        public UnityEvent onInput = new();
+
         public UnityEvent<GameObject, string> onLook = new();
         public UnityEvent<GameObject, string> onLookAway = new();
 
@@ -19,13 +21,13 @@ namespace Interact
 
         GameObject objUnderCrosshair;
 
-        Grabber grabber;
+        public Grabber Grabber { get; private set; }
 
-        void Start()
+        void Awake()
         {
             //onLook.AddListener(TestOnLook);
             //onLookAway.AddListener(TestOnLookAway);
-            grabber = GetComponentInChildren<Grabber>();
+            Grabber = GetComponentInChildren<Grabber>();
 
         }
         void LateUpdate()
@@ -49,14 +51,15 @@ namespace Interact
             // on mouse down
             if (Input.GetMouseButtonDown(0) && !GameManager.singleton.UIManager.gameIsPaused)
             {
+                onInput.Invoke();
                 // raycast from camera
                 if (targetInteractable != null && targetInteractable.CanInteract(gameObject))
                 {
-                    EdibleIneractable drink = grabber.currentlyGrabbed?.GetComponent<EdibleIneractable>();
-                    if (drink && drink.Uses > 0)
-                    {
-                        return;
-                    }
+                    //EdibleIneractable drink = Grabber.currentlyGrabbed?.GetComponent<EdibleIneractable>();
+                    //if (drink && drink.Uses > 0)
+                    //{
+                    //    return;
+                    //}
 
                     targetInteractable.Interact(gameObject);
 

@@ -3,6 +3,7 @@ using Interact;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Grabbing
@@ -19,6 +20,7 @@ namespace Grabbing
         public Transform targetTransform;
         public int defaultLayer = 0;
         public int grabbedLayer = 1;
+        public UnityEvent onRelease = new();
 
         public void Update()
         {
@@ -121,6 +123,7 @@ namespace Grabbing
 
                 currentlyGrabbed.onRelease.Invoke();
                 currentlyGrabbed.isGrabbed = false;
+                onRelease.Invoke();
                 currentlyGrabbed = null;
             }
             PizzaModeManager.singleton.chuteLight.SetActive(false);

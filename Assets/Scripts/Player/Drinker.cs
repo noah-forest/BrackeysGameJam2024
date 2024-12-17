@@ -1,4 +1,5 @@
 using Grabbing;
+using Interact;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,15 +9,35 @@ public class Drinker : MonoBehaviour
 {
     [SerializeField] Animator armsAnim;
     [SerializeField] Grabber grabber;
+    [SerializeField] RaycastInteractor interactor;
+
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip sipSound;
     [SerializeField] AudioClip postDrinkSound;
 
     EdibleIneractable drink;
+    bool canEat;
+
+
+    private void Start()
+    {
+        interactor.onLook.AddListener(DisableDrinker);
+        interactor.onLookAway.AddListener(EnableDrinker);
+
+    }
+
+    void DisableDrinker(GameObject obj, string prompt)
+    {
+        canEat = false; 
+    }
+    void EnableDrinker(GameObject obj, string prompt)
+    {
+        canEat = true;
+    }
 
     private void Update()
     {
-        if (grabber.currentlyGrabbed && Input.GetMouseButtonDown(0))
+        if (canEat && grabber.currentlyGrabbed && Input.GetMouseButtonDown(0))
         {
 
             drink = grabber.currentlyGrabbed.GetComponent<EdibleIneractable>();
@@ -30,7 +51,11 @@ public class Drinker : MonoBehaviour
 
     public void AlterEdible()
     {
-       if(drink) drink.DeductUse();
+        if (drink)
+        {
+            drink.DeductUse();
+            interactor.onInteract.Invoke(drink.gameObject);
+        }
     }
 
     public void PlaySip()

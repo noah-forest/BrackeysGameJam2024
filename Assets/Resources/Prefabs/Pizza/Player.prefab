@@ -921,6 +921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armsAnim: {fileID: 8501784572974713176}
   grabber: {fileID: 1886031938571774919}
+  interactor: {fileID: 5449235248401656826}
   audioSource: {fileID: 7648399463286793554}
   sipSound: {fileID: 8300000, guid: 364fd169c537d064daa83eb9d9156a3a, type: 3}
   postDrinkSound: {fileID: 8300000, guid: 40d774e42601225479b615ad455d66f8, type: 3}

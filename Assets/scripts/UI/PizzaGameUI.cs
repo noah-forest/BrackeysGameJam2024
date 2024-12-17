@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Grabbing;
 using Interact;
 using TMPro;
 using UnityEngine;
@@ -42,7 +43,13 @@ public class PizzaGameUI : MonoBehaviour
         
         interactor?.onLook.AddListener(ShowPrompt);
         interactor?.onLookAway.AddListener(HidePrompt);
+
+        interactor?.onInput.AddListener(Validate);
+        interactor?.onInteract.AddListener((GameObject v) => Validate());
+        interactor?.Grabber?.onRelease.AddListener(Validate);
+
     }
+
 
     private void ShowPrompt(GameObject obj, string prompt)
     {
@@ -52,8 +59,61 @@ public class PizzaGameUI : MonoBehaviour
 
     private void HidePrompt(GameObject obj, string prompt)
     {
-        interactPrompt.SetActive(false);
+        EdibleIneractable drink = interactor?.Grabber?.currentlyGrabbed?.GetComponent<EdibleIneractable>();
+        if (drink)
+        {
+            if(drink.CanEat())
+            {
+                interactText.text = "[LMB] Drink";
+            }
+            else
+            {
+                interactText.text = "[RMB] Throw";
+            }
+            StartCoroutine(ValidateDrinker());
+        }
+        else
+        {
+            interactPrompt.SetActive(false);
+
+        }
     }
+
+    private void Validate(GameObject gameObject)
+    {
+        Validate();
+
+    }
+    private void Validate()
+    {
+        StartCoroutine(ValidateDrinker());
+    }
+
+    public IEnumerator ValidateDrinker()
+    {
+        Debug.Log("Validating edible ---------");
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame(); // wait 2 frames
+        EdibleIneractable drink = interactor?.Grabber?.currentlyGrabbed?.GetComponent<EdibleIneractable>();
+
+        if (drink)
+        {
+            Debug.Log("Has drink");
+            if (!drink.CanEat())
+            {
+                Debug.Log("drink empty");
+
+                interactText.text = "[RMB] Throw";
+            }
+        }
+        else
+        {
+            Debug.Log("drink gone");
+
+            interactPrompt.SetActive(false);
+        }
+    }
+
 
     private IEnumerator ShowDay()
     {
