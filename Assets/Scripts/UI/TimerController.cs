@@ -13,6 +13,8 @@ public class TimerController : MonoBehaviour
 
 	public TimeSpan time;
 
+	private GameManager gameManager;
+
 	private float elaspedTime;
 
 	private void Awake()
@@ -29,6 +31,7 @@ public class TimerController : MonoBehaviour
 
 	private void Start()
 	{
+		gameManager = GameManager.singleton;
 		elaspedTime = 0;
 	}
 
@@ -67,11 +70,13 @@ public class TimerController : MonoBehaviour
 
 	public void ShowTimer()
 	{
-		timer.SetActive(true);
+        if(gameManager.speedrunTimerToggled)
+			timer.SetActive(true);
 	}
 
 	public void HideTimer()
 	{
-		timer.SetActive(false);
+		if (gameManager.speedrunTimerToggled)
+			timer.SetActive(false);
 	}
 }

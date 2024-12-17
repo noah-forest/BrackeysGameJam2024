@@ -399,6 +399,8 @@ Transform:
   - {fileID: 3389493402171436657}
   - {fileID: 7775560349131525540}
   - {fileID: 1802710643275323101}
+  - {fileID: 6297452833770932954}
+  - {fileID: 4782899894576728506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8340059612584975723
@@ -433,7 +435,7 @@ MonoBehaviour:
   UIManager: {fileID: 4062793749591267549}
   fade: {fileID: 7565176506748353607}
   pizzaCount: 0
-  mainSceneName: main
+  mainSceneName: test
   endOfDayScene: endOfDay
   endGameScene: gameEnd
   pizzaSceneName: pizzeria making
@@ -446,6 +448,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   enableTutorial: 0
+  speedrunTimer: {fileID: 6771912753295502848}
+  speedrunTimerToggled: 0
   pauseGame:
     m_PersistentCalls:
       m_Calls: []
@@ -507,7 +511,8 @@ AudioSource:
   m_GameObject: {fileID: 286787571722333591}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3775825910405092915, guid: 35ee838bebd45004898ab3216eb2ba95,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 656225f8ecc66de419bebe7d38873b82, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.095
@@ -745,6 +750,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &806024879900240492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4782899894576728506}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4782899894576728506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806024879900240492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 254050435935668322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &898841870856821033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,6 +5150,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5394418451782022373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6297452833770932954}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6297452833770932954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394418451782022373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 254050435935668322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5735057468373711833
 GameObject:
   m_ObjectHideFlags: 0
@@ -6442,8 +6509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -290, y: -70}
-  m_SizeDelta: {x: 252.5557, y: 38.2817}
+  m_AnchoredPosition: {x: -287, y: -70}
+  m_SizeDelta: {x: 219.5683, y: 38.2817}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2099991028927457980
 CanvasRenderer:
@@ -6473,7 +6540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00:00:00.00
+  m_text: 00:00.00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3eecb6f55210fb2498fe33ba030f21f1, type: 2}
   m_sharedMaterial: {fileID: -4308864348018672065, guid: 3eecb6f55210fb2498fe33ba030f21f1,
@@ -6508,7 +6575,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 8
-  m_HorizontalAlignment: 32
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7460,7 +7527,8 @@ AudioSource:
   m_GameObject: {fileID: 7925262051263517711}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3775825910405092915, guid: 35ee838bebd45004898ab3216eb2ba95,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 81379e638e6d3a944b9d699093b9c0ce, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
