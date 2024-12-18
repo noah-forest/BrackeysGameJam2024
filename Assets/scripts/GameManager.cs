@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public CarModeManager carManager;
     public UIManager UIManager;
     public FadeInOut fade;
-	private TimerController timer;
+	public TimerController timer;
     
     /// <summary>
     /// used to transfer the pizzas between the pizza and car modes
@@ -101,8 +101,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-		timer = TimerController.singleton;
-
 		SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         dayChanged.AddListener(ResetScore);
@@ -189,7 +187,6 @@ public class GameManager : MonoBehaviour
         {
 			if (!timer.timerGoing)
 			{
-				timer.ShowTimer();
 				timer.StartTimer();
 			}
 
@@ -290,7 +287,6 @@ public class GameManager : MonoBehaviour
     public void LoadMenuScene()
     {
 		timer.ResetTimer();
-		timer.HideTimer();
 		StartCoroutine(ChangeScene(mainSceneName));
     }
     public void LoadCarScene()

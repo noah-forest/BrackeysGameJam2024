@@ -3,12 +3,16 @@ using UnityEngine.UI;
 
 public class ToggleTimer : MonoBehaviour
 {
-	public GameManager Manager;
-	public Toggle timerToggle;
+	private Toggle timerToggle;
+	private GameManager gameManager;
 	private int timerInt;
 
 	private void Awake()
 	{
+		timerToggle = GetComponent<Toggle>();
+		gameManager = GameManager.singleton;
+		timerToggle.onValueChanged.AddListener(SetTimer);
+
 		timerInt = PlayerPrefs.GetInt("timerState");
 		if (timerInt == 1)
 		{
@@ -22,16 +26,16 @@ public class ToggleTimer : MonoBehaviour
 
 	public void SetTimer(bool state)
 	{
-		Manager.speedrunTimer.SetActive(state);
+		gameManager.speedrunTimer.SetActive(state);
 
 		if (!state)
 		{
-			Manager.speedrunTimerToggled = false;
+			gameManager.speedrunTimerToggled = false;
 			PlayerPrefs.SetInt("timerState", 0);
 		}
 		else
 		{
-			Manager.speedrunTimerToggled = true;
+			gameManager.speedrunTimerToggled = true;
 			PlayerPrefs.SetInt("timerState", 1);
 		}
 	}
