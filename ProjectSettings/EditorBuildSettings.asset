@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/main menu making.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
     path: Assets/Scenes/main.unity
-    guid: 89fb72f4410500a44a8cf9e0ac6a4aa8
+    guid: 5204869b81a523442b386842a4807911
   - enabled: 1
     path: Assets/Scenes/pizzeria making.unity
     guid: 8ebf6d26c68254144939dac922525e26

@@ -992,7 +992,7 @@ MonoBehaviour:
   fade: {fileID: 7565176506748353607}
   timer: {fileID: 8340059612584975723}
   pizzaCount: 0
-  mainSceneName: test
+  mainSceneName: main
   endOfDayScene: endOfDay
   endGameScene: gameEnd
   pizzaSceneName: pizzeria making
@@ -6141,8 +6141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9354e98eccb6c89428cd39afec5ac746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 5014946920848954076}
-  timerToggle: {fileID: 6635327319990234686}
 --- !u!1 &2318320739185767724
 GameObject:
   m_ObjectHideFlags: 0
