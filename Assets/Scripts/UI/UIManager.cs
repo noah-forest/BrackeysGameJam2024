@@ -5,8 +5,9 @@ using UnityEngine.Serialization;
 public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+	public MainMenuManager pauseMenuManager;
     public GameObject tutorialMenu;
-    
+
     private GameManager gameManager;
 
     public bool gameIsPaused { get; private set; }
@@ -93,6 +94,7 @@ public class UIManager : MonoBehaviour
 		// game is paused
         if (gameIsPaused)
         {
+			pauseMenuManager.CloseMenus();
 			openPauseMenu = false;
             if (SceneManager.GetActiveScene().name == gameManager.carSceneName)
             {
