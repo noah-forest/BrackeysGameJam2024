@@ -49,7 +49,7 @@ public class PizzaFurnace : PizzaModeInteractable
         base.Interact(interactor);
 
         Grabber grabber = interactor.GetComponent<Grabber>();
-
+        if (!grabber.canGrab) return;
         if (grabber.IsGrabbing())
         {
             Pizza pizza = grabber.GetCurrentlyGrabbed().gameObject.GetComponent<Pizza>();
