@@ -47,7 +47,7 @@ public class Wind : MonoBehaviour
                 }
                 if (shake)
                 {
-                    ShakeObject((BoxCollider)hit.collider, rb, shakingForce);
+                    ShakeObject(hit.collider.gameObject.GetComponent<BoxCollider>(), rb, shakingForce);
                 }
             }
         }
