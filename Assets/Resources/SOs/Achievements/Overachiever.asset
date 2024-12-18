@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00edca25d71677479aee19df614e3bb, type: 3}
+  m_Name: Overachiever
+  m_EditorClassIdentifier: 
+  unlockedIcon: {fileID: 21300000, guid: f5f7d01d95944d0429ebe3d565bea245, type: 3}
+  lockedIcon: {fileID: 21300000, guid: 49dd8024d82fd8d4986a30e53f1c4738, type: 3}
+  Name: Overachiever
+  Description: Achieve a perfect pizza + delivery score combo
+  Unlocked: 0

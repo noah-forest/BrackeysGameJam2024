@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00edca25d71677479aee19df614e3bb, type: 3}
+  m_Name: Bone
+  m_EditorClassIdentifier: 
+  unlockedIcon: {fileID: 21300000, guid: 3919a86e540383b4782673f5fdad966c, type: 3}
+  lockedIcon: {fileID: 21300000, guid: fa0dca480f651b246a4f25d8920e4989, type: 3}
+  Name: Bad to the Bone
+  Description: Have a drink and a cigarette in your hands at the same time
+  Unlocked: 0

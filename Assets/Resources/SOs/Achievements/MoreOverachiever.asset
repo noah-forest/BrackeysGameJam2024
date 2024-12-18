@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00edca25d71677479aee19df614e3bb, type: 3}
+  m_Name: MoreOverachiever
+  m_EditorClassIdentifier: 
+  unlockedIcon: {fileID: 21300000, guid: b4ce61afb19571b4997304250b34232e, type: 3}
+  lockedIcon: {fileID: 21300000, guid: 8024aae92bd8bd340a93e9e5f05fd5e7, type: 3}
+  Name: More Overachiever-er
+  Description: Beat developer score
+  Unlocked: 0
