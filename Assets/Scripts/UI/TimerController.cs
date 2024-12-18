@@ -32,6 +32,14 @@ public class TimerController : MonoBehaviour
 	private void Start()
 	{
 		gameManager = GameManager.singleton;
+
+		var timerState = PlayerPrefs.GetInt("timerState");
+		if (timerState == 1)
+		{
+			gameManager.speedrunTimerToggled = true;
+			ShowTimer();
+		}
+
 		elaspedTime = 0;
 	}
 

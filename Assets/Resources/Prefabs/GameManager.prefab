@@ -990,6 +990,7 @@ MonoBehaviour:
   carManager: {fileID: 0}
   UIManager: {fileID: 4062793749591267549}
   fade: {fileID: 7565176506748353607}
+  timer: {fileID: 8340059612584975723}
   pizzaCount: 0
   mainSceneName: test
   endOfDayScene: endOfDay
@@ -6140,7 +6141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9354e98eccb6c89428cd39afec5ac746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
+  Manager: {fileID: 5014946920848954076}
   timerToggle: {fileID: 6635327319990234686}
 --- !u!1 &2318320739185767724
 GameObject:
