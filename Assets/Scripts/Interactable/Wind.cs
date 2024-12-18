@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Wind : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class Wind : MonoBehaviour
     public bool shrink = false;
     public float shrinkSpeed = 1f;
     public float minimumScale = 0.1f;
+    public bool shake = false;
+    public float shakingForce;
     Dictionary<Transform, Vector3> objectOriginalScale = new Dictionary<Transform, Vector3>();
 
     public void ShrinkObject(Transform obj, float shrinkSpeed)
@@ -41,8 +45,35 @@ public class Wind : MonoBehaviour
                 {
                     ShrinkObject(other.transform, shrinkSpeed);
                 }
+                if (shake)
+                {
+                    ShakeObject((BoxCollider)hit.collider, rb, shakingForce);
+                }
             }
         }
+    }
+
+    void ShakeObject(BoxCollider mainCollider, Rigidbody body, float shakeForce )
+    {
+        if (!mainCollider) return;
+        float xPos = Random.Range(mainCollider.bounds.min.x, mainCollider.bounds.max.x);
+        float yPos = Random.Range(mainCollider.bounds.min.y, mainCollider.bounds.max.y);
+        float zPos = Random.Range(mainCollider.bounds.min.z, mainCollider.bounds.max.z);
+        Vector3 forceAxis = Vector3.zero;
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                forceAxis = Vector3.forward;
+                break;
+            case 1:
+                forceAxis = Vector3.right;
+                break;
+            case 2:
+                forceAxis = Vector3.up;
+                break;
+        }
+        forceAxis *= (Random.value > 0.5 ? 1 : -1);
+        body.AddForceAtPosition(shakeForce * forceAxis, new Vector3(xPos, yPos, zPos));
     }
     
     public void OnTriggerEnter(Collider other)
