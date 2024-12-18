@@ -38,7 +38,7 @@ namespace Grabbing
             GetComponent<RaycastInteractor>()?.onInteract.AddListener((gameObject) =>
             {
                 Grabbable grabbable = gameObject.GetComponent<Grabbable>();
-                if (grabbable != null && canGrab)
+                if (grabbable != null)
                 {
                     Grab(grabbable);
                 }
@@ -47,7 +47,7 @@ namespace Grabbing
 
         public void Grab(Grabbable grabbable)
         {
-            if (grabbable.CanGrab(this))
+            if (grabbable.CanGrab(this) && canGrab)
             {
                 ReleaseCurrentlyGrabbed();
 
