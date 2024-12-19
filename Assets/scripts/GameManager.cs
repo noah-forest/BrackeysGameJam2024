@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         if (carManager)
         {
             carModeInit.Invoke();
+			TextureManager.instance.UpdateTexture(PlayerPrefs.GetFloat("crunchLevel", 0));
             carManager.gameManager = this;
             carManager.PizzasToDeliver = pizzaCount;
             if(!ambiancePlayer.isPlaying) ambiancePlayer.Play();
