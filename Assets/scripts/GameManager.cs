@@ -193,7 +193,8 @@ public class GameManager : MonoBehaviour
 
 			++Day;
             pizzaModeInit.Invoke();
-            pizzaManager.gameManager = this;
+			TextureManager.instance.UpdateTexture(PlayerPrefs.GetFloat("crunchLevel", 0));
+			pizzaManager.gameManager = this;
             ambiancePlayer.spatialBlend = 0.9f;
             ambiancePlayer.minDistance = 1;
             transform.position = pizzaManager.ambianceSoundLocation.position;
