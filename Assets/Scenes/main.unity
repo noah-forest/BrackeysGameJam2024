@@ -3805,7 +3805,6 @@ GameObject:
   - component: {fileID: 251925454}
   - component: {fileID: 251925453}
   - component: {fileID: 251925456}
-  - component: {fileID: 251925457}
   m_Layer: 5
   m_Name: M_Settings
   m_TagString: Untagged
@@ -3885,27 +3884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 251925451}
---- !u!95 &251925457
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251925451}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a75d64f141dda3041ac490dab8ffb1eb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &277056730
 GameObject:
   m_ObjectHideFlags: 0
@@ -22730,6 +22708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1810107565}
+  - component: {fileID: 1810107567}
   - component: {fileID: 1810107566}
   m_Layer: 5
   m_Name: crunch
@@ -22811,6 +22790,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1810107567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810107564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6171f7b38027a9e439ed72a0686c404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1815515105
 GameObject:
   m_ObjectHideFlags: 0

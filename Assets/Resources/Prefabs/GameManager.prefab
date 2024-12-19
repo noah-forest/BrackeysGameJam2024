@@ -23306,6 +23306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8821843592004748076}
+  - component: {fileID: 9203869065540791612}
   - component: {fileID: 3712612075932208384}
   m_Layer: 5
   m_Name: crunch
@@ -23336,6 +23337,18 @@ RectTransform:
   m_AnchoredPosition: {x: 19.4, y: 9.899987}
   m_SizeDelta: {x: 254.84308, y: 40.239}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9203869065540791612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610655408731562434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6171f7b38027a9e439ed72a0686c404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3712612075932208384
 MonoBehaviour:
   m_ObjectHideFlags: 0

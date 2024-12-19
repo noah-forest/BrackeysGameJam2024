@@ -137,6 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684497976261630699}
+  - component: {fileID: 3329222160923319110}
   m_Layer: 0
   m_Name: PSX Renderer
   m_TagString: Untagged
@@ -161,6 +162,30 @@ Transform:
   - {fileID: 4387735598958978789}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3329222160923319110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365198303100686040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7ed16c6bdf0f5449a4e30cf314f98a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderTextures:
+  - {fileID: 8400000, guid: c20734eb164f33f4799601761edd39a9, type: 2}
+  - {fileID: 8400000, guid: af76d7cb893015c458d017eb338299d0, type: 2}
+  - {fileID: 8400000, guid: e88e909080721e141b0bc0e1d7faecd9, type: 2}
+  - {fileID: 8400000, guid: 57eccbd7ad6151e479da06fb98282a06, type: 2}
+  renderMats:
+  - {fileID: 2100000, guid: a6051c96ff950b54fb2e51d6aa0d6ddc, type: 2}
+  - {fileID: 2100000, guid: 952509f98a6297145af446e0a4a729bc, type: 2}
+  - {fileID: 2100000, guid: 2a5fa64e60d67c041895ae2c1fb27116, type: 2}
+  - {fileID: 2100000, guid: 06561541ddb48854f9c4c26d81747ec7, type: 2}
+  cam: {fileID: 0}
+  meshRenderer: {fileID: 3042690456786891137}
 --- !u!1 &8721954372931391393
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +198,6 @@ GameObject:
   - component: {fileID: 280017109442213544}
   - component: {fileID: 3042690456786891137}
   - component: {fileID: 7609014662400328343}
-  - component: {fileID: 7709252561046660864}
   m_Layer: 0
   m_Name: RenderTexture
   m_TagString: Untagged
@@ -247,18 +271,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7609014662400328343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8721954372931391393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14530ab1709f9ab40b6a863d50768db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7709252561046660864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
