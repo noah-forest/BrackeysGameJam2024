@@ -74,6 +74,7 @@ public class Wind : MonoBehaviour
         }
         forceAxis *= (Random.value > 0.5 ? 1 : -1);
         body.AddForceAtPosition(shakeForce * forceAxis, new Vector3(xPos, yPos, zPos));
+        body.AddTorque(shakeForce * forceAxis);
     }
     
     public void OnTriggerEnter(Collider other)
