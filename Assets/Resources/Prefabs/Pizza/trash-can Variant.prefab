@@ -219,6 +219,8 @@ MonoBehaviour:
   shrink: 0
   shrinkSpeed: 1
   minimumScale: 0.1
+  shake: 0
+  shakingForce: 0
 --- !u!1 &3767431185948732739
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,7 +5069,8 @@ AudioSource:
   m_GameObject: {fileID: 3767431185948732739}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3775825910405092915, guid: 35ee838bebd45004898ab3216eb2ba95,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 6581ffa8c63f6aa4db12ebe7bd57444e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.202
