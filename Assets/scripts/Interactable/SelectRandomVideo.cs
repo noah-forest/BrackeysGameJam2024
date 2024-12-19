@@ -61,6 +61,7 @@ public class SelectRandomVideo : MonoBehaviour
             videoPlayer.Stop();
             active = false;
             gameObject.SetActive(false);
+            AcheivementManager.UnlockAchievement("TV_OFF");
             return false;
         }
         else
