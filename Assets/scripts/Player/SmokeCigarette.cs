@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SmokeCigarette : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class SmokeCigarette : MonoBehaviour
 
     public GameObject leftArm;
     public Animator armsAnim;
+
+    public UnityEvent smokeStatus = new();
 
     public Cigarette cig;
     
@@ -69,6 +73,7 @@ public class SmokeCigarette : MonoBehaviour
         {
             active = false;
             cig.InitializeCig();
+            smokeStatus.Invoke();
         }
         
         if (canPlay || canPlay && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl)))
@@ -79,6 +84,15 @@ public class SmokeCigarette : MonoBehaviour
             StartCoroutine(StartCigParticles());
             canPlay = false;
         }
+    }
+
+    public void PutDown()
+    {
+        cig.smokeable = false;
+        leftArm.SetActive(false);
+        active = false;
+        cig.InitializeCig();
+        smokeStatus.Invoke();
     }
 
     IEnumerator Inhale()
@@ -95,7 +109,9 @@ public class SmokeCigarette : MonoBehaviour
     {
         armsAnim.Play("bringUp");
         yield return new WaitForSeconds(animTime);
-        active = true;
+        active = true; 
+        smokeStatus.Invoke();
+
     }
 
     IEnumerator StartCigParticles()

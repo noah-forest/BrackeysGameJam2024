@@ -47,7 +47,7 @@ public class PizzaGameUI : MonoBehaviour
         interactor?.onInput.AddListener(Validate);
         interactor?.onInteract.AddListener((GameObject v) => Validate());
         interactor?.Grabber?.onRelease.AddListener(Validate);
-
+        modeManager.playerMaster.smoker.smokeStatus.AddListener(Validate);
     }
 
 
@@ -79,14 +79,10 @@ public class PizzaGameUI : MonoBehaviour
         }
     }
 
-    private void Validate(GameObject gameObject)
-    {
-        Validate();
-
-    }
     private void Validate()
     {
         StartCoroutine(ValidateDrinker());
+        StartCoroutine(ValidateSmoker());
     }
 
     public IEnumerator ValidateDrinker()
@@ -108,6 +104,25 @@ public class PizzaGameUI : MonoBehaviour
         }
     }
 
+    public IEnumerator ValidateSmoker()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        if (interactor?.objUnderCrosshair?.GetComponent<Ashtray>() != null)
+        {
+            if (modeManager.playerMaster.smoker.active)
+            {
+                interactPrompt.SetActive(true);
+                interactText.text = "[LMB] Snuff Cig";
+
+            }
+            else
+            {
+                interactPrompt.SetActive(false);
+
+            }
+        }
+    }
 
     private IEnumerator ShowDay()
     {

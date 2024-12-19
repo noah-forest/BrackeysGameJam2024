@@ -19,7 +19,7 @@ namespace Interact
 
         IInteractable targetInteractable;
 
-        GameObject objUnderCrosshair;
+        public GameObject objUnderCrosshair { get; private set; }
 
         public Grabber Grabber { get; private set; }
 

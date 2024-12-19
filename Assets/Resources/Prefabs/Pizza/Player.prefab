@@ -6151,7 +6151,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 57087
+    m_Bits: 188159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: c20734eb164f33f4799601761edd39a9, type: 2}
   m_TargetDisplay: 0
@@ -6250,6 +6250,11 @@ MonoBehaviour:
   targetTransform: {fileID: 1847724158046218758}
   defaultLayer: 0
   grabbedLayer: 16
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  canThrow: 1
+  canGrab: 1
 --- !u!114 &5449235248401656826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6263,6 +6268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onInput:
     m_PersistentCalls:
       m_Calls: []
   onLook:
@@ -17081,6 +17089,7 @@ GameObject:
   - component: {fileID: 8886605480537652261}
   - component: {fileID: 253118240735865634}
   - component: {fileID: 5990635808648339069}
+  - component: {fileID: 3857837980583270246}
   - component: {fileID: 1165473293878899667}
   - component: {fileID: 770897815714973535}
   - component: {fileID: 6997637384983675716}
@@ -17207,6 +17216,26 @@ CharacterController:
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3857837980583270246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070393194100376902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d400c06da319e2489553bce53c7b3b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 770897815714973535}
+  cameraController: {fileID: 2023549313920958253}
+  smoker: {fileID: 1165473293878899667}
+  cigarette: {fileID: 3514363456910146939}
+  drinker: {fileID: 7307808158686617021}
+  cock: {fileID: 4115699588129749765}
+  interactor: {fileID: 5449235248401656826}
+  grabber: {fileID: 1886031938571774919}
 --- !u!114 &1165473293878899667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17222,6 +17251,9 @@ MonoBehaviour:
   cigSmokeDelayAfterPuff: 0.5
   leftArm: {fileID: 7065342495572672036}
   armsAnim: {fileID: 8501784572974713176}
+  smokeStatus:
+    m_PersistentCalls:
+      m_Calls: []
   cig: {fileID: 3514363456910146939}
   inhaleSFX: {fileID: 8300000, guid: e8fe8dd0b17e08a40937680d637908b1, type: 3}
   exhaleSFX: {fileID: 8300000, guid: f200c778a4c65264fb1df4d647115a12, type: 3}
@@ -18075,3 +18107,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8874666872957826555}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4115699588129749765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4770649527157919486, guid: 2ddd5bb2c9ad64b4891bed918795da7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8874666872957826555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f952da935e3eaa24db166be37427eea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

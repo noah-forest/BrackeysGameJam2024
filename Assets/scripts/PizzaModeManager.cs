@@ -41,10 +41,10 @@ public class PizzaModeManager : MonoBehaviour
         singleton = this;
     }
 
-    
-    
+
+
     #endregion
-    public PlayerController player;
+    public PlayerMaster playerMaster;
     public GameManager gameManager;
     /// <summary>
     /// When the player leaves the pizzaria, This value is passed to the Game manager, which is then passed to the car mode
