@@ -11,12 +11,14 @@ public class PizzaFurnace : PizzaModeInteractable
 {
     [SerializeField] ParticleSystem cookingParticles;
     [SerializeField] ParticleSystem burningParticles;
+	[SerializeField] ParticleSystem smokeParticles;
 
     public TextMeshProUGUI timerText;
     
     [Header("audio stuff")]
     public AudioSource dingAudioPlayer;
     public AudioSource cookingAudioPlayer;
+	public AudioSource burningAudioPlayer;
     
     public Vector3 pizzaPosition;
     private Pizza currentPizza;
@@ -98,6 +100,8 @@ public class PizzaFurnace : PizzaModeInteractable
                 if (!burningParticles.isPlaying)
                 {
                     burningParticles.Play();
+					burningAudioPlayer.Play();
+					smokeParticles.Play();
                 }
             }
             else if (timeInOven >= timeToCook && !currentPizza.IsCooked())
@@ -156,6 +160,8 @@ public class PizzaFurnace : PizzaModeInteractable
             cookingAudioPlayer.Stop();
             cookingParticles.Stop();
             burningParticles.Stop();
+			burningAudioPlayer.Stop();
+			smokeParticles.Stop();
         }
     }
 
