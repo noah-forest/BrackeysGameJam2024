@@ -1023,6 +1023,9 @@ MonoBehaviour:
   pizzaModeInit:
     m_PersistentCalls:
       m_Calls: []
+  cameraModeChanged:
+    m_PersistentCalls:
+      m_Calls: []
   scoreRequiredToPass: 3200000064000000c80000009001000058020000
   OrdersToDeliver: []
   daysNeededToWin: 5
@@ -1545,7 +1548,7 @@ GameObject:
   - component: {fileID: 916208845360998336}
   - component: {fileID: 7321487585565758797}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: classic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7219,7 +7222,7 @@ GameObject:
   - component: {fileID: 6942440061582249509}
   - component: {fileID: 4743099593645795014}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: modern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18225,6 +18228,7 @@ GameObject:
   - component: {fileID: 4476208293574656763}
   - component: {fileID: 8011960698483732965}
   - component: {fileID: 1165137426304816564}
+  - component: {fileID: 3712782386343071098}
   m_Layer: 5
   m_Name: group
   m_TagString: Untagged
@@ -18304,6 +18308,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
+--- !u!114 &3712782386343071098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484490967651754491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3100e10ccd7dbad4f94b81ecf28ced8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modern: {fileID: 4743099593645795014}
+  classic: {fileID: 7321487585565758797}
 --- !u!1 &6528360693942729026
 GameObject:
   m_ObjectHideFlags: 0

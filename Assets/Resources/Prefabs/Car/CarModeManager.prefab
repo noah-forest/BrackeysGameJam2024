@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 290308747438660511}
   - component: {fileID: 6647840344977729477}
+  - component: {fileID: 6162429878554811504}
   m_Layer: 0
   m_Name: CarModeManager
   m_TagString: Untagged
@@ -101,6 +102,18 @@ MonoBehaviour:
       m_Calls: []
   moneyEarned: 0
   goalInstance: {fileID: 4236091501537503536}
+--- !u!114 &6162429878554811504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2644649124541365858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ca2c53321ab99499660cb491113a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3614086976471858882
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UnityEvent carModeInit;
     [HideInInspector] public UnityEvent pizzaModeInit;
 
+	public UnityEvent<string> cameraModeChanged = new();
+
     public uint[] scoreRequiredToPass;
     
     public List<Order> OrdersToDeliver = new();
