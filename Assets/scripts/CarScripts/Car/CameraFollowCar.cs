@@ -181,7 +181,7 @@ public class CameraFollowCar : MonoBehaviour
                 targetPos.y = initialTargetPos.y;
                 //Vector3 eulRot = initialTargetRotEuler;
                 targetDistanceRatio = Mathf.Clamp01(Mathf.Pow(Vector3.Distance(transform.position, targetPos) / maxEffectDistance, distanceToTargetEffectOnSpeed));
-                Debug.Log($"Dist: {Vector3.Distance(transform.position, targetPos)} Ratio: {targetDistanceRatio}");
+                //Debug.Log($"Dist: {Vector3.Distance(transform.position, targetPos)} Ratio: {targetDistanceRatio}");
                 //Debug.Log($"Dist: {Vector3.Distance(transform.position, targetPos)} || Ratio: {targetDistanceRatio}");
                 //eulRot.y = targetPosition.rotation.y;
 

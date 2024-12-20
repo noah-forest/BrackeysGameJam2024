@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using PizzaOrder;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class EndOfDayUI : MonoBehaviour
@@ -15,7 +12,6 @@ public class EndOfDayUI : MonoBehaviour
     public TextMeshProUGUI neededScore;
     public TextMeshProUGUI timeScore;
 	public TextMeshProUGUI turretScore;
-    public TextMeshProUGUI feedback;
     
     public ScrollRect scrollRect;
 
@@ -125,18 +121,7 @@ public class EndOfDayUI : MonoBehaviour
         if (!(scrollRect.verticalNormalizedPosition >= 0.001f)) return; // scrolled to beginning
         exitButton.SetActive(true);
             
-        //give feedback
-        if (curScore + gameManager.scoreTime + gameManager.turretScore <
-            gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)])
-        {
-            feedback.color = new Color32(255, 142, 142, 255);
-            feedback.text = "Uh oh...";
-        }
-        else
-        {
-            feedback.text = "Nice Work!";
-            feedback.color = new Color32(102, 255, 52, 255);
-        }
+		//calculate rank here
     }
 
     private void OnEnable()
