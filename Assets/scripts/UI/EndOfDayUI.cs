@@ -89,8 +89,8 @@ public class EndOfDayUI : MonoBehaviour
 			uiInfo.sfxPlayer.PlayOneShot(uiInfo.scoredClip);
 
 			curScore += order.score;
-            score.text = $"{curScore}";
-            score.text = $"{curScore + gameManager.scoreTime + gameManager.turretScore}";
+            score.text = $"{Mathf.Floor(curScore)}";
+            score.text = $"{Mathf.Floor(curScore + gameManager.scoreTime + gameManager.turretScore)}";
         }
             
         uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
