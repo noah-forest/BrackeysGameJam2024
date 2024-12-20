@@ -24,9 +24,12 @@ public class Gunner : CarHazard
     int currentBurst = 0;
     bool isBursting;
 
+	[SerializeField] int gainedFromKill = 20;
+	private CarModeManager manager;
 
     private void Start()
     {
+		manager = CarModeManager.singleton;
         eye.targetSearchStarted.AddListener(ResetFireInterval);
     }
 
@@ -43,6 +46,7 @@ public class Gunner : CarHazard
     public override void Interact(GameObject interactor)
     {
         SpawnInteractEffect();
+		manager.turretScore += gainedFromKill;
         Destroy(gameObject);
     }
 

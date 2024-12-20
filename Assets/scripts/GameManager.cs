@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
     public int scoreAllTime = 0;
     public float scoreToday = 0;
     public float scoreTime = 0;
+	public float turretScore = 0;
 
     private void Start()
     {
@@ -249,11 +250,12 @@ public class GameManager : MonoBehaviour
         }
         //Debug.Log($"[POST CAR GAME] RESULT: {score} / {scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)]}");
 
-        scoreToday = (int)score; ;
+        scoreToday = (int)score;
         scoreTime = carManager.timeScore;
-        scoreAllTime += (int)score + (int)scoreTime;
+		turretScore = carManager.turretScore;
+        scoreAllTime += (int)score + (int)scoreTime + (int)turretScore;
 
-        if (score + scoreTime < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
+        if (score + scoreTime + turretScore < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
         {
             //Debug.Log("[POST CAR GAME] lost");
             gameState = GameState.loss;

@@ -14,6 +14,7 @@ public class EndOfDayUI : MonoBehaviour
     public TextMeshProUGUI score;
     public TextMeshProUGUI neededScore;
     public TextMeshProUGUI timeScore;
+	public TextMeshProUGUI turretScore;
     public TextMeshProUGUI feedback;
     
     public ScrollRect scrollRect;
@@ -55,7 +56,8 @@ public class EndOfDayUI : MonoBehaviour
     {
         neededScore.text = $"{gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)]}";
         timeScore.text = $"{gameManager.scoreTime}";
-        score.text = $"{gameManager.scoreTime}";
+		turretScore.text = $"{gameManager.turretScore}";
+		score.text = $"{gameManager.scoreTime + gameManager.turretScore}";
     }
     
     private void SetUpScrollRect()
@@ -92,7 +94,7 @@ public class EndOfDayUI : MonoBehaviour
 
 			curScore += order.score;
             score.text = $"{curScore}";
-            score.text = $"{curScore + gameManager.scoreTime}";
+            score.text = $"{curScore + gameManager.scoreTime + gameManager.turretScore}";
         }
             
         uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
@@ -124,7 +126,7 @@ public class EndOfDayUI : MonoBehaviour
         exitButton.SetActive(true);
             
         //give feedback
-        if (curScore + gameManager.scoreTime <
+        if (curScore + gameManager.scoreTime + gameManager.turretScore <
             gameManager.scoreRequiredToPass[Mathf.Clamp(gameManager.Day - 1, 0, gameManager.daysNeededToWin)])
         {
             feedback.color = new Color32(255, 142, 142, 255);

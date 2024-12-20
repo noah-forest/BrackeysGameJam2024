@@ -38,6 +38,7 @@ public class CarModeManager : MonoBehaviour
     List<BoxCollider> possibleRoads = new List<BoxCollider>();
 
     [HideInInspector] public int timeScore = 0;
+	[HideInInspector] public int turretScore = 0;
     [HideInInspector] public float timeToMakeDelivery;
     [SerializeField] int timeBonusScore;
     [SerializeField] float basetimeNeededForBonus;

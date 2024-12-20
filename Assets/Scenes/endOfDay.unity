@@ -3310,6 +3310,7 @@ MonoBehaviour:
   score: {fileID: 922493040}
   neededScore: {fileID: 17462867}
   timeScore: {fileID: 1288974598}
+  turretScore: {fileID: 1910820385}
   feedback: {fileID: 902058290}
   scrollRect: {fileID: 825457651}
   exitButton: {fileID: 876612354}
@@ -5999,7 +6000,7 @@ GameObject:
   - component: {fileID: 1910820386}
   - component: {fileID: 1910820385}
   m_Layer: 5
-  m_Name: timeScoreAmt
+  m_Name: turretScoreAmt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
