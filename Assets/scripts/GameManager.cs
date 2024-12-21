@@ -102,6 +102,11 @@ public class GameManager : MonoBehaviour
     public float scoreTime = 0;
 	public float turretScore = 0;
 
+	//ranks
+	public float possibleTurretScore = 0;
+	public float possibleTimeBonus = 0;
+	public float possibleScore = 0;
+
     private void Start()
     {
 		SceneManager.sceneLoaded += OnSceneLoaded;
@@ -255,6 +260,9 @@ public class GameManager : MonoBehaviour
 		turretScore = carManager.turretScore;
         scoreAllTime += (int)score + (int)scoreTime + (int)turretScore;
 
+		possibleTurretScore = carManager.possibleTurretScore;
+		Debug.Log($"The best score possible was {CalculateBestScore()}");
+
         if (score + scoreTime + turretScore < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
         {
             //Debug.Log("[POST CAR GAME] lost");
@@ -271,7 +279,15 @@ public class GameManager : MonoBehaviour
             gameState = GameState.ongoing;
         }
     }
-    
+
+	public float CalculateBestScore()
+	{
+		possibleTimeBonus = OrdersToDeliver.Count * 20;
+		possibleScore = (OrdersToDeliver.Count * 100) + possibleTimeBonus + possibleTurretScore;
+
+		return possibleScore;
+	}
+
     #region SceneLoading
     public void LoadPizzaScene()
     {

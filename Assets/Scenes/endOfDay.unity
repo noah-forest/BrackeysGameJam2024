@@ -3388,7 +3388,13 @@ MonoBehaviour:
   neededScore: {fileID: 17462867}
   timeScore: {fileID: 1288974598}
   turretScore: {fileID: 1910820385}
-  feedback: {fileID: 0}
+  rankImages:
+  - {fileID: 21300000, guid: 5c44353fcb36b2e4b99236adb6fa19e3, type: 3}
+  - {fileID: 21300000, guid: 0692eaae354def346943b9f0596397be, type: 3}
+  - {fileID: 21300000, guid: dfb48261cac3f7a4182d25fde18ca28d, type: 3}
+  - {fileID: 21300000, guid: e0f6889f72ff22a4597c56b3f437e2f5, type: 3}
+  - {fileID: 21300000, guid: a9886a34068f67f48bba70fca08c5093, type: 3}
+  rankIcon: {fileID: 1615605763}
   scrollRect: {fileID: 825457651}
   exitButton: {fileID: 876612354}
   content: {fileID: 1738997433}
@@ -5190,13 +5196,14 @@ GameObject:
   - component: {fileID: 1615605762}
   - component: {fileID: 1615605764}
   - component: {fileID: 1615605763}
+  - component: {fileID: 1615605765}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1615605762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5254,6 +5261,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615605761}
   m_CullTransparentMesh: 1
+--- !u!95 &1615605765
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615605761}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ccb1d65e91ed1247aa81e84fe4472f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1618140198
 GameObject:
   m_ObjectHideFlags: 0

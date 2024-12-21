@@ -1331,9 +1331,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7697278331670765554}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.36670133, z: -0, w: 0.93033874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5181737660406367392}
@@ -1357,7 +1357,7 @@ Transform:
   - {fileID: 7927805386061836471}
   - {fileID: 4557585170136796720}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -43.025, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1362759765149296732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 22.5
-  viewAngle: 149.6
+  viewAngle: 234.55
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1463,6 +1463,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 8257207136792715021}
   tracker: {fileID: 242153004152042401}
   trackerSpinSpeed: 5
+  gainedFromKill: 20
 --- !u!136 &5155563510701950898
 CapsuleCollider:
   m_ObjectHideFlags: 0

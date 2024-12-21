@@ -24,7 +24,6 @@ public class Gunner : CarHazard
     int currentBurst = 0;
     bool isBursting;
 
-	[SerializeField] int gainedFromKill = 20;
 	private CarModeManager manager;
 
     private void Start()
@@ -46,7 +45,7 @@ public class Gunner : CarHazard
     public override void Interact(GameObject interactor)
     {
         SpawnInteractEffect();
-		manager.turretScore += gainedFromKill;
+		manager.turretScore += manager.gainedFromKill;
         Destroy(gameObject);
     }
 

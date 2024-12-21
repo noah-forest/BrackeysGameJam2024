@@ -39,8 +39,10 @@ public class CarModeManager : MonoBehaviour
 
     [HideInInspector] public int timeScore = 0;
 	[HideInInspector] public int turretScore = 0;
+	[HideInInspector] public int possibleTurretScore = 0;
+	[HideInInspector] public int gainedFromKill = 20;
     [HideInInspector] public float timeToMakeDelivery;
-    [SerializeField] int timeBonusScore;
+	public int timeBonusScore = 5;
     [SerializeField] float basetimeNeededForBonus;
     [SerializeField] float minimumTime;
     [SerializeField] float timeEffectOnScore;

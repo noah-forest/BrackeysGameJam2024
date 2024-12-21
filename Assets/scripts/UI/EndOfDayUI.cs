@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using PizzaOrder;
 using TMPro;
 using UnityEngine;
@@ -12,9 +13,14 @@ public class EndOfDayUI : MonoBehaviour
     public TextMeshProUGUI neededScore;
     public TextMeshProUGUI timeScore;
 	public TextMeshProUGUI turretScore;
-    
-    public ScrollRect scrollRect;
 
+	[Space(5)]
+	public List<Sprite> rankImages;
+	[Space(5)]
+
+	public Image rankIcon;
+
+    public ScrollRect scrollRect;
     public GameObject exitButton;
     public RectTransform content;
     public GameObject completedOrder;
@@ -46,7 +52,39 @@ public class EndOfDayUI : MonoBehaviour
         //create the UI objects
         SetUpScoreText();
         SetUpScrollRect();
+
+		//start rank setup
+		CalculateRank();
     }
+
+	private void CalculateRank()
+	{
+		float bestScore = gameManager.CalculateBestScore();
+		float percentage = curScore / bestScore * 100;
+
+		if(percentage >= 90)
+		{
+			//rank s
+			rankIcon.sprite = rankImages[0];
+		} else if (percentage >= 75)
+		{
+			//rank a
+			rankIcon.sprite = rankImages[1];
+		} else if (percentage >= 50)
+		{
+			//rank b
+			rankIcon.sprite = rankImages[2];
+		} else if (percentage >= 25)
+		{
+			//rank c
+			rankIcon.sprite = rankImages[3];
+		}
+		else
+		{
+			//rank f
+			rankIcon.sprite = rankImages[4];
+		}
+	}
 
     private void SetUpScoreText()
     {
@@ -89,8 +127,8 @@ public class EndOfDayUI : MonoBehaviour
 			uiInfo.sfxPlayer.PlayOneShot(uiInfo.scoredClip);
 
 			curScore += order.score;
-            score.text = $"{Mathf.Floor(curScore)}";
-            score.text = $"{Mathf.Floor(curScore + gameManager.scoreTime + gameManager.turretScore)}";
+			curScore = curScore + gameManager.scoreTime + gameManager.turretScore;
+			score.text = $"{Mathf.Floor(curScore)}";
         }
             
         uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
@@ -118,10 +156,10 @@ public class EndOfDayUI : MonoBehaviour
     
     private void CheckIfScrolledToEnd(Vector2 vector)
     {
-        if (!(scrollRect.verticalNormalizedPosition >= 0.001f)) return; // scrolled to beginning
+        if (!(scrollRect.verticalNormalizedPosition > 0.01f)) return; // scrolled to beginning
+
+		rankIcon.gameObject.SetActive(true);
         exitButton.SetActive(true);
-            
-		//calculate rank here
     }
 
     private void OnEnable()
