@@ -47,11 +47,9 @@ public class EndOfDayUI : MonoBehaviour
         currentDay.text = $"{gameManager.Day}";
         daysLeft.text = $"{gameManager.daysNeededToWin -  gameManager.Day}";
         
-        scrollRect.onValueChanged.AddListener(CheckIfScrolledToEnd);
-        
         //create the UI objects
         SetUpScoreText();
-        SetUpScrollRect();
+        StartScoreDisplay();
     }
 
 	private void CalculateRank()
@@ -92,7 +90,7 @@ public class EndOfDayUI : MonoBehaviour
 		score.text = $"{gameManager.scoreTime + gameManager.turretScore}";
     }
     
-    private void SetUpScrollRect()
+    private void StartScoreDisplay()
     {
         var counter = 0.2f;
         foreach (var order in gameManager.OrdersToDeliver)
@@ -153,12 +151,6 @@ public class EndOfDayUI : MonoBehaviour
     {
         gameManager.PostCarGame();
     }
-    
-    private void CheckIfScrolledToEnd(Vector2 vector)
-    {
-        if (!(scrollRect.verticalNormalizedPosition > 0.01f)) return; // scrolled to beginning
-        exitButton.SetActive(true);
-	}
 
     private void OnEnable()
     {
@@ -177,5 +169,6 @@ public class EndOfDayUI : MonoBehaviour
 		yield return new WaitForSeconds(time);
 		CalculateRank();
 		rankIcon.gameObject.SetActive(true);
+		exitButton.SetActive(true);
 	}
 }
