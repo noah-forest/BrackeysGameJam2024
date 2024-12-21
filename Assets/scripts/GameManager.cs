@@ -261,7 +261,6 @@ public class GameManager : MonoBehaviour
         scoreAllTime += (int)score + (int)scoreTime + (int)turretScore;
 
 		possibleTurretScore = carManager.possibleTurretScore;
-		Debug.Log($"The best score possible was {CalculateBestScore()}");
 
         if (score + scoreTime + turretScore < scoreRequiredToPass[Mathf.Clamp(Day - 1, 0, daysNeededToWin)])
         {
@@ -282,7 +281,7 @@ public class GameManager : MonoBehaviour
 
 	public float CalculateBestScore()
 	{
-		possibleTimeBonus = OrdersToDeliver.Count * 20;
+		possibleTimeBonus = OrdersToDeliver.Count * 19;
 		possibleScore = (OrdersToDeliver.Count * 100) + possibleTimeBonus + possibleTurretScore;
 
 		return possibleScore;

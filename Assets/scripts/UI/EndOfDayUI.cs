@@ -52,15 +52,13 @@ public class EndOfDayUI : MonoBehaviour
         //create the UI objects
         SetUpScoreText();
         SetUpScrollRect();
-
-		//start rank setup
-		CalculateRank();
     }
 
 	private void CalculateRank()
 	{
 		float bestScore = gameManager.CalculateBestScore();
-		float percentage = curScore / bestScore * 100;
+		float compoundScore = curScore + gameManager.scoreTime + gameManager.turretScore;
+		float percentage = compoundScore / bestScore * 100;
 
 		if(percentage >= 90)
 		{
@@ -102,9 +100,11 @@ public class EndOfDayUI : MonoBehaviour
             StartCoroutine(addOrderSlowly(order, counter));
             ++counter;
         }
-    }
 
-    private IEnumerator addOrderSlowly(Order order, float counter)
+		StartCoroutine(ShowRank(counter));
+	}
+
+	private IEnumerator addOrderSlowly(Order order, float counter)
     {
         yield return new WaitForSeconds(counter);
         audioPlayer.PlayOneShot(audioPlayer.clip);
@@ -127,8 +127,8 @@ public class EndOfDayUI : MonoBehaviour
 			uiInfo.sfxPlayer.PlayOneShot(uiInfo.scoredClip);
 
 			curScore += order.score;
-			curScore = curScore + gameManager.scoreTime + gameManager.turretScore;
 			score.text = $"{Mathf.Floor(curScore)}";
+			score.text = $"{Mathf.Floor(curScore + gameManager.scoreTime + gameManager.turretScore)}";
         }
             
         uiInfo.orderScore.text = $"{Mathf.Floor(order.score)}";
@@ -157,10 +157,8 @@ public class EndOfDayUI : MonoBehaviour
     private void CheckIfScrolledToEnd(Vector2 vector)
     {
         if (!(scrollRect.verticalNormalizedPosition > 0.01f)) return; // scrolled to beginning
-
-		rankIcon.gameObject.SetActive(true);
         exitButton.SetActive(true);
-    }
+	}
 
     private void OnEnable()
     {
@@ -173,4 +171,11 @@ public class EndOfDayUI : MonoBehaviour
         currentDay.gameObject.SetActive(true);
         currentDay.GetComponent<Animator>().SetTrigger("pop");
     }
+
+	private IEnumerator ShowRank(float time)
+	{
+		yield return new WaitForSeconds(time);
+		CalculateRank();
+		rankIcon.gameObject.SetActive(true);
+	}
 }
